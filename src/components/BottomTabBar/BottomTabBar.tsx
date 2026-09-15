@@ -37,9 +37,15 @@ export default function BottomTabBar({ navigation, activeTab }: BottomTabBarProp
         <House size={30} color={iconColor} strokeWidth={1.8} />
       </TouchableOpacity>
       <TouchableOpacity
-        accessibilityLabel="Store"
+        accessibilityLabel="Card Scanner"
         accessibilityRole="tab"
-        onPress={() => (isNestedFlow ? navigation.popToTop?.() : navigation.navigate('StoreFlow'))}
+        onPress={() => {
+          if (isNestedFlow) {
+            navigation.getParent?.()?.navigate('CardScanner');
+          } else {
+            navigation.navigate('CardScanner');
+          }
+        }}
         style={styles.navButton}
       >
         <Camera size={30} color={iconColor} strokeWidth={1.8} />

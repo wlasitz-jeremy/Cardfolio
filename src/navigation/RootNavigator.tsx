@@ -9,6 +9,7 @@ import LocationScreen from '../screens/Location';
 import NotificationsScreen from '../screens/Notifications';
 import ContactUsScreen from '../screens/ContactUs';
 import UniverseScreen from '../screens/Universe';
+import CardScannerScreen from '../screens/CardScanner';
 import TabNavigator from './TabNavigator';
 
 const Stack = createNativeStackNavigator();
@@ -27,6 +28,7 @@ export default function RootNavigator() {
         <Stack.Screen name="Notifications" component={NotificationsScreen} />
         <Stack.Screen name="ContactUs" component={ContactUsScreen} />
         <Stack.Screen name="Universe" component={UniverseScreen} />
+        <Stack.Screen name="CardScanner" component={CardScannerScreen} />
         <Stack.Screen name="CardInfoFlow" component={CardInfoNavigator} />
         <Stack.Screen name="StoreFlow" component={StoreNavigator} />
       </Stack.Navigator>
