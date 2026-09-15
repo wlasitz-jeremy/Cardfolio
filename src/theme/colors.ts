@@ -1,22 +1,30 @@
 export const colors = {
-    
-    // Base Colors
-    LightBase: 'f4f4f8',
-    DarkBase: '111315',
-    
-    // Structural Panels
-    LightStructuralPanels: 'e2e1f4',
-    DarkStructuralPanels: '1f1e27',
-    
-    // Main Typography
-    LightMainTypography: '1e293b',
-    DarkMainTypography: 'f1f3f5',
-    
-    // Secondary Typography
-    LightSecondaryTypography: '424b57',
-    DarkSecondaryTypography: 'c4c7ca',
-    
-    // Accent Colors
-    LightAccent: '4a475c',
-    DarkAccent: 'c1bbe1',
-};
+    LightBase: '#f4f4f8',
+    DarkBase: '#111315',
+    LightStructuralPanels: '#e2e1f4',
+    DarkStructuralPanels: '#1f1e27',
+    LightMainTypography: '#1e293b',
+    DarkMainTypography: '#f1f3f5',
+    LightSecondaryTypography: '#424b57',
+    DarkSecondaryTypography: '#c4c7ca',
+    LightAccent: '#4a475c',
+    DarkAccent: '#c1bbe1',
+} as const;
+
+export const palette = {
+    background: colors.LightBase,
+    darkText: colors.LightMainTypography,
+    secondaryText: colors.LightSecondaryTypography,
+    accent: colors.LightAccent,
+    white: '#ffffff',
+    panel: '#ffffff',
+    softWhite: '#eef1f5',
+    softPanel: '#eef1f7',
+    muted: '#767677',
+    subtle: '#9aa7b6',
+    inputStroke: colors.LightMainTypography,
+    border: '#dfe3ea',
+    softAccent: '#eef2ff',
+    lavender: '#d9d5eb',
+    lavenderDark: '#bdb6dc',
+} as const;

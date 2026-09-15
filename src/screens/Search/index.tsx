@@ -1,15 +1,6 @@
 import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
-
-const palette = {
-  background: '#f4f5f9',
-  panel: '#ffffff',
-  softPanel: '#eef1f7',
-  darkText: '#1f2937',
-  secondaryText: '#586578',
-  accent: '#3d4052',
-  subtle: '#9aa7b6',
-  border: '#e2e8f0',
-};
+import { palette } from '../../theme/colors';
+import { fontFamilies } from '../../theme/typography';
 
 const results = [
   { title: 'Legendary foil pull', tag: 'Collectors' },
@@ -67,7 +58,7 @@ const styles = StyleSheet.create({
     color: palette.darkText,
     marginBottom: 18,
     letterSpacing: -0.5,
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
   searchBox: {
     backgroundColor: palette.panel,
@@ -86,7 +77,7 @@ const styles = StyleSheet.create({
     height: 52,
     color: palette.darkText,
     fontSize: 16,
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
   sectionHeader: {
     marginBottom: 10,
@@ -97,7 +88,7 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
     textTransform: 'uppercase',
     color: palette.subtle,
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
   resultItem: {
     backgroundColor: palette.panel,
@@ -131,7 +122,7 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: '700',
     marginBottom: 4,
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
   resultTag: {
     color: palette.secondaryText,
@@ -139,6 +130,6 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     letterSpacing: 0.4,
     textTransform: 'uppercase',
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
 });

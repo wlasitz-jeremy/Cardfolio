@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import {
-  Image,
   Pressable,
   SafeAreaView,
   StyleSheet,
@@ -10,6 +9,8 @@ import {
   View,
 } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { palette } from '../../theme/colors';
+import { fontFamilies } from '../../theme/typography';
 
 type RootStackParamList = {
   Auth: undefined;
@@ -19,19 +20,6 @@ type RootStackParamList = {
 };
 
 type LoginScreenProps = NativeStackScreenProps<RootStackParamList, 'Login'>;
-
-const imgCheckCircle =
-  'https://www.figma.com/api/mcp/asset/814a1674-79c7-46ed-82d8-eb5cac768286.svg';
-
-const palette = {
-  background: '#f4f4f8',
-  darkText: '#1e293b',
-  secondaryText: '#424b57',
-  accent: '#4a475c',
-  inputStroke: '#1e293b',
-  white: '#ffffff',
-  muted: '#767677',
-};
 
 export default function LoginScreen({ navigation }: LoginScreenProps) {
   const [rememberMe, setRememberMe] = useState(true);
@@ -63,19 +51,15 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
 
         <View style={styles.metaRow}>
           <Pressable
+            accessibilityLabel="Remember me"
+            accessibilityHint="Toggles remembering your account on this device"
             accessibilityRole="checkbox"
             accessibilityState={{ checked: rememberMe }}
             onPress={() => setRememberMe((value) => !value)}
-            style={styles.checkboxWrapper}
+            style={({ pressed }) => [styles.checkboxWrapper, pressed && styles.checkboxPressed]}
           >
             <View style={[styles.checkbox, rememberMe && styles.checkboxChecked]}>
-              {rememberMe ? (
-                <Image
-                  source={{ uri: imgCheckCircle }}
-                  resizeMode="contain"
-                  style={styles.checkmarkIcon}
-                />
-              ) : null}
+              {rememberMe ? <Text style={styles.checkmark}>✓</Text> : null}
             </View>
             <Text style={styles.rememberText}>Remember Me</Text>
           </Pressable>
@@ -91,12 +75,17 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
           <Text style={styles.loginText}>LOGIN</Text>
         </TouchableOpacity>
 
-        <Text style={styles.signupText}>
-          Don&apos;t have an account?{' '}
-          <Text style={styles.signupLink} onPress={() => navigation.navigate('CreateAccount')}>
-            Sign Up
+        <TouchableOpacity
+          accessibilityRole="button"
+          activeOpacity={0.75}
+          onPress={() => navigation.navigate('CreateAccount')}
+          style={styles.signupButton}
+        >
+          <Text style={styles.signupText}>
+            Don&apos;t have an account?{' '}
+            <Text style={styles.signupLink}>Sign Up</Text>
           </Text>
-        </Text>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
@@ -121,7 +110,7 @@ const styles = StyleSheet.create({
     letterSpacing: 1.28,
     color: palette.darkText,
     marginBottom: 40,
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
   label: {
     width: '100%',
@@ -133,7 +122,7 @@ const styles = StyleSheet.create({
     color: palette.darkText,
     marginBottom: 12,
     marginTop: 8,
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
   input: {
     width: 300,
@@ -161,6 +150,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 10,
   },
+  checkboxPressed: {
+    opacity: 0.7,
+  },
   checkbox: {
     width: 20,
     height: 20,
@@ -172,25 +164,28 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   checkboxChecked: {
-    backgroundColor: '#f4f4f8',
+    backgroundColor: palette.accent,
+    borderColor: palette.accent,
   },
-  checkmarkIcon: {
-    width: 18,
-    height: 18,
+  checkmark: {
+    color: palette.white,
+    fontSize: 15,
+    fontWeight: '700',
+    lineHeight: 18,
   },
   rememberText: {
     fontSize: 14,
     fontWeight: '700',
     letterSpacing: 0.28,
     color: palette.darkText,
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
   forgotText: {
     fontSize: 14,
     fontWeight: '700',
     letterSpacing: 0.28,
     color: palette.secondaryText,
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
   loginButton: {
     width: 280,
@@ -207,7 +202,10 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     letterSpacing: 0.64,
     lineHeight: 32,
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
+  },
+  signupButton: {
+    alignSelf: 'center',
   },
   signupText: {
     marginTop: 32,
@@ -215,7 +213,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     letterSpacing: 0.28,
     color: palette.darkText,
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
   signupLink: {
     color: palette.muted,

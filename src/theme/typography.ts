@@ -12,7 +12,7 @@ export const fontSizes = {
 
 export const fontFamilies = {
   heading: 'Oswald',
-  body: 'Roboto',
+  body: 'Oswald',
 } as const;
 
 export const typography = {

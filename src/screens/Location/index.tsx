@@ -1,14 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native';
-
-const palette = {
-  background: '#f4f5f9',
-  panel: '#ffffff',
-  darkText: '#1f2937',
-  secondaryText: '#586578',
-  accent: '#3d4052',
-  border: '#edf1f7',
-  softAccent: '#eef2ff',
-};
+import { palette } from '../../theme/colors';
+import { fontFamilies } from '../../theme/typography';
 
 export default function LocationScreen() {
   return (

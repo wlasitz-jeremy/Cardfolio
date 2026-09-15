@@ -1,12 +1,6 @@
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-
-const palette = {
-  background: '#f4f4f8',
-  darkText: '#1e293b',
-  secondaryText: '#424b57',
-  accent: '#4a475c',
-  white: '#ffffff',
-};
+import { palette } from '../../theme/colors';
+import { fontFamilies } from '../../theme/typography';
 
 const collections = [
   { title: 'Legendary Pulls', count: '18 cards', accent: '#4a475c' },
@@ -50,7 +44,7 @@ const styles = StyleSheet.create({
     color: palette.darkText,
     marginBottom: 22,
     letterSpacing: 0.2,
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
   card: {
     backgroundColor: palette.white,
@@ -78,12 +72,12 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: palette.darkText,
     marginBottom: 4,
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
   count: {
     color: palette.secondaryText,
     fontSize: 14,
     fontWeight: '500',
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
 });

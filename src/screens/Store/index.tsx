@@ -1,14 +1,6 @@
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-
-const palette = {
-  background: '#f4f5f9',
-  panel: '#ffffff',
-  darkText: '#1f2937',
-  secondaryText: '#586578',
-  accent: '#3d4052',
-  softAccent: '#e9ebf3',
-  border: '#edf1f7',
-};
+import { palette } from '../../theme/colors';
+import { fontFamilies } from '../../theme/typography';
 
 const products = [
   { name: 'Premium Sleeves', price: '$18.00', tone: '#dfe7f8' },
@@ -55,7 +47,7 @@ const styles = StyleSheet.create({
     color: palette.darkText,
     marginBottom: 20,
     letterSpacing: -0.5,
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
   productCard: {
     backgroundColor: palette.panel,
@@ -86,13 +78,13 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: '700',
     marginBottom: 4,
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
   price: {
     color: palette.accent,
     fontSize: 16,
     fontWeight: '700',
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
   buyTag: {
     backgroundColor: palette.softAccent,
@@ -107,6 +99,6 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     letterSpacing: 0.8,
     textTransform: 'uppercase',
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
 });

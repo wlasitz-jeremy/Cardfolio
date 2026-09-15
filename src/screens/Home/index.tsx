@@ -1,14 +1,6 @@
 import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
-
-const palette = {
-  background: '#f4f4f8',
-  darkText: '#1e293b',
-  secondaryText: '#424b57',
-  accent: '#4a475c',
-  white: '#ffffff',
-  softWhite: '#eef1f5',
-  muted: '#767677',
-};
+import { palette } from '../../theme/colors';
+import { fontFamilies } from '../../theme/typography';
 
 export default function HomeScreen({ navigation }: any) {
   return (
@@ -83,13 +75,13 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: palette.darkText,
     letterSpacing: 0.2,
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
   smallAction: {
     fontSize: 14,
     fontWeight: '700',
     color: palette.accent,
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
   searchBox: {
     backgroundColor: palette.white,
@@ -108,7 +100,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     minHeight: 52,
     justifyContent: 'center',
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
   heroCard: {
     backgroundColor: palette.accent,
@@ -127,20 +119,20 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
     textTransform: 'uppercase',
     marginBottom: 10,
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
   heroTitle: {
     color: palette.white,
     fontSize: 28,
     fontWeight: '700',
     marginBottom: 8,
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
   heroText: {
     color: '#f3f2f8',
     fontSize: 14,
     lineHeight: 20,
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
   sectionHeader: {
     marginBottom: 12,
@@ -149,7 +141,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: '700',
     color: palette.darkText,
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
   grid: {
     flexDirection: 'row',
@@ -176,19 +168,19 @@ const styles = StyleSheet.create({
     color: palette.accent,
     fontWeight: '700',
     fontSize: 12,
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
   tileTitle: {
     color: palette.darkText,
     fontSize: 18,
     fontWeight: '700',
     marginTop: 12,
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
   tileMeta: {
     marginTop: 8,
     color: palette.secondaryText,
     fontSize: 12,
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
 });

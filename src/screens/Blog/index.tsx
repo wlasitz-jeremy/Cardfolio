@@ -1,12 +1,6 @@
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
-
-const palette = {
-  background: '#f4f4f8',
-  darkText: '#1e293b',
-  secondaryText: '#424b57',
-  accent: '#4a475c',
-  white: '#ffffff',
-};
+import { palette } from '../../theme/colors';
+import { fontFamilies } from '../../theme/typography';
 
 const articles = [
   { title: 'How to grade your pull', snippet: 'Learn what collectors look for in condition and rarity.' },
@@ -45,7 +39,7 @@ const styles = StyleSheet.create({
     color: palette.darkText,
     marginBottom: 20,
     letterSpacing: 0.2,
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
   articleCard: {
     backgroundColor: palette.white,
@@ -64,19 +58,19 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
     textTransform: 'uppercase',
     marginBottom: 10,
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
   title: {
     color: palette.darkText,
     fontSize: 22,
     fontWeight: '700',
     marginBottom: 8,
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
   snippet: {
     color: palette.secondaryText,
     lineHeight: 20,
     fontSize: 14,
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
 });

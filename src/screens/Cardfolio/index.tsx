@@ -1,13 +1,6 @@
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-
-const palette = {
-  background: '#f4f4f8',
-  darkText: '#1e293b',
-  secondaryText: '#424b57',
-  accent: '#4a475c',
-  white: '#ffffff',
-  muted: '#dfe3ec',
-};
+import { palette } from '../../theme/colors';
+import { fontFamilies } from '../../theme/typography';
 
 const cards = [
   { name: 'Eclipse King', set: 'Mythic Rare', value: '1.4k' },
@@ -56,7 +49,7 @@ const styles = StyleSheet.create({
     color: palette.darkText,
     marginBottom: 16,
     letterSpacing: 0.2,
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
   summary: {
     backgroundColor: palette.accent,
@@ -72,13 +65,13 @@ const styles = StyleSheet.create({
     fontSize: 38,
     fontWeight: '700',
     color: palette.white,
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
   summaryLabel: {
     fontSize: 14,
     color: '#f0edf5',
     marginTop: 6,
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
   card: {
     backgroundColor: palette.white,
@@ -107,17 +100,17 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '700',
     marginBottom: 4,
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
   cardSet: {
     color: palette.secondaryText,
     fontSize: 13,
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
   cardValue: {
     color: palette.accent,
     fontSize: 18,
     fontWeight: '700',
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
 });

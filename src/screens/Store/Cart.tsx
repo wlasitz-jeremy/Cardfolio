@@ -1,14 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-
-const palette = {
-  background: '#f4f5f9',
-  panel: '#ffffff',
-  darkText: '#1f2937',
-  secondaryText: '#586578',
-  accent: '#3d4052',
-  softAccent: '#eef2ff',
-  border: '#edf1f7',
-};
+import { palette } from '../../theme/colors';
+import { fontFamilies } from '../../theme/typography';
 
 export default function CartScreen({ navigation }: any) {
   return (

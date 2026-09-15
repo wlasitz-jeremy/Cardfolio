@@ -1,12 +1,6 @@
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
-
-const palette = {
-  background: '#f4f4f8',
-  darkText: '#1e293b',
-  secondaryText: '#424b57',
-  accent: '#4a475c',
-  white: '#ffffff',
-};
+import { palette } from '../../theme/colors';
+import { fontFamilies } from '../../theme/typography';
 
 const posts = [
   { user: 'Ari', title: 'Trade night wins', body: 'Managed to complete a full foil set this weekend.' },
@@ -45,7 +39,7 @@ const styles = StyleSheet.create({
     color: palette.darkText,
     marginBottom: 20,
     letterSpacing: 0.2,
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
   postCard: {
     backgroundColor: palette.white,
@@ -62,19 +56,19 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     fontSize: 13,
     marginBottom: 6,
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
   title: {
     color: palette.darkText,
     fontSize: 20,
     fontWeight: '700',
     marginBottom: 8,
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
   body: {
     color: palette.secondaryText,
     fontSize: 14,
     lineHeight: 20,
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
 });

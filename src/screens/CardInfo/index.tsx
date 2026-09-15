@@ -1,13 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-
-const palette = {
-  background: '#f4f5f9',
-  panel: '#ffffff',
-  darkText: '#1f2937',
-  secondaryText: '#586578',
-  accent: '#3d4052',
-  softAccent: '#edf2ff',
-};
+import { palette } from '../../theme/colors';
+import { fontFamilies } from '../../theme/typography';
 
 export default function CardInfoScreen({ navigation }: any) {
   return (
@@ -86,14 +79,14 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     marginBottom: 6,
     letterSpacing: -0.6,
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
   meta: {
     color: palette.secondaryText,
     fontSize: 15,
     fontWeight: '600',
     marginBottom: 16,
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
   pillRow: {
     flexDirection: 'row',
@@ -112,14 +105,14 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     letterSpacing: 0.8,
     textTransform: 'uppercase',
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
   description: {
     color: palette.darkText,
     fontSize: 15,
     lineHeight: 22,
     textAlign: 'left',
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
   actionButton: {
     width: '100%',
@@ -136,6 +129,6 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     letterSpacing: 0.8,
     textTransform: 'uppercase',
-    fontFamily: 'Oswald',
+    fontFamily: fontFamilies.heading,
   },
 });
