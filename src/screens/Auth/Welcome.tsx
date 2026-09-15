@@ -33,7 +33,7 @@ export default function WelcomeScreen({ navigation }: WelcomeScreenProps) {
           </View>
           <View style={[styles.cardShape, styles.cardFront]}>
             <View style={styles.frontLine} />
-            <Image style={styles.cardfolioLogo} source={require('../../../assets/cardfolio-logo.png')}/>
+            <Image style={styles.cardfolioLogo} source={require('../../assets/cardfolio-logo.png')}/>
             <View style={styles.frontLine} />
           </View>
         </View>
