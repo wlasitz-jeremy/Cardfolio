@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Image,
 } from 'react-native';
 import { palette } from '../../theme/colors';
 import { fontFamilies } from '../../theme/typography';
@@ -21,13 +22,6 @@ export default function WelcomeScreen({ navigation }: WelcomeScreenProps) {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
-        <View style={styles.topRow}>
-          <Text style={styles.logo}>CardFolio</Text>
-          <View style={styles.logoMark}>
-            <View style={styles.logoMarkInner} />
-          </View>
-        </View>
-
         <View style={styles.artwork} accessibilityElementsHidden>
           <View style={[styles.cardShape, styles.cardBack]}>
             <View style={styles.cardStripe} />
@@ -38,9 +32,9 @@ export default function WelcomeScreen({ navigation }: WelcomeScreenProps) {
             <View style={styles.cardDot} />
           </View>
           <View style={[styles.cardShape, styles.cardFront]}>
-            <View style={styles.frontTopLine} />
-            <Text style={styles.frontGlyph}>✦</Text>
-            <View style={styles.frontBottomLine} />
+            <View style={styles.frontLine} />
+            <Image style={styles.cardfolioLogo} source={require('../../../assets/cardfolio-logo.png')}/>
+            <View style={styles.frontLine} />
           </View>
         </View>
 
@@ -59,8 +53,7 @@ export default function WelcomeScreen({ navigation }: WelcomeScreenProps) {
             accessibilityRole="button"
             accessibilityLabel="Create a CardFolio account"
             onPress={() => navigation.navigate('CreateAccount')}
-            style={({ pressed }) => [styles.primaryButton, pressed && styles.pressed]}
-          >
+            style={({ pressed }) => [styles.primaryButton, pressed && styles.pressed]}>
             <Text style={styles.primaryButtonText}>I Don't Have an Account - Sign Up</Text>
           </Pressable>
 
@@ -169,19 +162,13 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginTop: 52,
   },
-  frontTopLine: {
-    width: '100%',
-    height: 2,
-    backgroundColor: palette.lavender,
-    opacity: 0.7,
-  },
   frontGlyph: {
     color: palette.white,
     fontSize: 64,
     lineHeight: 76,
     fontWeight: '300',
   },
-  frontBottomLine: {
+  frontLine: {
     width: '54%',
     height: 5,
     borderRadius: 3,
@@ -269,5 +256,11 @@ const styles = StyleSheet.create({
     fontSize: 12,
     marginTop: 'auto',
     textAlign: 'center',
+  },
+  cardfolioLogo: {
+    width: 120,
+    height: 120,
+    resizeMode: 'contain',
+    borderRadius: 20,
   },
 });
