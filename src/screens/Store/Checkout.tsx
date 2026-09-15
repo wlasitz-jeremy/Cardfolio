@@ -1,11 +1,12 @@
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { palette } from '../../theme/colors';
 import { fontFamilies } from '../../theme/typography';
+import InlineScreenHeader from '../../components/InlineScreenHeader/InlineScreenHeader';
 
 export default function CheckoutScreen({ navigation }: any) {
   return (
     <View style={styles.screen}>
-      <Text style={styles.pageTitle}>Checkout</Text>
+      <InlineScreenHeader navigation={navigation} title="Checkout" />
 
       <View style={styles.formCard}>
         <Text style={styles.label}>Cardholder Name</Text>
@@ -34,7 +35,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: palette.background,
     paddingHorizontal: 20,
-    paddingTop: 50,
+    paddingTop: 20,
   },
   pageTitle: {
     fontSize: 32,

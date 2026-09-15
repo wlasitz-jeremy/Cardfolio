@@ -1,6 +1,8 @@
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { palette } from '../../theme/colors';
 import { fontFamilies } from '../../theme/typography';
+import BottomTabBar from '../../components/BottomTabBar/BottomTabBar';
+import InlineScreenHeader from '../../components/InlineScreenHeader/InlineScreenHeader';
 
 const cards = [
   { name: 'Eclipse King', set: 'Mythic Rare', value: '1.4k' },
@@ -10,15 +12,16 @@ const cards = [
 
 export default function CardfolioScreen({ navigation }: any) {
   return (
-    <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
-      <Text style={styles.pageTitle}>My Cardfolio</Text>
+    <View style={styles.screen}>
+      <ScrollView contentContainerStyle={styles.content}>
+      <InlineScreenHeader navigation={navigation} title="My Cardfolio" />
       <View style={styles.summary}>
         <Text style={styles.summaryValue}>238</Text>
         <Text style={styles.summaryLabel}>Cards in collection</Text>
       </View>
 
       {cards.map((card) => (
-        <TouchableOpacity key={card.name} onPress={() => navigation.navigate('CardInfoFlow')}>
+        <TouchableOpacity key={card.name} onPress={() => navigation.getParent()?.navigate('CardInfoFlow')}>
           <View style={styles.card}>
             <View style={styles.cardArt} />
             <View style={styles.cardDetails}>
@@ -29,7 +32,9 @@ export default function CardfolioScreen({ navigation }: any) {
           </View>
         </TouchableOpacity>
       ))}
-    </ScrollView>
+      </ScrollView>
+      <BottomTabBar navigation={navigation} activeTab="Cardfolio" />
+    </View>
   );
 }
 
@@ -40,8 +45,8 @@ const styles = StyleSheet.create({
   },
   content: {
     paddingHorizontal: 20,
-    paddingTop: 52,
-    paddingBottom: 32,
+    paddingTop: 20,
+    paddingBottom: 128,
   },
   pageTitle: {
     fontSize: 32,

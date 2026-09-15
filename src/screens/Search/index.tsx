@@ -1,6 +1,8 @@
 import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { palette } from '../../theme/colors';
 import { fontFamilies } from '../../theme/typography';
+import BottomTabBar from '../../components/BottomTabBar/BottomTabBar';
+import InlineScreenHeader from '../../components/InlineScreenHeader/InlineScreenHeader';
 
 const results = [
   { title: 'Legendary foil pull', tag: 'Collectors' },
@@ -11,34 +13,37 @@ const results = [
 
 export default function SearchScreen({ navigation }: any) {
   return (
-    <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
-      <Text style={styles.pageTitle}>Search</Text>
+    <View style={styles.screen}>
+      <ScrollView contentContainerStyle={styles.content}>
+        <InlineScreenHeader navigation={navigation} title="Search" />
 
-      <View style={styles.searchBox}>
-        <TextInput
-          placeholder="Search CardFolio"
-          placeholderTextColor={palette.secondaryText}
-          style={styles.input}
-          editable={false}
-        />
-      </View>
+        <View style={styles.searchBox}>
+          <TextInput
+            placeholder="Search CardFolio"
+            placeholderTextColor={palette.secondaryText}
+            style={styles.input}
+            editable={false}
+          />
+        </View>
 
-      <View style={styles.sectionHeader}>
-        <Text style={styles.sectionLabel}>Popular searches</Text>
-      </View>
+        <View style={styles.sectionHeader}>
+          <Text style={styles.sectionLabel}>Popular searches</Text>
+        </View>
 
-      {results.map((result) => (
-        <TouchableOpacity key={result.title} onPress={() => navigation.navigate('CardInfoFlow')}>
-          <View style={styles.resultItem}>
-            <View style={styles.resultDot} />
-            <View style={styles.resultTextWrap}>
-              <Text style={styles.resultText}>{result.title}</Text>
-              <Text style={styles.resultTag}>{result.tag}</Text>
+        {results.map((result) => (
+          <TouchableOpacity key={result.title} onPress={() => navigation.navigate('CardInfoFlow')}>
+            <View style={styles.resultItem}>
+              <View style={styles.resultDot} />
+              <View style={styles.resultTextWrap}>
+                <Text style={styles.resultText}>{result.title}</Text>
+                <Text style={styles.resultTag}>{result.tag}</Text>
+              </View>
             </View>
-          </View>
-        </TouchableOpacity>
-      ))}
-    </ScrollView>
+          </TouchableOpacity>
+        ))}
+      </ScrollView>
+      <BottomTabBar navigation={navigation} />
+    </View>
   );
 }
 
@@ -49,8 +54,8 @@ const styles = StyleSheet.create({
   },
   content: {
     paddingHorizontal: 20,
-    paddingTop: 50,
-    paddingBottom: 32,
+    paddingTop: 20,
+    paddingBottom: 128,
   },
   pageTitle: {
     fontSize: 32,

@@ -1,11 +1,12 @@
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { palette } from '../../theme/colors';
 import { fontFamilies } from '../../theme/typography';
+import InlineScreenHeader from '../../components/InlineScreenHeader/InlineScreenHeader';
 
-export default function ContactUsScreen() {
+export default function ContactUsScreen({ navigation }: any) {
   return (
     <View style={styles.screen}>
-      <Text style={styles.pageTitle}>Contact Us</Text>
+      <InlineScreenHeader navigation={navigation} title="Contact Us" />
 
       <View style={styles.formCard}>
         <Text style={styles.label}>Name</Text>
@@ -30,7 +31,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: palette.background,
     paddingHorizontal: 20,
-    paddingTop: 50,
+    paddingTop: 20,
   },
   pageTitle: {
     fontSize: 32,

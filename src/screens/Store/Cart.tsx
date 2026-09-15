@@ -1,11 +1,12 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { palette } from '../../theme/colors';
 import { fontFamilies } from '../../theme/typography';
+import InlineScreenHeader from '../../components/InlineScreenHeader/InlineScreenHeader';
 
 export default function CartScreen({ navigation }: any) {
   return (
     <View style={styles.screen}>
-      <Text style={styles.pageTitle}>Your Cart</Text>
+      <InlineScreenHeader navigation={navigation} title="Your Cart" />
 
       <View style={styles.itemCard}>
         <View style={styles.thumb} />
@@ -37,7 +38,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: palette.background,
     paddingHorizontal: 20,
-    paddingTop: 50,
+    paddingTop: 20,
   },
   pageTitle: {
     fontSize: 32,

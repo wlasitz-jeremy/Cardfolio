@@ -1,6 +1,8 @@
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { palette } from '../../theme/colors';
 import { fontFamilies } from '../../theme/typography';
+import BottomTabBar from '../../components/BottomTabBar/BottomTabBar';
+import InlineScreenHeader from '../../components/InlineScreenHeader/InlineScreenHeader';
 
 const posts = [
   { user: 'Ari', title: 'Trade night wins', body: 'Managed to complete a full foil set this weekend.' },
@@ -8,10 +10,11 @@ const posts = [
   { user: 'Theo', title: 'Binder updates', body: 'Fresh organization system and new upgrade priorities.' },
 ];
 
-export default function CommunityScreen() {
+export default function CommunityScreen({ navigation }: any) {
   return (
-    <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
-      <Text style={styles.pageTitle}>Community</Text>
+    <View style={styles.screen}>
+      <ScrollView contentContainerStyle={styles.content}>
+      <InlineScreenHeader navigation={navigation} title="Community" />
       {posts.map((post) => (
         <View key={post.title} style={styles.postCard}>
           <Text style={styles.user}>{post.user}</Text>
@@ -19,7 +22,9 @@ export default function CommunityScreen() {
           <Text style={styles.body}>{post.body}</Text>
         </View>
       ))}
-    </ScrollView>
+      </ScrollView>
+      <BottomTabBar navigation={navigation} activeTab="Community" />
+    </View>
   );
 }
 
@@ -30,8 +35,8 @@ const styles = StyleSheet.create({
   },
   content: {
     paddingHorizontal: 20,
-    paddingTop: 52,
-    paddingBottom: 30,
+    paddingTop: 20,
+    paddingBottom: 128,
   },
   pageTitle: {
     fontSize: 32,

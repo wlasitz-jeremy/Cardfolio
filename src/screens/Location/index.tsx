@@ -1,11 +1,12 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { palette } from '../../theme/colors';
 import { fontFamilies } from '../../theme/typography';
+import InlineScreenHeader from '../../components/InlineScreenHeader/InlineScreenHeader';
 
-export default function LocationScreen() {
+export default function LocationScreen({ navigation }: any) {
   return (
     <View style={styles.screen}>
-      <Text style={styles.pageTitle}>Location</Text>
+      <InlineScreenHeader navigation={navigation} title="Location" />
 
       <View style={styles.mapCard}>
         <Text style={styles.mapLabel}>Nearby stores</Text>
@@ -28,7 +29,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: palette.background,
     paddingHorizontal: 20,
-    paddingTop: 50,
+    paddingTop: 20,
   },
   pageTitle: {
     fontSize: 32,

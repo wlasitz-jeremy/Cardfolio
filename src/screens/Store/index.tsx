@@ -1,6 +1,8 @@
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { palette } from '../../theme/colors';
 import { fontFamilies } from '../../theme/typography';
+import BottomTabBar from '../../components/BottomTabBar/BottomTabBar';
+import InlineScreenHeader from '../../components/InlineScreenHeader/InlineScreenHeader';
 
 const products = [
   { name: 'Premium Sleeves', price: '$18.00', tone: '#dfe7f8' },
@@ -10,24 +12,27 @@ const products = [
 
 export default function StoreScreen({ navigation }: any) {
   return (
-    <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
-      <Text style={styles.pageTitle}>Store</Text>
+    <View style={styles.screen}>
+      <ScrollView contentContainerStyle={styles.content}>
+        <InlineScreenHeader navigation={navigation} title="Store" />
 
-      {products.map((product) => (
-        <TouchableOpacity key={product.name} onPress={() => navigation.navigate('StoreFlow', { screen: 'Cart' })}>
-          <View style={styles.productCard}>
-            <View style={[styles.imageBox, { backgroundColor: product.tone }]} />
-            <View style={styles.textWrap}>
-              <Text style={styles.name}>{product.name}</Text>
-              <Text style={styles.price}>{product.price}</Text>
+        {products.map((product) => (
+          <TouchableOpacity key={product.name} onPress={() => navigation.navigate('Cart')}>
+            <View style={styles.productCard}>
+              <View style={[styles.imageBox, { backgroundColor: product.tone }]} />
+              <View style={styles.textWrap}>
+                <Text style={styles.name}>{product.name}</Text>
+                <Text style={styles.price}>{product.price}</Text>
+              </View>
+              <View style={styles.buyTag}>
+                <Text style={styles.buyText}>Buy</Text>
+              </View>
             </View>
-            <View style={styles.buyTag}>
-              <Text style={styles.buyText}>Buy</Text>
-            </View>
-          </View>
-        </TouchableOpacity>
-      ))}
-    </ScrollView>
+          </TouchableOpacity>
+        ))}
+      </ScrollView>
+      <BottomTabBar navigation={navigation} />
+    </View>
   );
 }
 
@@ -38,8 +43,8 @@ const styles = StyleSheet.create({
   },
   content: {
     paddingHorizontal: 20,
-    paddingTop: 50,
-    paddingBottom: 32,
+    paddingTop: 20,
+    paddingBottom: 128,
   },
   pageTitle: {
     fontSize: 32,

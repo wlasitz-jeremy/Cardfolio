@@ -1,6 +1,8 @@
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { palette } from '../../theme/colors';
 import { fontFamilies } from '../../theme/typography';
+import BottomTabBar from '../../components/BottomTabBar/BottomTabBar';
+import InlineScreenHeader from '../../components/InlineScreenHeader/InlineScreenHeader';
 
 const articles = [
   { title: 'How to grade your pull', snippet: 'Learn what collectors look for in condition and rarity.' },
@@ -8,10 +10,11 @@ const articles = [
   { title: 'Protecting your binder', snippet: 'Smart display choices that preserve card quality over time.' },
 ];
 
-export default function BlogScreen() {
+export default function BlogScreen({ navigation }: any) {
   return (
-    <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
-      <Text style={styles.pageTitle}>Blog</Text>
+    <View style={styles.screen}>
+      <ScrollView contentContainerStyle={styles.content}>
+      <InlineScreenHeader navigation={navigation} title="Blog" />
       {articles.map((article) => (
         <View key={article.title} style={styles.articleCard}>
           <Text style={styles.category}>Insights</Text>
@@ -19,7 +22,9 @@ export default function BlogScreen() {
           <Text style={styles.snippet}>{article.snippet}</Text>
         </View>
       ))}
-    </ScrollView>
+      </ScrollView>
+      <BottomTabBar navigation={navigation} activeTab="Blog" />
+    </View>
   );
 }
 
@@ -30,8 +35,8 @@ const styles = StyleSheet.create({
   },
   content: {
     paddingHorizontal: 20,
-    paddingTop: 52,
-    paddingBottom: 30,
+    paddingTop: 20,
+    paddingBottom: 128,
   },
   pageTitle: {
     fontSize: 32,

@@ -1,6 +1,7 @@
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { palette } from '../../theme/colors';
 import { fontFamilies } from '../../theme/typography';
+import InlineScreenHeader from '../../components/InlineScreenHeader/InlineScreenHeader';
 
 const universeCards = [
   { name: 'Celestial Forge', tag: 'Mythic', tone: '#dfe7f8' },
@@ -8,10 +9,11 @@ const universeCards = [
   { name: 'Solar Archive', tag: 'Legendary', tone: '#dfe9e0' },
 ];
 
-export default function UniverseScreen() {
+export default function UniverseScreen({ navigation }: any) {
   return (
-    <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
-      <Text style={styles.pageTitle}>Universe</Text>
+    <View style={styles.screen}>
+      <ScrollView contentContainerStyle={styles.content}>
+      <InlineScreenHeader navigation={navigation} title="Universe" />
 
       {universeCards.map((entry) => (
         <View key={entry.name} style={styles.card}>
@@ -24,7 +26,8 @@ export default function UniverseScreen() {
           </View>
         </View>
       ))}
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 }
 
@@ -35,8 +38,8 @@ const styles = StyleSheet.create({
   },
   content: {
     paddingHorizontal: 20,
-    paddingTop: 50,
-    paddingBottom: 30,
+    paddingTop: 20,
+    paddingBottom: 128,
   },
   pageTitle: {
     fontSize: 32,

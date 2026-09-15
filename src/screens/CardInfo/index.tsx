@@ -1,10 +1,12 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { palette } from '../../theme/colors';
 import { fontFamilies } from '../../theme/typography';
+import InlineScreenHeader from '../../components/InlineScreenHeader/InlineScreenHeader';
 
 export default function CardInfoScreen({ navigation }: any) {
   return (
     <View style={styles.screen}>
+      <InlineScreenHeader navigation={navigation} title="Card Info" />
       <View style={styles.cardArt} />
 
       <View style={styles.infoPanel}>
@@ -31,7 +33,7 @@ export default function CardInfoScreen({ navigation }: any) {
       <TouchableOpacity
         style={styles.actionButton}
         activeOpacity={0.9}
-        onPress={() => navigation.navigate('StoreFlow', { screen: 'Cart' })}
+        onPress={() => navigation.getParent()?.navigate('StoreFlow', { screen: 'Cart' })}
       >
         <Text style={styles.actionButtonText}>Add to cart</Text>
       </TouchableOpacity>
@@ -44,7 +46,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: palette.background,
     paddingHorizontal: 20,
-    paddingTop: 50,
+    paddingTop: 20,
     alignItems: 'center',
   },
   cardArt: {

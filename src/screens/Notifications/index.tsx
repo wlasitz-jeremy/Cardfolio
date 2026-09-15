@@ -1,6 +1,7 @@
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { palette } from '../../theme/colors';
 import { fontFamilies } from '../../theme/typography';
+import InlineScreenHeader from '../../components/InlineScreenHeader/InlineScreenHeader';
 
 const items = [
   { text: 'New drop from your favorite set', time: '2h ago' },
@@ -8,10 +9,11 @@ const items = [
   { text: 'Your collection was updated', time: 'Yesterday' },
 ];
 
-export default function NotificationsScreen() {
+export default function NotificationsScreen({ navigation }: any) {
   return (
-    <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
-      <Text style={styles.pageTitle}>Notifications</Text>
+    <View style={styles.screen}>
+      <ScrollView contentContainerStyle={styles.content}>
+      <InlineScreenHeader navigation={navigation} title="Notifications" />
 
       {items.map((item) => (
         <View key={item.text} style={styles.note}>
@@ -22,7 +24,8 @@ export default function NotificationsScreen() {
           </View>
         </View>
       ))}
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 }
 
@@ -33,7 +36,7 @@ const styles = StyleSheet.create({
   },
   content: {
     paddingHorizontal: 20,
-    paddingTop: 50,
+    paddingTop: 20,
     paddingBottom: 30,
   },
   pageTitle: {
