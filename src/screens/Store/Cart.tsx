@@ -5,36 +5,36 @@ import InlineScreenHeader from '../../components/InlineScreenHeader/InlineScreen
 
 export default function CartScreen({ navigation }: any) {
   return (
-    <View style={styles.screen}>
+    <View style={styles.cartScreen}>
       <InlineScreenHeader navigation={navigation} title="Your Cart" />
 
-      <View style={styles.itemCard}>
-        <View style={styles.thumb} />
-        <View style={styles.details}>
-          <Text style={styles.name}>Collector Binder</Text>
-          <Text style={styles.meta}>Qty: 1</Text>
+      <View style={styles.cartItem}>
+        <View style={styles.productThumbnail} />
+        <View style={styles.cartItemDetails}>
+          <Text style={styles.productName}>Collector Binder</Text>
+          <Text style={styles.itemQuantity}>Qty: 1</Text>
         </View>
-        <Text style={styles.price}>$35</Text>
+        <Text style={styles.itemPrice}>$35</Text>
       </View>
 
-      <View style={styles.summaryBox}>
-        <Text style={styles.summaryLabel}>Subtotal</Text>
-        <Text style={styles.summaryValue}>$35.00</Text>
+      <View style={styles.cartSummary}>
+        <Text style={styles.subtotalLabel}>Subtotal</Text>
+        <Text style={styles.subtotalValue}>$35.00</Text>
       </View>
 
       <TouchableOpacity
-        style={styles.checkoutButton}
+        style={styles.proceedToCheckoutButton}
         activeOpacity={0.9}
         onPress={() => navigation.navigate('Checkout')}
       >
-        <Text style={styles.checkoutText}>Proceed to Checkout</Text>
+        <Text style={styles.proceedToCheckoutText}>Proceed to Checkout</Text>
       </TouchableOpacity>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  screen: {
+  cartScreen: {
     flex: 1,
     backgroundColor: palette.background,
     paddingHorizontal: 20,
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     letterSpacing: -0.5,
   },
-  itemCard: {
+  cartItem: {
     backgroundColor: palette.panel,
     borderRadius: 18,
     padding: 16,
@@ -62,33 +62,33 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
     elevation: 2,
   },
-  thumb: {
+  productThumbnail: {
     width: 72,
     height: 72,
     borderRadius: 16,
     backgroundColor: '#e4e8f0',
     marginRight: 14,
   },
-  details: {
+  cartItemDetails: {
     flex: 1,
   },
-  name: {
+  productName: {
     color: palette.darkText,
     fontSize: 18,
     fontWeight: '700',
     marginBottom: 4,
   },
-  meta: {
+  itemQuantity: {
     color: palette.secondaryText,
     fontSize: 14,
     fontWeight: '500',
   },
-  price: {
+  itemPrice: {
     color: palette.accent,
     fontSize: 18,
     fontWeight: '700',
   },
-  summaryBox: {
+  cartSummary: {
     backgroundColor: palette.panel,
     borderRadius: 16,
     paddingHorizontal: 16,
@@ -103,17 +103,17 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     elevation: 1,
   },
-  summaryLabel: {
+  subtotalLabel: {
     color: palette.secondaryText,
     fontSize: 15,
     fontWeight: '600',
   },
-  summaryValue: {
+  subtotalValue: {
     color: palette.darkText,
     fontSize: 17,
     fontWeight: '700',
   },
-  checkoutButton: {
+  proceedToCheckoutButton: {
     backgroundColor: palette.accent,
     borderRadius: 16,
     height: 56,
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 22,
   },
-  checkoutText: {
+  proceedToCheckoutText: {
     color: '#ffffff',
     fontSize: 16,
     fontWeight: '700',

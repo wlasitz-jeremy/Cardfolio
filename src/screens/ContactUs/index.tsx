@@ -7,22 +7,22 @@ import PrimaryButton from '../../components/Button/PrimaryButton';
 
 export default function ContactUsScreen({ navigation }: any) {
   return (
-    <View style={styles.screen}>
+    <View style={styles.contactScreen}>
       <InlineScreenHeader navigation={navigation} title="Contact Us" />
 
-      <View style={styles.formCard}>
+      <View style={styles.contactForm}>
         <FormField label="Name" />
         <FormField label="Email" keyboardType="email-address" />
-        <FormField label="Message" multiline numberOfLines={5} style={styles.textArea} />
+        <FormField label="Message" multiline numberOfLines={5} style={styles.messageInput} />
       </View>
 
-      <PrimaryButton label="Send" style={styles.button} />
+      <PrimaryButton label="Send" style={styles.sendButton} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  screen: {
+  contactScreen: {
     flex: 1,
     backgroundColor: palette.background,
     paddingHorizontal: 20,
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     marginBottom: 18,
     letterSpacing: -0.5,
   },
-  formCard: {
+  contactForm: {
     backgroundColor: palette.panel,
     borderRadius: 18,
     paddingHorizontal: 16,
@@ -64,12 +64,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     color: palette.darkText,
   },
-  textArea: {
+  messageInput: {
     height: 110,
     paddingTop: 12,
     textAlignVertical: 'top',
   },
-  button: {
+  sendButton: {
     backgroundColor: palette.accent,
     borderRadius: 16,
     height: 58,

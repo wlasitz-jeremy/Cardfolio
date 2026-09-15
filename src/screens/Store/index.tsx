@@ -4,7 +4,7 @@ import { fontFamilies } from '../../theme/typography';
 import BottomTabBar from '../../components/BottomTabBar/BottomTabBar';
 import InlineScreenHeader from '../../components/InlineScreenHeader/InlineScreenHeader';
 
-const products = [
+const storeProducts = [
   { name: 'Premium Sleeves', price: '$18.00', tone: '#dfe7f8' },
   { name: 'Collector Binder', price: '$35.00', tone: '#e7e2f7' },
   { name: 'Display Stand', price: '$22.00', tone: '#dfe9e0' },
@@ -12,20 +12,20 @@ const products = [
 
 export default function StoreScreen({ navigation }: any) {
   return (
-    <View style={styles.screen}>
-      <ScrollView contentContainerStyle={styles.content}>
+    <View style={styles.storeScreen}>
+      <ScrollView contentContainerStyle={styles.storeContent}>
         <InlineScreenHeader navigation={navigation} title="Store" />
 
-        {products.map((product) => (
+        {storeProducts.map((product) => (
           <TouchableOpacity key={product.name} onPress={() => navigation.navigate('Cart')}>
-            <View style={styles.productCard}>
-              <View style={[styles.imageBox, { backgroundColor: product.tone }]} />
-              <View style={styles.textWrap}>
-                <Text style={styles.name}>{product.name}</Text>
-                <Text style={styles.price}>{product.price}</Text>
+            <View style={styles.productTile}>
+              <View style={[styles.productImage, { backgroundColor: product.tone }]} />
+              <View style={styles.productDetails}>
+                <Text style={styles.productName}>{product.name}</Text>
+                <Text style={styles.productPrice}>{product.price}</Text>
               </View>
-              <View style={styles.buyTag}>
-                <Text style={styles.buyText}>Buy</Text>
+              <View style={styles.purchaseBadge}>
+                <Text style={styles.purchaseText}>Buy</Text>
               </View>
             </View>
           </TouchableOpacity>
@@ -37,11 +37,11 @@ export default function StoreScreen({ navigation }: any) {
 }
 
 const styles = StyleSheet.create({
-  screen: {
+  storeScreen: {
     flex: 1,
     backgroundColor: palette.background,
   },
-  content: {
+  storeContent: {
     paddingHorizontal: 20,
     paddingTop: 20,
     paddingBottom: 128,
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     letterSpacing: -0.5,
     fontFamily: fontFamilies.heading,
   },
-  productCard: {
+  productTile: {
     backgroundColor: palette.panel,
     borderRadius: 18,
     padding: 16,
@@ -69,36 +69,36 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
     elevation: 2,
   },
-  imageBox: {
+  productImage: {
     width: 70,
     height: 70,
     borderRadius: 16,
     marginRight: 14,
   },
-  textWrap: {
+  productDetails: {
     flex: 1,
   },
-  name: {
+  productName: {
     color: palette.darkText,
     fontSize: 17,
     fontWeight: '700',
     marginBottom: 4,
     fontFamily: fontFamilies.heading,
   },
-  price: {
+  productPrice: {
     color: palette.accent,
     fontSize: 16,
     fontWeight: '700',
     fontFamily: fontFamilies.heading,
   },
-  buyTag: {
+  purchaseBadge: {
     backgroundColor: palette.softAccent,
     borderRadius: 10,
     paddingHorizontal: 12,
     paddingVertical: 8,
     marginLeft: 10,
   },
-  buyText: {
+  purchaseText: {
     color: palette.darkText,
     fontSize: 12,
     fontWeight: '700',

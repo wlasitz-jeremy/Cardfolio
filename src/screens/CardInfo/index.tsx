@@ -6,34 +6,34 @@ import PrimaryButton from '../../components/Button/PrimaryButton';
 
 export default function CardInfoScreen({ navigation }: any) {
   return (
-    <View style={styles.screen}>
+    <View style={styles.cardInfoScreen}>
       <InlineScreenHeader navigation={navigation} title="Card Info" />
-      <View style={styles.cardArt} />
+      <View style={styles.cardArtwork} />
 
-      <View style={styles.infoPanel}>
-        <Text style={styles.name}>Eclipse King</Text>
-        <Text style={styles.meta}>Mythic Rare • Card #128</Text>
+      <View style={styles.cardDetailsPanel}>
+        <Text style={styles.cardName}>Eclipse King</Text>
+        <Text style={styles.cardMetadata}>Mythic Rare • Card #128</Text>
 
-        <View style={styles.pillRow}>
-          <View style={styles.pill}>
-            <Text style={styles.pillText}>Rare</Text>
+        <View style={styles.cardTags}>
+          <View style={styles.cardTag}>
+            <Text style={styles.cardTagText}>Rare</Text>
           </View>
-          <View style={styles.pill}>
-            <Text style={styles.pillText}>Foil</Text>
+          <View style={styles.cardTag}>
+            <Text style={styles.cardTagText}>Foil</Text>
           </View>
-          <View style={styles.pill}>
-            <Text style={styles.pillText}>1/3</Text>
+          <View style={styles.cardTag}>
+            <Text style={styles.cardTagText}>1/3</Text>
           </View>
         </View>
 
-        <Text style={styles.description}>
+        <Text style={styles.cardDescription}>
           Legendary attack patterns, set-defining artwork, and an iconic foil finish make this card a standout in any collection.
         </Text>
       </View>
 
       <PrimaryButton
         label="Add to cart"
-        style={styles.actionButton}
+        style={styles.addToCartButton}
         onPress={() => navigation.getParent()?.navigate('StoreFlow', { screen: 'Cart' })}
       />
     </View>
@@ -41,14 +41,14 @@ export default function CardInfoScreen({ navigation }: any) {
 }
 
 const styles = StyleSheet.create({
-  screen: {
+  cardInfoScreen: {
     flex: 1,
     backgroundColor: palette.background,
     paddingHorizontal: 20,
     paddingTop: 20,
     alignItems: 'center',
   },
-  cardArt: {
+  cardArtwork: {
     width: 230,
     height: 300,
     borderRadius: 24,
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     shadowRadius: 20,
     elevation: 5,
   },
-  infoPanel: {
+  cardDetailsPanel: {
     backgroundColor: palette.panel,
     borderRadius: 22,
     paddingVertical: 18,
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
     elevation: 2,
   },
-  name: {
+  cardName: {
     color: palette.darkText,
     fontSize: 30,
     fontWeight: '700',
@@ -82,25 +82,25 @@ const styles = StyleSheet.create({
     letterSpacing: -0.6,
     fontFamily: fontFamilies.heading,
   },
-  meta: {
+  cardMetadata: {
     color: palette.secondaryText,
     fontSize: 15,
     fontWeight: '600',
     marginBottom: 16,
     fontFamily: fontFamilies.heading,
   },
-  pillRow: {
+  cardTags: {
     flexDirection: 'row',
     marginBottom: 16,
   },
-  pill: {
+  cardTag: {
     backgroundColor: palette.softAccent,
     borderRadius: 999,
     paddingHorizontal: 12,
     paddingVertical: 7,
     marginRight: 8,
   },
-  pillText: {
+  cardTagText: {
     color: palette.accent,
     fontSize: 12,
     fontWeight: '700',
@@ -108,14 +108,14 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     fontFamily: fontFamilies.heading,
   },
-  description: {
+  cardDescription: {
     color: palette.darkText,
     fontSize: 15,
     lineHeight: 22,
     textAlign: 'left',
     fontFamily: fontFamilies.heading,
   },
-  actionButton: {
+  addToCartButton: {
     width: '100%',
     backgroundColor: palette.accent,
     borderRadius: 16,

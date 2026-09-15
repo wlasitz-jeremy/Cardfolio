@@ -3,7 +3,7 @@ import { palette } from '../../theme/colors';
 import { fontFamilies } from '../../theme/typography';
 import InlineScreenHeader from '../../components/InlineScreenHeader/InlineScreenHeader';
 
-const universeCards = [
+const universeEntries = [
   { name: 'Celestial Forge', tag: 'Mythic', tone: '#dfe7f8' },
   { name: 'Shadow Circuit', tag: 'Rare', tone: '#e7e2f7' },
   { name: 'Solar Archive', tag: 'Legendary', tone: '#dfe9e0' },
@@ -11,17 +11,17 @@ const universeCards = [
 
 export default function UniverseScreen({ navigation }: any) {
   return (
-    <View style={styles.screen}>
-      <ScrollView contentContainerStyle={styles.content}>
+    <View style={styles.universeScreen}>
+      <ScrollView contentContainerStyle={styles.universeContent}>
       <InlineScreenHeader navigation={navigation} title="Universe" />
 
-      {universeCards.map((entry) => (
-        <View key={entry.name} style={styles.card}>
-          <View style={[styles.art, { backgroundColor: entry.tone }]} />
-          <View style={styles.textWrap}>
-            <Text style={styles.name}>{entry.name}</Text>
-            <View style={styles.tagPill}>
-              <Text style={styles.tag}>{entry.tag}</Text>
+      {universeEntries.map((entry) => (
+        <View key={entry.name} style={styles.universeEntry}>
+          <View style={[styles.universeArtwork, { backgroundColor: entry.tone }]} />
+          <View style={styles.universeDetails}>
+            <Text style={styles.universeName}>{entry.name}</Text>
+            <View style={styles.universeTagBadge}>
+              <Text style={styles.universeTagText}>{entry.tag}</Text>
             </View>
           </View>
         </View>
@@ -32,11 +32,11 @@ export default function UniverseScreen({ navigation }: any) {
 }
 
 const styles = StyleSheet.create({
-  screen: {
+  universeScreen: {
     flex: 1,
     backgroundColor: palette.background,
   },
-  content: {
+  universeContent: {
     paddingHorizontal: 20,
     paddingTop: 20,
     paddingBottom: 128,
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     letterSpacing: -0.5,
   },
-  card: {
+  universeEntry: {
     backgroundColor: palette.panel,
     borderRadius: 18,
     padding: 16,
@@ -63,29 +63,29 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
     elevation: 1,
   },
-  art: {
+  universeArtwork: {
     width: 72,
     height: 72,
     borderRadius: 16,
     marginRight: 14,
   },
-  textWrap: {
+  universeDetails: {
     flex: 1,
   },
-  name: {
+  universeName: {
     color: palette.darkText,
     fontSize: 18,
     fontWeight: '700',
     marginBottom: 8,
   },
-  tagPill: {
+  universeTagBadge: {
     alignSelf: 'flex-start',
     backgroundColor: palette.softAccent,
     borderRadius: 999,
     paddingHorizontal: 10,
     paddingVertical: 6,
   },
-  tag: {
+  universeTagText: {
     color: palette.accent,
     fontSize: 11,
     fontWeight: '700',

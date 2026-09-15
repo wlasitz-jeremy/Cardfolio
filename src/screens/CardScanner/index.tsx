@@ -8,27 +8,27 @@ import { fontFamilies } from '../../theme/typography';
 
 export default function CardScannerScreen({ navigation }: any) {
   return (
-    <View style={styles.screen}>
-      <View style={styles.headerSpacing}>
+    <View style={styles.scannerScreen}>
+      <View style={styles.scannerHeader}>
         <InlineScreenHeader navigation={navigation} title="Card Scanner" />
       </View>
 
-      <View style={styles.scannerFrame}>
-        <View style={styles.cornerTopLeft} />
-        <View style={styles.cornerTopRight} />
-        <View style={styles.cornerBottomLeft} />
-        <View style={styles.cornerBottomRight} />
+      <View style={styles.scanViewport}>
+        <View style={styles.scanFrameTopLeft} />
+        <View style={styles.scanFrameTopRight} />
+        <View style={styles.scanFrameBottomLeft} />
+        <View style={styles.scanFrameBottomRight} />
         <ScanLine size={42} color={palette.white} strokeWidth={1.5} />
-        <Text style={styles.scanHint}>Place a card inside the frame</Text>
+        <Text style={styles.scanInstruction}>Place a card inside the frame</Text>
       </View>
 
-      <Text style={styles.description}>
+      <Text style={styles.scannerDescription}>
         Scan a card to add it to your collection and view its details.
       </Text>
 
-      <TouchableOpacity accessibilityRole="button" style={styles.scanButton}>
+      <TouchableOpacity accessibilityRole="button" style={styles.startScanButton}>
         <Camera size={22} color={palette.white} strokeWidth={1.8} />
-        <Text style={styles.scanButtonText}>START SCANNING</Text>
+        <Text style={styles.startScanButtonText}>START SCANNING</Text>
       </TouchableOpacity>
 
       <BottomTabBar navigation={navigation} />
@@ -37,13 +37,13 @@ export default function CardScannerScreen({ navigation }: any) {
 }
 
 const styles = StyleSheet.create({
-  screen: {
+  scannerScreen: {
     flex: 1,
     backgroundColor: palette.background,
     paddingHorizontal: 20,
     paddingTop: 38,
   },
-  headerSpacing: {
+  scannerHeader: {
     marginBottom: 18,
     marginHorizontal: 28, 
     flexDirection: 'row', 
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     minHeight: 60, 
     marginTop: 20
   },
-  scannerFrame: {
+  scanViewport: {
     height: 440,
     marginTop: 22,
     borderRadius: 22,
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  cornerTopLeft: {
+  scanFrameTopLeft: {
     position: 'absolute',
     top: 22,
     left: 22,
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     borderLeftWidth: 3,
     borderColor: palette.lavender,
   },
-  cornerTopRight: {
+  scanFrameTopRight: {
     position: 'absolute',
     top: 22,
     right: 22,
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     borderRightWidth: 3,
     borderColor: palette.lavender,
   },
-  cornerBottomLeft: {
+  scanFrameBottomLeft: {
     position: 'absolute',
     bottom: 22,
     left: 22,
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     borderLeftWidth: 3,
     borderColor: palette.lavender,
   },
-  cornerBottomRight: {
+  scanFrameBottomRight: {
     position: 'absolute',
     bottom: 22,
     right: 22,
@@ -102,13 +102,13 @@ const styles = StyleSheet.create({
     borderRightWidth: 3,
     borderColor: palette.lavender,
   },
-  scanHint: {
+  scanInstruction: {
     color: palette.white,
     fontFamily: fontFamilies.heading,
     fontSize: 16,
     marginTop: 18,
   },
-  description: {
+  scannerDescription: {
     color: palette.secondaryText,
     fontFamily: fontFamilies.body,
     fontSize: 15,
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     marginTop: 18,
     textAlign: 'center',
   },
-  scanButton: {
+  startScanButton: {
     height: 56,
     marginTop: 22,
     borderRadius: 14,
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     gap: 10,
   },
-  scanButtonText: {
+  startScanButtonText: {
     color: palette.white,
     fontFamily: fontFamilies.heading,
     fontSize: 15,

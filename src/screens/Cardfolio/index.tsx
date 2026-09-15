@@ -4,7 +4,7 @@ import { fontFamilies } from '../../theme/typography';
 import BottomTabBar from '../../components/BottomTabBar/BottomTabBar';
 import InlineScreenHeader from '../../components/InlineScreenHeader/InlineScreenHeader';
 
-const cards = [
+const cardfolioCards = [
   { name: 'Eclipse King', set: 'Mythic Rare', value: '1.4k' },
   { name: 'Starlight Pike', set: 'Legacy Set', value: '870' },
   { name: 'Obsidian Arc', set: 'Event Pull', value: '2.2k' },
@@ -12,23 +12,23 @@ const cards = [
 
 export default function CardfolioScreen({ navigation }: any) {
   return (
-    <View style={styles.screen}>
-      <ScrollView contentContainerStyle={styles.content}>
+    <View style={styles.cardfolioScreen}>
+      <ScrollView contentContainerStyle={styles.cardfolioContent}>
       <InlineScreenHeader navigation={navigation} title="My Cardfolio" />
-      <View style={styles.summary}>
+      <View style={styles.collectionSummary}>
         <Text style={styles.summaryValue}>238</Text>
         <Text style={styles.summaryLabel}>Cards in collection</Text>
       </View>
 
-      {cards.map((card) => (
+      {cardfolioCards.map((card) => (
         <TouchableOpacity key={card.name} onPress={() => navigation.getParent()?.navigate('CardInfoFlow')}>
-          <View style={styles.card}>
-            <View style={styles.cardArt} />
-            <View style={styles.cardDetails}>
-              <Text style={styles.cardName}>{card.name}</Text>
-              <Text style={styles.cardSet}>{card.set}</Text>
+          <View style={styles.cardListItem}>
+            <View style={styles.cardThumbnail} />
+            <View style={styles.cardMetadata}>
+              <Text style={styles.cardTitle}>{card.name}</Text>
+              <Text style={styles.cardSetName}>{card.set}</Text>
             </View>
-            <Text style={styles.cardValue}>{card.value}</Text>
+            <Text style={styles.cardMarketValue}>{card.value}</Text>
           </View>
         </TouchableOpacity>
       ))}
@@ -39,11 +39,11 @@ export default function CardfolioScreen({ navigation }: any) {
 }
 
 const styles = StyleSheet.create({
-  screen: {
+  cardfolioScreen: {
     flex: 1,
     backgroundColor: palette.background,
   },
-  content: {
+  cardfolioContent: {
     paddingHorizontal: 20,
     paddingTop: 20,
     paddingBottom: 128,
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.2,
     fontFamily: fontFamilies.heading,
   },
-  summary: {
+  collectionSummary: {
     backgroundColor: palette.accent,
     borderRadius: 18,
     padding: 18,
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     marginTop: 6,
     fontFamily: fontFamilies.heading,
   },
-  card: {
+  cardListItem: {
     backgroundColor: palette.white,
     borderRadius: 16,
     padding: 14,
@@ -90,29 +90,29 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     shadowOffset: { width: 0, height: 2 },
   },
-  cardArt: {
+  cardThumbnail: {
     width: 56,
     height: 78,
     borderRadius: 12,
     backgroundColor: palette.muted,
     marginRight: 14,
   },
-  cardDetails: {
+  cardMetadata: {
     flex: 1,
   },
-  cardName: {
+  cardTitle: {
     color: palette.darkText,
     fontSize: 18,
     fontWeight: '700',
     marginBottom: 4,
     fontFamily: fontFamilies.heading,
   },
-  cardSet: {
+  cardSetName: {
     color: palette.secondaryText,
     fontSize: 13,
     fontFamily: fontFamilies.heading,
   },
-  cardValue: {
+  cardMarketValue: {
     color: palette.accent,
     fontSize: 18,
     fontWeight: '700',

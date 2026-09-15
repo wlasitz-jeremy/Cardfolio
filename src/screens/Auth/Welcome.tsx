@@ -20,9 +20,9 @@ type WelcomeScreenProps = NativeStackScreenProps<WelcomeStackParamList, 'Welcome
 
 export default function WelcomeScreen({ navigation }: WelcomeScreenProps) {
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <View style={styles.container}>
-        <View style={styles.artwork} accessibilityElementsHidden>
+    <SafeAreaView style={styles.welcomeSafeArea}>
+      <View style={styles.welcomeScreen}>
+        <View style={styles.welcomeArtwork} accessibilityElementsHidden>
           <View style={[styles.cardShape, styles.cardBack]}>
             <View style={styles.cardStripe} />
             <View style={styles.cardDot} />
@@ -38,32 +38,32 @@ export default function WelcomeScreen({ navigation }: WelcomeScreenProps) {
           </View>
         </View>
 
-        <View style={styles.copyBlock}>
-          <Text style={styles.kicker}>Your collection, your story</Text>
-          <Text style={styles.title}>
+        <View style={styles.welcomeCopy}>
+          <Text style={styles.welcomeKicker}>Your collection, your story</Text>
+          <Text style={styles.welcomeTitle}>
             Welcome to{`\n`}CardFolio
           </Text>
-          <Text style={styles.description}>
+          <Text style={styles.welcomeDescription}>
             Discover, organize, and celebrate the cards that mean the most to you.
           </Text>
         </View>
 
-        <View style={styles.actions}>
+        <View style={styles.welcomeActions}>
           <Pressable
             accessibilityRole="button"
             accessibilityLabel="Create a CardFolio account"
             onPress={() => navigation.navigate('CreateAccount')}
-            style={({ pressed }) => [styles.primaryButton, pressed && styles.pressed]}>
-            <Text style={styles.primaryButtonText}>I Don't Have an Account - Sign Up</Text>
+            style={({ pressed }) => [styles.createAccountButton, pressed && styles.pressed]}>
+            <Text style={styles.createAccountButtonText}>I Don't Have an Account - Sign Up</Text>
           </Pressable>
 
           <Pressable
             accessibilityRole="button"
             accessibilityLabel="Log in to CardFolio"
             onPress={() => navigation.navigate('Login')}
-            style={({ pressed }) => [styles.secondaryButton, pressed && styles.pressed]}
+            style={({ pressed }) => [styles.loginButton, pressed && styles.pressed]}
           >
-            <Text style={styles.secondaryButtonText}>I Already Have an Account - Log In</Text>
+            <Text style={styles.loginButtonText}>I Already Have an Account - Log In</Text>
           </Pressable>
         </View>
       </View>
@@ -72,11 +72,11 @@ export default function WelcomeScreen({ navigation }: WelcomeScreenProps) {
 }
 
 const styles = StyleSheet.create({
-  safeArea: {
+  welcomeSafeArea: {
     flex: 1,
     backgroundColor: palette.background,
   },
-  container: {
+  welcomeScreen: {
     flex: 1,
     paddingHorizontal: 28,
     paddingTop: 24,
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     transform: [{ rotate: '-8deg' }],
   },
-  artwork: {
+  welcomeArtwork: {
     height: 260,
     marginTop: 42,
     marginBottom: 28,
@@ -175,10 +175,10 @@ const styles = StyleSheet.create({
     backgroundColor: palette.lavender,
     opacity: 0.75,
   },
-  copyBlock: {
+  welcomeCopy: {
     alignItems: 'center',
   },
-  kicker: {
+  welcomeKicker: {
     color: palette.accent,
     fontFamily: fontFamilies.heading,
     fontSize: 13,
@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     marginBottom: 10,
   },
-  title: {
+  welcomeTitle: {
     color: palette.darkText,
     fontFamily: fontFamilies.heading,
     fontSize: 44,
@@ -195,7 +195,7 @@ const styles = StyleSheet.create({
     lineHeight: 46,
     textAlign: 'center',
   },
-  description: {
+  welcomeDescription: {
     color: palette.secondaryText,
     fontFamily: fontFamilies.heading,
     fontSize: 16,
@@ -204,11 +204,11 @@ const styles = StyleSheet.create({
     maxWidth: 310,
     textAlign: 'center',
   },
-  actions: {
+  welcomeActions: {
     gap: 12,
     marginTop: 28,
   },
-  primaryButton: {
+  createAccountButton: {
     minHeight: 58,
     paddingHorizontal: 20,
     borderRadius: 12,
@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  primaryButtonText: {
+  createAccountButtonText: {
     color: palette.white,
     fontFamily: fontFamilies.heading,
     fontSize: 15,
@@ -231,7 +231,7 @@ const styles = StyleSheet.create({
     marginLeft: 12,
     marginTop: -2,
   },
-  secondaryButton: {
+  loginButton: {
     minHeight: 50,
     alignItems: 'center',
     justifyContent: 'center',
@@ -240,7 +240,7 @@ const styles = StyleSheet.create({
     borderColor: palette.accent,
     backgroundColor: 'transparent',
   },
-  secondaryButtonText: {
+  loginButtonText: {
     color: palette.accent,
     fontFamily: fontFamilies.heading,
     fontSize: 12,

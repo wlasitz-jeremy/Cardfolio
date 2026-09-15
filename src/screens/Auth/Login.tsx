@@ -25,13 +25,13 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
   const [rememberMe, setRememberMe] = useState(true);
 
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <View style={styles.container}>
-        <Text style={styles.logo}>CardFolio</Text>
+    <SafeAreaView style={styles.loginSafeArea}>
+      <View style={styles.loginScreen}>
+        <Text style={styles.loginLogo}>CardFolio</Text>
 
-        <Text style={styles.label}>Email or Username</Text>
+        <Text style={styles.fieldLabel}>Email or Username</Text>
         <TextInput
-          style={styles.input}
+          style={styles.loginInput}
           autoCapitalize="none"
           autoCorrect={false}
           keyboardType="email-address"
@@ -39,9 +39,9 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
           placeholderTextColor={palette.secondaryText}
         />
 
-        <Text style={styles.label}>Password</Text>
+        <Text style={styles.fieldLabel}>Password</Text>
         <TextInput
-          style={styles.input}
+          style={styles.loginInput}
           secureTextEntry
           autoCapitalize="none"
           autoCorrect={false}
@@ -49,41 +49,41 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
           placeholderTextColor={palette.secondaryText}
         />
 
-        <View style={styles.metaRow}>
+        <View style={styles.loginOptions}>
           <Pressable
             accessibilityLabel="Remember me"
             accessibilityHint="Toggles remembering your account on this device"
             accessibilityRole="checkbox"
             accessibilityState={{ checked: rememberMe }}
             onPress={() => setRememberMe((value) => !value)}
-            style={({ pressed }) => [styles.checkboxWrapper, pressed && styles.checkboxPressed]}
+            style={({ pressed }) => [styles.rememberMeControl, pressed && styles.rememberMePressed]}
           >
-            <View style={[styles.checkbox, rememberMe && styles.checkboxChecked]}>
-              {rememberMe ? <Text style={styles.checkmark}>✓</Text> : null}
+            <View style={[styles.rememberMeCheckbox, rememberMe && styles.checkedCheckbox]}>
+              {rememberMe ? <Text style={styles.checkboxMark}>✓</Text> : null}
             </View>
-            <Text style={styles.rememberText}>Remember Me</Text>
+            <Text style={styles.rememberMeLabel}>Remember Me</Text>
           </Pressable>
 
-          <Text style={styles.forgotText}>Forgot Password?</Text>
+          <Text style={styles.forgotPassword}>Forgot Password?</Text>
         </View>
 
         <TouchableOpacity
-          style={styles.loginButton}
+          style={styles.submitLoginButton}
           activeOpacity={0.9}
           onPress={() => navigation.replace('MainApp')}
         >
-          <Text style={styles.loginText}>LOGIN</Text>
+          <Text style={styles.submitLoginText}>LOGIN</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           accessibilityRole="button"
           activeOpacity={0.75}
           onPress={() => navigation.navigate('CreateAccount')}
-          style={styles.signupButton}
+          style={styles.createAccountLink}
         >
-          <Text style={styles.signupText}>
+          <Text style={styles.signupPrompt}>
             Don&apos;t have an account?{' '}
-            <Text style={styles.signupLink}>Sign Up</Text>
+            <Text style={styles.signupAction}>Sign Up</Text>
           </Text>
         </TouchableOpacity>
       </View>
@@ -92,18 +92,18 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
 }
 
 const styles = StyleSheet.create({
-  safeArea: {
+  loginSafeArea: {
     flex: 1,
     backgroundColor: palette.background,
   },
-  container: {
+  loginScreen: {
     flex: 1,
     backgroundColor: palette.background,
     paddingHorizontal: 42,
     paddingTop: 106,
     alignItems: 'center',
   },
-  logo: {
+  loginLogo: {
     fontSize: 64,
     fontWeight: '700',
     lineHeight: 64,
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
     marginBottom: 40,
     fontFamily: fontFamilies.heading,
   },
-  label: {
+  fieldLabel: {
     width: '100%',
     alignSelf: 'flex-start',
     fontSize: 24,
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
     marginTop: 8,
     fontFamily: fontFamilies.heading,
   },
-  input: {
+  loginInput: {
     width: 300,
     height: 60,
     borderWidth: 2,
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: palette.darkText,
   },
-  metaRow: {
+  loginOptions: {
     width: 300,
     flexDirection: 'row',
     alignItems: 'center',
@@ -145,15 +145,15 @@ const styles = StyleSheet.create({
     marginTop: 6,
     marginBottom: 20,
   },
-  checkboxWrapper: {
+  rememberMeControl: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 10,
   },
-  checkboxPressed: {
+  rememberMePressed: {
     opacity: 0.7,
   },
-  checkbox: {
+  rememberMeCheckbox: {
     width: 20,
     height: 20,
     borderWidth: 2,
@@ -163,31 +163,31 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  checkboxChecked: {
+  checkedCheckbox: {
     backgroundColor: palette.accent,
     borderColor: palette.accent,
   },
-  checkmark: {
+  checkboxMark: {
     color: palette.white,
     fontSize: 15,
     fontWeight: '700',
     lineHeight: 18,
   },
-  rememberText: {
+  rememberMeLabel: {
     fontSize: 14,
     fontWeight: '700',
     letterSpacing: 0.28,
     color: palette.darkText,
     fontFamily: fontFamilies.heading,
   },
-  forgotText: {
+  forgotPassword: {
     fontSize: 14,
     fontWeight: '700',
     letterSpacing: 0.28,
     color: palette.secondaryText,
     fontFamily: fontFamilies.heading,
   },
-  loginButton: {
+  submitLoginButton: {
     width: 280,
     height: 60,
     backgroundColor: palette.accent,
@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 8,
   },
-  loginText: {
+  submitLoginText: {
     color: palette.background,
     fontSize: 32,
     fontWeight: '700',
@@ -204,10 +204,10 @@ const styles = StyleSheet.create({
     lineHeight: 32,
     fontFamily: fontFamilies.heading,
   },
-  signupButton: {
+  createAccountLink: {
     alignSelf: 'center',
   },
-  signupText: {
+  signupPrompt: {
     marginTop: 32,
     fontSize: 14,
     fontWeight: '700',
@@ -215,7 +215,7 @@ const styles = StyleSheet.create({
     color: palette.darkText,
     fontFamily: fontFamilies.heading,
   },
-  signupLink: {
+  signupAction: {
     color: palette.muted,
   },
 });

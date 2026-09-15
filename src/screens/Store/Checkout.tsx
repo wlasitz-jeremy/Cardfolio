@@ -7,22 +7,22 @@ import PrimaryButton from '../../components/Button/PrimaryButton';
 
 export default function CheckoutScreen({ navigation }: any) {
   return (
-    <View style={styles.screen}>
+    <View style={styles.checkoutScreen}>
       <InlineScreenHeader navigation={navigation} title="Checkout" />
 
-      <View style={styles.formCard}>
+      <View style={styles.checkoutForm}>
         <FormField label="Cardholder Name" />
         <FormField label="Card Number" keyboardType="numeric" />
         <FormField label="Shipping Address" />
       </View>
 
-      <PrimaryButton label="Place Order" style={styles.button} onPress={() => navigation.popToTop()} />
+      <PrimaryButton label="Place Order" style={styles.placeOrderButton} onPress={() => navigation.popToTop()} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  screen: {
+  checkoutScreen: {
     flex: 1,
     backgroundColor: palette.background,
     paddingHorizontal: 20,
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     marginBottom: 18,
     letterSpacing: -0.5,
   },
-  formCard: {
+  checkoutForm: {
     backgroundColor: palette.panel,
     borderRadius: 18,
     paddingHorizontal: 16,
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     color: palette.darkText,
   },
-  button: {
+  placeOrderButton: {
     backgroundColor: palette.accent,
     borderRadius: 16,
     height: 58,

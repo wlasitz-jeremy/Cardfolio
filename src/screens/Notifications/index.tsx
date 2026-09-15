@@ -3,7 +3,7 @@ import { palette } from '../../theme/colors';
 import { fontFamilies } from '../../theme/typography';
 import InlineScreenHeader from '../../components/InlineScreenHeader/InlineScreenHeader';
 
-const items = [
+const notifications = [
   { text: 'New drop from your favorite set', time: '2h ago' },
   { text: 'A trade request is waiting for you', time: 'Today' },
   { text: 'Your collection was updated', time: 'Yesterday' },
@@ -11,16 +11,16 @@ const items = [
 
 export default function NotificationsScreen({ navigation }: any) {
   return (
-    <View style={styles.screen}>
-      <ScrollView contentContainerStyle={styles.content}>
+    <View style={styles.notificationsScreen}>
+      <ScrollView contentContainerStyle={styles.notificationsContent}>
       <InlineScreenHeader navigation={navigation} title="Notifications" />
 
-      {items.map((item) => (
-        <View key={item.text} style={styles.note}>
-          <View style={styles.noteDot} />
-          <View style={styles.noteTextWrap}>
-            <Text style={styles.noteText}>{item.text}</Text>
-            <Text style={styles.noteTime}>{item.time}</Text>
+      {notifications.map((notification) => (
+        <View key={notification.text} style={styles.notificationItem}>
+          <View style={styles.notificationIndicator} />
+          <View style={styles.notificationContent}>
+            <Text style={styles.notificationMessage}>{notification.text}</Text>
+            <Text style={styles.notificationTime}>{notification.time}</Text>
           </View>
         </View>
       ))}
@@ -30,11 +30,11 @@ export default function NotificationsScreen({ navigation }: any) {
 }
 
 const styles = StyleSheet.create({
-  screen: {
+  notificationsScreen: {
     flex: 1,
     backgroundColor: palette.background,
   },
-  content: {
+  notificationsContent: {
     paddingHorizontal: 20,
     paddingTop: 20,
     paddingBottom: 30,
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     marginBottom: 18,
     letterSpacing: -0.5,
   },
-  note: {
+  notificationItem: {
     backgroundColor: palette.panel,
     borderRadius: 16,
     padding: 16,
@@ -61,23 +61,23 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     elevation: 1,
   },
-  noteDot: {
+  notificationIndicator: {
     width: 10,
     height: 10,
     borderRadius: 999,
     backgroundColor: palette.accent,
     marginRight: 12,
   },
-  noteTextWrap: {
+  notificationContent: {
     flex: 1,
   },
-  noteText: {
+  notificationMessage: {
     color: palette.darkText,
     fontSize: 16,
     fontWeight: '700',
     marginBottom: 4,
   },
-  noteTime: {
+  notificationTime: {
     color: palette.secondaryText,
     fontSize: 12,
     fontWeight: '600',

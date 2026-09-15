@@ -6,7 +6,7 @@ import { fontFamilies } from '../../theme/typography';
 import BottomTabBar from '../../components/BottomTabBar/BottomTabBar';
 import HamburgerMenu from '../../components/HamburgerMenu/HamburgerMenu';
 
-const collections = [
+const collectionEntries = [
   { title: 'Legendary Pulls', count: '18 cards', accent: '#4a475c' },
   { title: 'Starter Binder', count: '42 cards', accent: '#6f7284' },
   { title: 'Vault of Rares', count: '9 cards', accent: '#2f3642' },
@@ -33,7 +33,7 @@ const collections = [
   { title: 'Showcase Picks', count: '30 cards', accent: '#7a668f' },
 ];
 
-const decks = [
+const deckEntries = [
   { title: 'Tournament Ready', count: '24 cards', accent: '#59627a' },
   { title: 'Trade Night Picks', count: '16 cards', accent: '#7a668f' },
   { title: 'Favorites to Grade', count: '8 cards', accent: '#536d69' },
@@ -63,7 +63,7 @@ const decks = [
   { title: 'Circuit Masters', count: '16 cards', accent: '#7a668f' },
 ];
 
-const explore = [
+const exploreEntries = [
   { title: 'Featured Sets', count: 'Discover new releases', accent: '#4a475c' },
   { title: 'Community Favorites', count: 'Most saved this week', accent: '#6f7284' },
   { title: 'Collector Guides', count: 'Tips for every level', accent: '#8a6e63' },
@@ -92,7 +92,7 @@ const explore = [
 
 type Section = 'Collections' | 'Decks' | 'Explore';
 
-const cardImages = [
+const collectionTileImages = [
   'https://www.figma.com/api/mcp/asset/177e0632-4f96-49b1-ae7a-42d5ae000ae6.png',
   'https://www.figma.com/api/mcp/asset/fcdd77e4-8107-4903-ae2b-9943630067e3.png',
   'https://www.figma.com/api/mcp/asset/7c7fb43b-d0b8-47f0-9a64-51b55b0008f6.png',
@@ -106,26 +106,26 @@ const cardImages = [
 export default function CollectionsScreen({ navigation }: any) {
   const [activeSection, setActiveSection] = useState<Section>('Collections');
   const [searchQuery, setSearchQuery] = useState('');
-  const items = activeSection === 'Collections' ? collections : activeSection === 'Decks' ? decks : explore;
-  const filteredItems = items.filter((item) =>
-    `${item.title} ${item.count}`.toLowerCase().includes(searchQuery.toLowerCase()),
+  const sectionEntries = activeSection === 'Collections' ? collectionEntries : activeSection === 'Decks' ? deckEntries : exploreEntries;
+  const filteredEntries = sectionEntries.filter((entry) =>
+    `${entry.title} ${entry.count}`.toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
   return (
-    <View style={styles.screen}>
-      <View style={styles.headerContent}>
-        <View style={styles.navigationRow}>
+    <View style={styles.collectionsScreen}>
+      <View style={styles.collectionsHeader}>
+        <View style={styles.collectionsNavigation}>
           <HamburgerMenu navigation={navigation} inline />
-          <View style={styles.subMenu}>
+          <View style={styles.collectionTabs}>
           {(['Collections', 'Decks', 'Explore'] as Section[]).map((section) => (
             <TouchableOpacity
               key={section}
               accessibilityRole="tab"
               accessibilityState={{ selected: activeSection === section }}
               onPress={() => setActiveSection(section)}
-              style={[styles.subMenuItem, activeSection === section && styles.subMenuItemActive]}
+              style={[styles.collectionTab, activeSection === section && styles.activeCollectionTab]}
             >
-              <Text style={[styles.subMenuText, activeSection === section && styles.subMenuTextActive]}>
+              <Text style={[styles.collectionTabText, activeSection === section && styles.activeCollectionTabText]}>
                 {section}
               </Text>
             </TouchableOpacity>
@@ -133,7 +133,7 @@ export default function CollectionsScreen({ navigation }: any) {
           </View>
         </View>
 
-        <View style={styles.searchBar}>
+        <View style={styles.collectionSearch}>
           <SearchIcon size={22} color={palette.darkText} strokeWidth={2} />
           <TextInput
             accessibilityLabel={`Search ${activeSection.toLowerCase()}`}
@@ -141,25 +141,25 @@ export default function CollectionsScreen({ navigation }: any) {
             onChangeText={setSearchQuery}
             placeholder={activeSection === 'Decks' ? 'My decks' : `Search ${activeSection.toLowerCase()}`}
             placeholderTextColor={palette.secondaryText}
-            style={styles.searchInput}
+            style={styles.collectionSearchInput}
           />
         </View>
 
         </View>
 
-      <ScrollView contentContainerStyle={styles.content}>
-        <View style={styles.twoColumnGrid}>
-          {filteredItems.map((item, index) => (
+      <ScrollView contentContainerStyle={styles.collectionsContent}>
+        <View style={styles.collectionGrid}>
+          {filteredEntries.map((entry, index) => (
             <TouchableOpacity
-              key={item.title}
+              key={entry.title}
               onPress={() => navigation.getParent()?.navigate('CardInfoFlow')}
-              style={styles.twoColumnTouch}
+              style={styles.collectionTileTouch}
             >
-              <View style={styles.twoColumnCard}>
-                <Image source={{ uri: cardImages[index % cardImages.length] }} style={styles.cardImage} />
-                <View style={styles.cardCaption}>
-                  <Text style={styles.cardCaptionTitle} numberOfLines={1}>{item.title}</Text>
-                  <Text style={styles.cardCaptionCount} numberOfLines={1}>{item.count}</Text>
+              <View style={styles.collectionTile}>
+                <Image source={{ uri: collectionTileImages[index % collectionTileImages.length] }} style={styles.collectionTileImage} />
+                <View style={styles.collectionTileCaption}>
+                  <Text style={styles.collectionTileTitle} numberOfLines={1}>{entry.title}</Text>
+                  <Text style={styles.collectionTileCount} numberOfLines={1}>{entry.count}</Text>
                 </View>
               </View>
             </TouchableOpacity>
@@ -172,20 +172,20 @@ export default function CollectionsScreen({ navigation }: any) {
 }
 
 const styles = StyleSheet.create({
-  screen: {
+  collectionsScreen: {
     flex: 1,
     backgroundColor: palette.background,
   },
-  headerContent: {
+  collectionsHeader: {
     paddingHorizontal: 20,
     paddingTop: 72,
   },
-  navigationRow: {
+  collectionsNavigation: {
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 24,
   },
-  content: {
+  collectionsContent: {
     paddingHorizontal: 20,
     paddingTop: 30,
     paddingBottom: 128,
@@ -199,7 +199,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.2,
     fontFamily: fontFamilies.heading,
   },
-  subMenu: {
+  collectionTabs: {
     flex: 1,
     height: 60,
     flexDirection: 'row',
@@ -207,7 +207,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     marginLeft: 10,
   },
-  subMenuItem: {
+  collectionTab: {
     height: 42,
     alignItems: 'center',
     justifyContent: 'center',
@@ -215,20 +215,20 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: 'transparent',
   },
-  subMenuItemActive: {
+  activeCollectionTab: {
     borderBottomColor: palette.darkText,
   },
-  subMenuText: {
+  collectionTabText: {
     color: palette.secondaryText,
     fontSize: 16,
     fontWeight: '400',
     fontFamily: fontFamilies.body,
   },
-  subMenuTextActive: {
+  activeCollectionTabText: {
     color: palette.darkText,
     fontWeight: '700',
   },
-  searchBar: {
+  collectionSearch: {
     alignSelf: 'center',
     width: 260,
     height: 30,
@@ -241,7 +241,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     marginBottom: 12,
   },
-  searchInput: {
+  collectionSearchInput: {
     flex: 1,
     height: 28,
     marginLeft: 6,
@@ -255,17 +255,17 @@ const styles = StyleSheet.create({
     marginBottom: 12,
     fontFamily: fontFamilies.heading,
   },
-  twoColumnGrid: {
+  collectionGrid: {
     width: 301,
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
   },
-  twoColumnTouch: {
+  collectionTileTouch: {
     width: 141,
     marginBottom: 20,
   },
-  twoColumnCard: {
+  collectionTile: {
     width: 141,
     height: 106,
     overflow: 'hidden',
@@ -277,12 +277,12 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 3 },
     position: 'relative',
   },
-  cardImage: {
+  collectionTileImage: {
     width: 141,
     height: 106,
     resizeMode: 'cover',
   },
-  cardCaption: {
+  collectionTileCaption: {
     position: 'absolute',
     left: 0,
     right: 0,
@@ -295,14 +295,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  cardCaptionTitle: {
+  collectionTileTitle: {
     flex: 1,
     color: palette.darkText,
     fontSize: 8,
     fontWeight: '700',
     fontFamily: fontFamilies.body,
   },
-  cardCaptionCount: {
+  collectionTileCount: {
     color: palette.darkText,
     fontSize: 8,
     fontFamily: fontFamilies.body,

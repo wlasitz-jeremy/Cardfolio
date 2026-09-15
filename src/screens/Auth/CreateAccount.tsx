@@ -27,26 +27,26 @@ export default function CreateAccountScreen({ navigation }: CreateAccountScreenP
   const [termsAccepted, setTermsAccepted] = useState(false);
 
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <SafeAreaView style={styles.createAccountSafeArea}>
       <ScrollView
-        contentContainerStyle={styles.scrollContent}
+        contentContainerStyle={styles.createAccountScroll}
         keyboardShouldPersistTaps="handled"
       >
-        <View style={styles.container}>
-          <Text style={styles.logo}>Cardfolio</Text>
+        <View style={styles.createAccountScreen}>
+          <Text style={styles.createAccountLogo}>Cardfolio</Text>
 
-          <Text style={styles.label}>Full Name</Text>
+          <Text style={styles.fieldLabel}>Full Name</Text>
           <TextInput
-            style={styles.input}
+            style={styles.accountInput}
             autoCapitalize="words"
             autoCorrect={false}
             placeholder=""
             placeholderTextColor={palette.secondaryText}
           />
 
-          <Text style={styles.label}>Email</Text>
+          <Text style={styles.fieldLabel}>Email</Text>
           <TextInput
-            style={styles.input}
+            style={styles.accountInput}
             autoCapitalize="none"
             autoCorrect={false}
             keyboardType="email-address"
@@ -54,9 +54,9 @@ export default function CreateAccountScreen({ navigation }: CreateAccountScreenP
             placeholderTextColor={palette.secondaryText}
           />
 
-          <Text style={styles.label}>Password</Text>
+          <Text style={styles.fieldLabel}>Password</Text>
           <TextInput
-            style={styles.input}
+            style={styles.accountInput}
             secureTextEntry
             autoCapitalize="none"
             autoCorrect={false}
@@ -64,9 +64,9 @@ export default function CreateAccountScreen({ navigation }: CreateAccountScreenP
             placeholderTextColor={palette.secondaryText}
           />
 
-          <Text style={styles.label}>Confirm Password</Text>
+          <Text style={styles.fieldLabel}>Confirm Password</Text>
           <TextInput
-            style={styles.input}
+            style={styles.accountInput}
             secureTextEntry
             autoCapitalize="none"
             autoCorrect={false}
@@ -75,10 +75,10 @@ export default function CreateAccountScreen({ navigation }: CreateAccountScreenP
           />
 
           <Text style={styles.dateOfBirthLabel}>Date of Birth</Text>
-          <View style={styles.dateRow}>
+          <View style={styles.dateOfBirthFields}>
             <TextInput
               accessibilityLabel="Birth day"
-              style={styles.dateInput}
+              style={styles.dateOfBirthInput}
               keyboardType="number-pad"
               maxLength={2}
               placeholder="Day"
@@ -86,7 +86,7 @@ export default function CreateAccountScreen({ navigation }: CreateAccountScreenP
             />
             <TextInput
               accessibilityLabel="Birth month"
-              style={styles.dateInput}
+              style={styles.dateOfBirthInput}
               keyboardType="number-pad"
               maxLength={2}
               placeholder="Month"
@@ -94,7 +94,7 @@ export default function CreateAccountScreen({ navigation }: CreateAccountScreenP
             />
             <TextInput
               accessibilityLabel="Birth year"
-              style={styles.dateInput}
+              style={styles.dateOfBirthInput}
               keyboardType="number-pad"
               maxLength={4}
               placeholder="Year"
@@ -102,19 +102,19 @@ export default function CreateAccountScreen({ navigation }: CreateAccountScreenP
             />
           </View>
 
-          <View style={styles.options}>
+          <View style={styles.accountOptions}>
             <Pressable
               accessibilityLabel="Remember me"
               accessibilityHint="Toggles remembering your account on this device"
               accessibilityRole="checkbox"
               accessibilityState={{ checked: rememberMe }}
               onPress={() => setRememberMe((value) => !value)}
-              style={({ pressed }) => [styles.optionRow, pressed && styles.optionPressed]}
+              style={({ pressed }) => [styles.accountOptionRow, pressed && styles.accountOptionPressed]}
             >
-              <View style={[styles.checkbox, rememberMe && styles.checkboxChecked]}>
-                {rememberMe ? <Text style={styles.checkmark}>✓</Text> : null}
+              <View style={[styles.accountCheckbox, rememberMe && styles.checkedAccountCheckbox]}>
+                {rememberMe ? <Text style={styles.accountCheckboxMark}>✓</Text> : null}
               </View>
-              <Text style={styles.optionText}>Remember Me</Text>
+              <Text style={styles.accountOptionText}>Remember Me</Text>
             </Pressable>
 
             <Pressable
@@ -123,35 +123,35 @@ export default function CreateAccountScreen({ navigation }: CreateAccountScreenP
               accessibilityRole="checkbox"
               accessibilityState={{ checked: termsAccepted }}
               onPress={() => setTermsAccepted((value) => !value)}
-              style={({ pressed }) => [styles.optionRow, pressed && styles.optionPressed]}
+              style={({ pressed }) => [styles.accountOptionRow, pressed && styles.accountOptionPressed]}
             >
-              <View style={[styles.checkbox, termsAccepted && styles.checkboxChecked]}>
-                {termsAccepted ? <Text style={styles.checkmark}>✓</Text> : null}
+              <View style={[styles.accountCheckbox, termsAccepted && styles.checkedAccountCheckbox]}>
+                {termsAccepted ? <Text style={styles.accountCheckboxMark}>✓</Text> : null}
               </View>
-              <Text style={styles.optionText}>
-                I agree to the <Text style={styles.termsLink}>Terms and Conditions</Text>
+              <Text style={styles.accountOptionText}>
+                I agree to the <Text style={styles.termsAction}>Terms and Conditions</Text>
               </Text>
             </Pressable>
 
           </View>
 
           <TouchableOpacity
-            style={styles.primaryButton}
+            style={styles.createAccountSubmitButton}
             activeOpacity={0.9}
             onPress={() => navigation.replace('MainApp')}
           >
-            <Text style={styles.primaryButtonText}>CREATE ACCOUNT</Text>
+            <Text style={styles.createAccountSubmitText}>CREATE ACCOUNT</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
             accessibilityRole="button"
             activeOpacity={0.75}
             onPress={() => navigation.navigate('Login')}
-            style={styles.footerButton}
+            style={styles.loginFooterButton}
           >
-            <Text style={styles.footerText}>
+            <Text style={styles.loginFooterText}>
               Already have an account?{' '}
-              <Text style={styles.footerLink}>Log In</Text>
+              <Text style={styles.loginFooterAction}>Log In</Text>
             </Text>
           </TouchableOpacity>
         </View>
@@ -161,21 +161,21 @@ export default function CreateAccountScreen({ navigation }: CreateAccountScreenP
 }
 
 const styles = StyleSheet.create({
-  safeArea: {
+  createAccountSafeArea: {
     flex: 1,
     backgroundColor: palette.background,
   },
-  scrollContent: {
+  createAccountScroll: {
     flexGrow: 1,
   },
-  container: {
+  createAccountScreen: {
     flex: 1,
     backgroundColor: palette.background,
     paddingHorizontal: 42,
     paddingTop: 74,
     paddingBottom: 40,
   },
-  logo: {
+  createAccountLogo: {
     fontSize: 64,
     fontWeight: '700',
     lineHeight: 64,
@@ -184,7 +184,7 @@ const styles = StyleSheet.create({
     marginBottom: 40,
     fontFamily: fontFamilies.heading,
   },
-  label: {
+  fieldLabel: {
     width: '100%',
     alignSelf: 'flex-start',
     fontSize: 24,
@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     fontFamily: fontFamilies.heading,
   },
-  input: {
+  accountInput: {
     width: 300,
     height: 60,
     borderWidth: 2,
@@ -218,13 +218,13 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     fontFamily: fontFamilies.heading,
   },
-  dateRow: {
+  dateOfBirthFields: {
     width: 300,
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginBottom: 8,
   },
-  dateInput: {
+  dateOfBirthInput: {
     width: 92,
     height: 54,
     borderWidth: 2,
@@ -236,20 +236,20 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontFamily: fontFamilies.heading,
   },
-  options: {
+  accountOptions: {
     width: 300,
     gap: 14,
     marginTop: 4,
   },
-  optionRow: {
+  accountOptionRow: {
     flexDirection: 'row',
     alignItems: 'center',
     minHeight: 24,
   },
-  optionPressed: {
+  accountOptionPressed: {
     opacity: 0.7,
   },
-  checkbox: {
+  accountCheckbox: {
     width: 20,
     height: 20,
     marginRight: 8,
@@ -258,17 +258,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  checkboxChecked: {
+  checkedAccountCheckbox: {
     backgroundColor: palette.accent,
     borderColor: palette.accent,
   },
-  checkmark: {
+  accountCheckboxMark: {
     color: palette.white,
     fontSize: 15,
     fontWeight: '700',
     lineHeight: 18,
   },
-  optionText: {
+  accountOptionText: {
     flex: 1,
     color: palette.darkText,
     fontSize: 14,
@@ -276,10 +276,10 @@ const styles = StyleSheet.create({
     letterSpacing: 0.28,
     fontFamily: fontFamilies.heading,
   },
-  termsLink: {
+  termsAction: {
     color: palette.muted,
   },
-  primaryButton: {
+  createAccountSubmitButton: {
     width: 280,
     height: 60,
     backgroundColor: palette.accent,
@@ -288,7 +288,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 20,
   },
-  primaryButtonText: {
+  createAccountSubmitText: {
     color: palette.background,
     fontSize: 28,
     fontWeight: '700',
@@ -296,10 +296,10 @@ const styles = StyleSheet.create({
     lineHeight: 32,
     fontFamily: fontFamilies.heading,
   },
-  footerButton: {
+  loginFooterButton: {
     alignSelf: 'center',
   },
-  footerText: {
+  loginFooterText: {
     marginTop: 30,
     textAlign: 'center',
     fontSize: 14,
@@ -308,7 +308,7 @@ const styles = StyleSheet.create({
     color: palette.darkText,
     fontFamily: fontFamilies.heading,
   },
-  footerLink: {
+  loginFooterAction: {
     color: palette.muted,
   },
 });

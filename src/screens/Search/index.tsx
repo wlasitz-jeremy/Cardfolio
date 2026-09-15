@@ -4,7 +4,7 @@ import { fontFamilies } from '../../theme/typography';
 import BottomTabBar from '../../components/BottomTabBar/BottomTabBar';
 import InlineScreenHeader from '../../components/InlineScreenHeader/InlineScreenHeader';
 
-const results = [
+const searchResults = [
   { title: 'Legendary foil pull', tag: 'Collectors' },
   { title: 'Binder accessories', tag: 'Supplies' },
   { title: 'Auto-trade card sleeves', tag: 'Trade' },
@@ -13,30 +13,30 @@ const results = [
 
 export default function SearchScreen({ navigation }: any) {
   return (
-    <View style={styles.screen}>
-      <ScrollView contentContainerStyle={styles.content}>
+    <View style={styles.searchScreen}>
+      <ScrollView contentContainerStyle={styles.searchContent}>
         <InlineScreenHeader navigation={navigation} title="Search" />
 
-        <View style={styles.searchBox}>
+        <View style={styles.searchInputContainer}>
           <TextInput
             placeholder="Search CardFolio"
             placeholderTextColor={palette.secondaryText}
-            style={styles.input}
+            style={styles.searchInput}
             editable={false}
           />
         </View>
 
-        <View style={styles.sectionHeader}>
-          <Text style={styles.sectionLabel}>Popular searches</Text>
+        <View style={styles.popularSearchesHeader}>
+          <Text style={styles.popularSearchesLabel}>Popular searches</Text>
         </View>
 
-        {results.map((result) => (
+        {searchResults.map((result) => (
           <TouchableOpacity key={result.title} onPress={() => navigation.navigate('CardInfoFlow')}>
-            <View style={styles.resultItem}>
-              <View style={styles.resultDot} />
-              <View style={styles.resultTextWrap}>
-                <Text style={styles.resultText}>{result.title}</Text>
-                <Text style={styles.resultTag}>{result.tag}</Text>
+            <View style={styles.searchResultItem}>
+              <View style={styles.searchResultIndicator} />
+              <View style={styles.searchResultContent}>
+                <Text style={styles.searchResultTitle}>{result.title}</Text>
+                <Text style={styles.searchResultTag}>{result.tag}</Text>
               </View>
             </View>
           </TouchableOpacity>
@@ -48,11 +48,11 @@ export default function SearchScreen({ navigation }: any) {
 }
 
 const styles = StyleSheet.create({
-  screen: {
+  searchScreen: {
     flex: 1,
     backgroundColor: palette.background,
   },
-  content: {
+  searchContent: {
     paddingHorizontal: 20,
     paddingTop: 20,
     paddingBottom: 128,
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     letterSpacing: -0.5,
     fontFamily: fontFamilies.heading,
   },
-  searchBox: {
+  searchInputContainer: {
     backgroundColor: palette.panel,
     borderRadius: 16,
     borderWidth: 1,
@@ -78,16 +78,16 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
     elevation: 2,
   },
-  input: {
+  searchInput: {
     height: 52,
     color: palette.darkText,
     fontSize: 16,
     fontFamily: fontFamilies.heading,
   },
-  sectionHeader: {
+  popularSearchesHeader: {
     marginBottom: 10,
   },
-  sectionLabel: {
+  popularSearchesLabel: {
     fontSize: 12,
     fontWeight: '700',
     letterSpacing: 1,
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     color: palette.subtle,
     fontFamily: fontFamilies.heading,
   },
-  resultItem: {
+  searchResultItem: {
     backgroundColor: palette.panel,
     borderRadius: 16,
     paddingVertical: 16,
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     elevation: 1,
   },
-  resultDot: {
+  searchResultIndicator: {
     width: 10,
     height: 10,
     borderRadius: 999,
@@ -119,17 +119,17 @@ const styles = StyleSheet.create({
     marginRight: 12,
     opacity: 0.8,
   },
-  resultTextWrap: {
+  searchResultContent: {
     flex: 1,
   },
-  resultText: {
+  searchResultTitle: {
     color: palette.darkText,
     fontSize: 17,
     fontWeight: '700',
     marginBottom: 4,
     fontFamily: fontFamilies.heading,
   },
-  resultTag: {
+  searchResultTag: {
     color: palette.secondaryText,
     fontSize: 12,
     fontWeight: '600',

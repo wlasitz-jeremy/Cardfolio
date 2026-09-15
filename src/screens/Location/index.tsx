@@ -5,19 +5,19 @@ import InlineScreenHeader from '../../components/InlineScreenHeader/InlineScreen
 
 export default function LocationScreen({ navigation }: any) {
   return (
-    <View style={styles.screen}>
+    <View style={styles.locationScreen}>
       <InlineScreenHeader navigation={navigation} title="Location" />
 
-      <View style={styles.mapCard}>
-        <Text style={styles.mapLabel}>Nearby stores</Text>
-        <Text style={styles.mapText}>Northside Card Shop</Text>
-        <Text style={styles.mapSubText}>2.4 miles away</Text>
+      <View style={styles.nearbyStoreCard}>
+        <Text style={styles.nearbyStoreLabel}>Nearby stores</Text>
+        <Text style={styles.storeName}>Northside Card Shop</Text>
+        <Text style={styles.storeDistance}>2.4 miles away</Text>
 
-        <View style={styles.infoRow}>
-          <View style={styles.infoPill}>
-            <Text style={styles.infoPillText}>Open now</Text>
+        <View style={styles.storeStatusRow}>
+          <View style={styles.storeStatusBadge}>
+            <Text style={styles.storeStatusText}>Open now</Text>
           </View>
-          <Text style={styles.metaText}>4.8 rating</Text>
+          <Text style={styles.storeRating}>4.8 rating</Text>
         </View>
       </View>
     </View>
@@ -25,7 +25,7 @@ export default function LocationScreen({ navigation }: any) {
 }
 
 const styles = StyleSheet.create({
-  screen: {
+  locationScreen: {
     flex: 1,
     backgroundColor: palette.background,
     paddingHorizontal: 20,
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     marginBottom: 18,
     letterSpacing: -0.5,
   },
-  mapCard: {
+  nearbyStoreCard: {
     backgroundColor: palette.panel,
     borderRadius: 22,
     padding: 20,
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
     elevation: 2,
   },
-  mapLabel: {
+  nearbyStoreLabel: {
     color: palette.accent,
     fontSize: 12,
     fontWeight: '700',
@@ -60,37 +60,37 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     marginBottom: 12,
   },
-  mapText: {
+  storeName: {
     color: palette.darkText,
     fontSize: 22,
     fontWeight: '700',
     marginBottom: 6,
   },
-  mapSubText: {
+  storeDistance: {
     color: palette.secondaryText,
     fontSize: 16,
     fontWeight: '600',
     marginBottom: 16,
   },
-  infoRow: {
+  storeStatusRow: {
     flexDirection: 'row',
     alignItems: 'center',
   },
-  infoPill: {
+  storeStatusBadge: {
     backgroundColor: palette.softAccent,
     borderRadius: 999,
     paddingHorizontal: 12,
     paddingVertical: 7,
     marginRight: 12,
   },
-  infoPillText: {
+  storeStatusText: {
     color: palette.accent,
     fontSize: 12,
     fontWeight: '700',
     letterSpacing: 0.8,
     textTransform: 'uppercase',
   },
-  metaText: {
+  storeRating: {
     color: palette.secondaryText,
     fontSize: 13,
     fontWeight: '700',
