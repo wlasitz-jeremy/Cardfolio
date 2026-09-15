@@ -19,13 +19,13 @@ type RootStackParamList = {
 type CreateAccountScreenProps = NativeStackScreenProps<RootStackParamList, 'CreateAccount'>;
 
 const palette = {
-  background: '#f4f5f9',
-  darkText: '#1f2937',
-  secondaryText: '#586578',
-  accent: '#3d4052',
-  inputStroke: '#1f2937',
+  background: '#f4f4f8',
+  darkText: '#1e293b',
+  secondaryText: '#424b57',
+  accent: '#4a475c',
+  inputStroke: '#1e293b',
   white: '#ffffff',
-  muted: '#6b7280',
+  muted: '#767677',
 };
 
 export default function CreateAccountScreen({ navigation }: CreateAccountScreenProps) {
@@ -82,7 +82,7 @@ export default function CreateAccountScreen({ navigation }: CreateAccountScreenP
             activeOpacity={0.9}
             onPress={() => navigation.replace('MainApp')}
           >
-            <Text style={styles.primaryButtonText}>Sign Up</Text>
+            <Text style={styles.primaryButtonText}>SIGN UP</Text>
           </TouchableOpacity>
 
           <Text style={styles.footerText}>
@@ -109,35 +109,37 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: palette.background,
     paddingHorizontal: 42,
-    paddingTop: 70,
+    paddingTop: 74,
     paddingBottom: 40,
   },
   title: {
-    fontSize: 38,
+    fontSize: 44,
     fontWeight: '700',
-    lineHeight: 46,
-    letterSpacing: 0.6,
+    lineHeight: 52,
+    letterSpacing: 0.8,
     color: palette.darkText,
-    marginBottom: 24,
+    marginBottom: 28,
     textAlign: 'center',
+    fontFamily: 'Oswald',
   },
   label: {
     width: '100%',
     alignSelf: 'flex-start',
-    fontSize: 22,
+    fontSize: 24,
     fontWeight: '700',
     lineHeight: 28,
-    letterSpacing: 0.4,
+    letterSpacing: 0.48,
     color: palette.darkText,
     marginBottom: 12,
     marginTop: 10,
+    fontFamily: 'Oswald',
   },
   input: {
-    width: '100%',
-    height: 58,
+    width: 300,
+    height: 60,
     borderWidth: 2,
     borderColor: palette.inputStroke,
-    borderRadius: 10,
+    borderRadius: 0,
     backgroundColor: palette.white,
     paddingHorizontal: 14,
     paddingVertical: 12,
@@ -146,20 +148,21 @@ const styles = StyleSheet.create({
     color: palette.darkText,
   },
   primaryButton: {
-    width: '100%',
-    height: 58,
+    width: 280,
+    height: 60,
     backgroundColor: palette.accent,
-    borderRadius: 12,
+    borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 20,
   },
   primaryButtonText: {
-    color: '#ffffff',
-    fontSize: 22,
+    color: palette.background,
+    fontSize: 28,
     fontWeight: '700',
-    letterSpacing: 0.8,
-    textTransform: 'uppercase',
+    letterSpacing: 0.64,
+    lineHeight: 32,
+    fontFamily: 'Oswald',
   },
   footerText: {
     marginTop: 30,
@@ -168,6 +171,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     letterSpacing: 0.28,
     color: palette.darkText,
+    fontFamily: 'Oswald',
   },
   footerLink: {
     color: palette.muted,

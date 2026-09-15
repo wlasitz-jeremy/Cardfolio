@@ -9,7 +9,7 @@ const palette = {
   border: '#e2e8f0',
 };
 
-export default function CheckoutScreen() {
+export default function CheckoutScreen({ navigation }: any) {
   return (
     <View style={styles.screen}>
       <Text style={styles.pageTitle}>Checkout</Text>
@@ -25,7 +25,11 @@ export default function CheckoutScreen() {
         <TextInput style={styles.input} placeholder="" />
       </View>
 
-      <TouchableOpacity style={styles.button} activeOpacity={0.9}>
+      <TouchableOpacity
+        style={styles.button}
+        activeOpacity={0.9}
+        onPress={() => navigation.popToTop()}
+      >
         <Text style={styles.buttonText}>Place Order</Text>
       </TouchableOpacity>
     </View>

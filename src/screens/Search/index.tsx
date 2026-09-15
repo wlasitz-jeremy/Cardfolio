@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 const palette = {
   background: '#f4f5f9',
@@ -18,7 +18,7 @@ const results = [
   { title: 'Collector showcase', tag: 'Display' },
 ];
 
-export default function SearchScreen() {
+export default function SearchScreen({ navigation }: any) {
   return (
     <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
       <Text style={styles.pageTitle}>Search</Text>
@@ -28,6 +28,7 @@ export default function SearchScreen() {
           placeholder="Search CardFolio"
           placeholderTextColor={palette.secondaryText}
           style={styles.input}
+          editable={false}
         />
       </View>
 
@@ -36,13 +37,15 @@ export default function SearchScreen() {
       </View>
 
       {results.map((result) => (
-        <View key={result.title} style={styles.resultItem}>
-          <View style={styles.resultDot} />
-          <View style={styles.resultTextWrap}>
-            <Text style={styles.resultText}>{result.title}</Text>
-            <Text style={styles.resultTag}>{result.tag}</Text>
+        <TouchableOpacity key={result.title} onPress={() => navigation.navigate('CardInfoFlow')}>
+          <View style={styles.resultItem}>
+            <View style={styles.resultDot} />
+            <View style={styles.resultTextWrap}>
+              <Text style={styles.resultText}>{result.title}</Text>
+              <Text style={styles.resultTag}>{result.tag}</Text>
+            </View>
           </View>
-        </View>
+        </TouchableOpacity>
       ))}
     </ScrollView>
   );
@@ -64,6 +67,7 @@ const styles = StyleSheet.create({
     color: palette.darkText,
     marginBottom: 18,
     letterSpacing: -0.5,
+    fontFamily: 'Oswald',
   },
   searchBox: {
     backgroundColor: palette.panel,
@@ -82,6 +86,7 @@ const styles = StyleSheet.create({
     height: 52,
     color: palette.darkText,
     fontSize: 16,
+    fontFamily: 'Oswald',
   },
   sectionHeader: {
     marginBottom: 10,
@@ -92,6 +97,7 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
     textTransform: 'uppercase',
     color: palette.subtle,
+    fontFamily: 'Oswald',
   },
   resultItem: {
     backgroundColor: palette.panel,
@@ -125,6 +131,7 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: '700',
     marginBottom: 4,
+    fontFamily: 'Oswald',
   },
   resultTag: {
     color: palette.secondaryText,
@@ -132,5 +139,6 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     letterSpacing: 0.4,
     textTransform: 'uppercase',
+    fontFamily: 'Oswald',
   },
 });

@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
     color: palette.darkText,
     marginBottom: 20,
     letterSpacing: 0.2,
+    fontFamily: 'Oswald',
   },
   articleCard: {
     backgroundColor: palette.white,
@@ -63,16 +64,19 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
     textTransform: 'uppercase',
     marginBottom: 10,
+    fontFamily: 'Oswald',
   },
   title: {
     color: palette.darkText,
     fontSize: 22,
     fontWeight: '700',
     marginBottom: 8,
+    fontFamily: 'Oswald',
   },
   snippet: {
     color: palette.secondaryText,
     lineHeight: 20,
     fontSize: 14,
+    fontFamily: 'Oswald',
   },
 });

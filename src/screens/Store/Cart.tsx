@@ -10,7 +10,7 @@ const palette = {
   border: '#edf1f7',
 };
 
-export default function CartScreen() {
+export default function CartScreen({ navigation }: any) {
   return (
     <View style={styles.screen}>
       <Text style={styles.pageTitle}>Your Cart</Text>
@@ -29,7 +29,11 @@ export default function CartScreen() {
         <Text style={styles.summaryValue}>$35.00</Text>
       </View>
 
-      <TouchableOpacity style={styles.checkoutButton} activeOpacity={0.9}>
+      <TouchableOpacity
+        style={styles.checkoutButton}
+        activeOpacity={0.9}
+        onPress={() => navigation.navigate('Checkout')}
+      >
         <Text style={styles.checkoutText}>Proceed to Checkout</Text>
       </TouchableOpacity>
     </View>

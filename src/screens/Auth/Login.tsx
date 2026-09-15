@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import {
+  Image,
   Pressable,
   SafeAreaView,
   StyleSheet,
@@ -19,15 +20,17 @@ type RootStackParamList = {
 
 type LoginScreenProps = NativeStackScreenProps<RootStackParamList, 'Login'>;
 
+const imgCheckCircle =
+  'https://www.figma.com/api/mcp/asset/814a1674-79c7-46ed-82d8-eb5cac768286.svg';
+
 const palette = {
-  background: '#f4f5f9',
-  darkText: '#1f2937',
-  secondaryText: '#586578',
-  accent: '#3d4052',
-  inputStroke: '#1f2937',
+  background: '#f4f4f8',
+  darkText: '#1e293b',
+  secondaryText: '#424b57',
+  accent: '#4a475c',
+  inputStroke: '#1e293b',
   white: '#ffffff',
-  muted: '#6b7280',
-  softPanel: '#eef2ff',
+  muted: '#767677',
 };
 
 export default function LoginScreen({ navigation }: LoginScreenProps) {
@@ -66,7 +69,13 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
             style={styles.checkboxWrapper}
           >
             <View style={[styles.checkbox, rememberMe && styles.checkboxChecked]}>
-              {rememberMe ? <Text style={styles.checkmark}>✓</Text> : null}
+              {rememberMe ? (
+                <Image
+                  source={{ uri: imgCheckCircle }}
+                  resizeMode="contain"
+                  style={styles.checkmarkIcon}
+                />
+              ) : null}
             </View>
             <Text style={styles.rememberText}>Remember Me</Text>
           </Pressable>
@@ -79,7 +88,7 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
           activeOpacity={0.9}
           onPress={() => navigation.replace('MainApp')}
         >
-          <Text style={styles.loginText}>Login</Text>
+          <Text style={styles.loginText}>LOGIN</Text>
         </TouchableOpacity>
 
         <Text style={styles.signupText}>
@@ -102,34 +111,36 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: palette.background,
     paddingHorizontal: 42,
-    paddingTop: 100,
+    paddingTop: 106,
     alignItems: 'center',
   },
   logo: {
-    fontSize: 58,
-    fontWeight: '800',
-    lineHeight: 60,
-    letterSpacing: 1.2,
+    fontSize: 64,
+    fontWeight: '700',
+    lineHeight: 64,
+    letterSpacing: 1.28,
     color: palette.darkText,
-    marginBottom: 36,
+    marginBottom: 40,
+    fontFamily: 'Oswald',
   },
   label: {
     width: '100%',
     alignSelf: 'flex-start',
-    fontSize: 22,
+    fontSize: 24,
     fontWeight: '700',
     lineHeight: 28,
-    letterSpacing: 0.4,
+    letterSpacing: 0.48,
     color: palette.darkText,
     marginBottom: 12,
     marginTop: 8,
+    fontFamily: 'Oswald',
   },
   input: {
-    width: '100%',
-    height: 58,
+    width: 300,
+    height: 60,
     borderWidth: 2,
     borderColor: palette.inputStroke,
-    borderRadius: 10,
+    borderRadius: 0,
     backgroundColor: '#ffffff',
     paddingHorizontal: 14,
     paddingVertical: 12,
@@ -138,12 +149,12 @@ const styles = StyleSheet.create({
     color: palette.darkText,
   },
   metaRow: {
-    width: '100%',
+    width: 300,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     marginTop: 6,
-    marginBottom: 22,
+    marginBottom: 20,
   },
   checkboxWrapper: {
     flexDirection: 'row',
@@ -154,55 +165,57 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
     borderWidth: 2,
-    borderColor: '#1f2937',
-    borderRadius: 5,
+    borderColor: '#1e293b',
+    borderRadius: 4,
     backgroundColor: palette.white,
     justifyContent: 'center',
     alignItems: 'center',
   },
   checkboxChecked: {
-    backgroundColor: palette.softPanel,
+    backgroundColor: '#f4f4f8',
   },
-  checkmark: {
-    color: palette.darkText,
-    fontSize: 14,
-    fontWeight: '800',
-    lineHeight: 14,
+  checkmarkIcon: {
+    width: 18,
+    height: 18,
   },
   rememberText: {
     fontSize: 14,
     fontWeight: '700',
     letterSpacing: 0.28,
     color: palette.darkText,
+    fontFamily: 'Oswald',
   },
   forgotText: {
     fontSize: 14,
     fontWeight: '700',
     letterSpacing: 0.28,
     color: palette.secondaryText,
+    fontFamily: 'Oswald',
   },
   loginButton: {
-    width: '100%',
-    height: 58,
+    width: 280,
+    height: 60,
     backgroundColor: palette.accent,
-    borderRadius: 12,
+    borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 8,
   },
   loginText: {
-    color: '#ffffff',
-    fontSize: 22,
+    color: palette.background,
+    fontSize: 32,
     fontWeight: '700',
-    letterSpacing: 0.8,
-    textTransform: 'uppercase',
+    letterSpacing: 0.64,
+    lineHeight: 32,
+    fontFamily: 'Oswald',
   },
   signupText: {
-    marginTop: 30,
+    marginTop: 32,
     fontSize: 14,
     fontWeight: '700',
     letterSpacing: 0.28,
     color: palette.darkText,
+    fontFamily: 'Oswald',
   },
   signupLink: {
     color: palette.muted,

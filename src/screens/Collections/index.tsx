@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 const palette = {
   background: '#f4f4f8',
@@ -15,18 +15,20 @@ const collections = [
   { title: 'Favorite Set', count: '31 cards', accent: '#5b5d76' },
 ];
 
-export default function CollectionsScreen() {
+export default function CollectionsScreen({ navigation }: any) {
   return (
     <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
       <Text style={styles.pageTitle}>Collections</Text>
       {collections.map((item) => (
-        <View key={item.title} style={styles.card}>
-          <View style={[styles.badge, { backgroundColor: item.accent }]} />
-          <View style={styles.textWrap}>
-            <Text style={styles.title}>{item.title}</Text>
-            <Text style={styles.count}>{item.count}</Text>
+        <TouchableOpacity key={item.title} onPress={() => navigation.navigate('CardInfoFlow')}>
+          <View style={styles.card}>
+            <View style={[styles.badge, { backgroundColor: item.accent }]} />
+            <View style={styles.textWrap}>
+              <Text style={styles.title}>{item.title}</Text>
+              <Text style={styles.count}>{item.count}</Text>
+            </View>
           </View>
-        </View>
+        </TouchableOpacity>
       ))}
     </ScrollView>
   );
@@ -48,6 +50,7 @@ const styles = StyleSheet.create({
     color: palette.darkText,
     marginBottom: 22,
     letterSpacing: 0.2,
+    fontFamily: 'Oswald',
   },
   card: {
     backgroundColor: palette.white,
@@ -75,10 +78,12 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: palette.darkText,
     marginBottom: 4,
+    fontFamily: 'Oswald',
   },
   count: {
     color: palette.secondaryText,
     fontSize: 14,
     fontWeight: '500',
+    fontFamily: 'Oswald',
   },
 });

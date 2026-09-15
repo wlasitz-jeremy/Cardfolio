@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 const palette = {
   background: '#f4f5f9',
@@ -9,7 +9,7 @@ const palette = {
   softAccent: '#edf2ff',
 };
 
-export default function CardInfoScreen() {
+export default function CardInfoScreen({ navigation }: any) {
   return (
     <View style={styles.screen}>
       <View style={styles.cardArt} />
@@ -34,6 +34,14 @@ export default function CardInfoScreen() {
           Legendary attack patterns, set-defining artwork, and an iconic foil finish make this card a standout in any collection.
         </Text>
       </View>
+
+      <TouchableOpacity
+        style={styles.actionButton}
+        activeOpacity={0.9}
+        onPress={() => navigation.navigate('StoreFlow', { screen: 'Cart' })}
+      >
+        <Text style={styles.actionButtonText}>Add to cart</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -78,12 +86,14 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     marginBottom: 6,
     letterSpacing: -0.6,
+    fontFamily: 'Oswald',
   },
   meta: {
     color: palette.secondaryText,
     fontSize: 15,
     fontWeight: '600',
     marginBottom: 16,
+    fontFamily: 'Oswald',
   },
   pillRow: {
     flexDirection: 'row',
@@ -102,11 +112,30 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     letterSpacing: 0.8,
     textTransform: 'uppercase',
+    fontFamily: 'Oswald',
   },
   description: {
     color: palette.darkText,
     fontSize: 15,
     lineHeight: 22,
     textAlign: 'left',
+    fontFamily: 'Oswald',
+  },
+  actionButton: {
+    width: '100%',
+    backgroundColor: palette.accent,
+    borderRadius: 16,
+    height: 54,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 18,
+  },
+  actionButtonText: {
+    color: '#ffffff',
+    fontSize: 16,
+    fontWeight: '700',
+    letterSpacing: 0.8,
+    textTransform: 'uppercase',
+    fontFamily: 'Oswald',
   },
 });

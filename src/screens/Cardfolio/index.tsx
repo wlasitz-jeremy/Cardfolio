@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 const palette = {
   background: '#f4f4f8',
@@ -15,7 +15,7 @@ const cards = [
   { name: 'Obsidian Arc', set: 'Event Pull', value: '2.2k' },
 ];
 
-export default function CardfolioScreen() {
+export default function CardfolioScreen({ navigation }: any) {
   return (
     <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
       <Text style={styles.pageTitle}>My Cardfolio</Text>
@@ -25,14 +25,16 @@ export default function CardfolioScreen() {
       </View>
 
       {cards.map((card) => (
-        <View key={card.name} style={styles.card}>
-          <View style={styles.cardArt} />
-          <View style={styles.cardDetails}>
-            <Text style={styles.cardName}>{card.name}</Text>
-            <Text style={styles.cardSet}>{card.set}</Text>
+        <TouchableOpacity key={card.name} onPress={() => navigation.navigate('CardInfoFlow')}>
+          <View style={styles.card}>
+            <View style={styles.cardArt} />
+            <View style={styles.cardDetails}>
+              <Text style={styles.cardName}>{card.name}</Text>
+              <Text style={styles.cardSet}>{card.set}</Text>
+            </View>
+            <Text style={styles.cardValue}>{card.value}</Text>
           </View>
-          <Text style={styles.cardValue}>{card.value}</Text>
-        </View>
+        </TouchableOpacity>
       ))}
     </ScrollView>
   );
@@ -54,6 +56,7 @@ const styles = StyleSheet.create({
     color: palette.darkText,
     marginBottom: 16,
     letterSpacing: 0.2,
+    fontFamily: 'Oswald',
   },
   summary: {
     backgroundColor: palette.accent,
@@ -69,11 +72,13 @@ const styles = StyleSheet.create({
     fontSize: 38,
     fontWeight: '700',
     color: palette.white,
+    fontFamily: 'Oswald',
   },
   summaryLabel: {
     fontSize: 14,
     color: '#f0edf5',
     marginTop: 6,
+    fontFamily: 'Oswald',
   },
   card: {
     backgroundColor: palette.white,
@@ -102,14 +107,17 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '700',
     marginBottom: 4,
+    fontFamily: 'Oswald',
   },
   cardSet: {
     color: palette.secondaryText,
     fontSize: 13,
+    fontFamily: 'Oswald',
   },
   cardValue: {
     color: palette.accent,
     fontSize: 18,
     fontWeight: '700',
+    fontFamily: 'Oswald',
   },
 });

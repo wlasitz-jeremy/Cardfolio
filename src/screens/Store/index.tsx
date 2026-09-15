@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 const palette = {
   background: '#f4f5f9',
@@ -16,22 +16,24 @@ const products = [
   { name: 'Display Stand', price: '$22.00', tone: '#dfe9e0' },
 ];
 
-export default function StoreScreen() {
+export default function StoreScreen({ navigation }: any) {
   return (
     <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
       <Text style={styles.pageTitle}>Store</Text>
 
       {products.map((product) => (
-        <View key={product.name} style={styles.productCard}>
-          <View style={[styles.imageBox, { backgroundColor: product.tone }]} />
-          <View style={styles.textWrap}>
-            <Text style={styles.name}>{product.name}</Text>
-            <Text style={styles.price}>{product.price}</Text>
+        <TouchableOpacity key={product.name} onPress={() => navigation.navigate('StoreFlow', { screen: 'Cart' })}>
+          <View style={styles.productCard}>
+            <View style={[styles.imageBox, { backgroundColor: product.tone }]} />
+            <View style={styles.textWrap}>
+              <Text style={styles.name}>{product.name}</Text>
+              <Text style={styles.price}>{product.price}</Text>
+            </View>
+            <View style={styles.buyTag}>
+              <Text style={styles.buyText}>Buy</Text>
+            </View>
           </View>
-          <View style={styles.buyTag}>
-            <Text style={styles.buyText}>Buy</Text>
-          </View>
-        </View>
+        </TouchableOpacity>
       ))}
     </ScrollView>
   );
@@ -53,6 +55,7 @@ const styles = StyleSheet.create({
     color: palette.darkText,
     marginBottom: 20,
     letterSpacing: -0.5,
+    fontFamily: 'Oswald',
   },
   productCard: {
     backgroundColor: palette.panel,
@@ -83,11 +86,13 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: '700',
     marginBottom: 4,
+    fontFamily: 'Oswald',
   },
   price: {
     color: palette.accent,
     fontSize: 16,
     fontWeight: '700',
+    fontFamily: 'Oswald',
   },
   buyTag: {
     backgroundColor: palette.softAccent,
@@ -102,5 +107,6 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     letterSpacing: 0.8,
     textTransform: 'uppercase',
+    fontFamily: 'Oswald',
   },
 });

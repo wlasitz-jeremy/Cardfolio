@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
     color: palette.darkText,
     marginBottom: 20,
     letterSpacing: 0.2,
+    fontFamily: 'Oswald',
   },
   postCard: {
     backgroundColor: palette.white,
@@ -61,16 +62,19 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     fontSize: 13,
     marginBottom: 6,
+    fontFamily: 'Oswald',
   },
   title: {
     color: palette.darkText,
     fontSize: 20,
     fontWeight: '700',
     marginBottom: 8,
+    fontFamily: 'Oswald',
   },
   body: {
     color: palette.secondaryText,
     fontSize: 14,
     lineHeight: 20,
+    fontFamily: 'Oswald',
   },
 });
