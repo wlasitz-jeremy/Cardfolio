@@ -9,7 +9,9 @@ import { fontFamilies } from '../../theme/typography';
 export default function CardScannerScreen({ navigation }: any) {
   return (
     <View style={styles.screen}>
-      <InlineScreenHeader navigation={navigation} title="Card Scanner" />
+      <View style={styles.headerSpacing}>
+        <InlineScreenHeader navigation={navigation} title="Card Scanner" />
+      </View>
 
       <View style={styles.scannerFrame}>
         <View style={styles.cornerTopLeft} />
@@ -39,7 +41,16 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: palette.background,
     paddingHorizontal: 20,
-    paddingTop: 20,
+    paddingTop: 38,
+  },
+  headerSpacing: {
+    marginBottom: 18,
+    marginHorizontal: 28, 
+    flexDirection: 'row', 
+    alignItems: 'center', 
+    justifyContent: 'space-between', 
+    minHeight: 60, 
+    marginTop: 20
   },
   scannerFrame: {
     height: 440,
