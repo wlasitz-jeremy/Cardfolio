@@ -1,7 +1,9 @@
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { palette } from '../../theme/colors';
 import { fontFamilies } from '../../theme/typography';
 import InlineScreenHeader from '../../components/InlineScreenHeader/InlineScreenHeader';
+import FormField from '../../components/FormField/FormField';
+import PrimaryButton from '../../components/Button/PrimaryButton';
 
 export default function CheckoutScreen({ navigation }: any) {
   return (
@@ -9,23 +11,12 @@ export default function CheckoutScreen({ navigation }: any) {
       <InlineScreenHeader navigation={navigation} title="Checkout" />
 
       <View style={styles.formCard}>
-        <Text style={styles.label}>Cardholder Name</Text>
-        <TextInput style={styles.input} placeholder="" />
-
-        <Text style={styles.label}>Card Number</Text>
-        <TextInput style={styles.input} placeholder="" keyboardType="numeric" />
-
-        <Text style={styles.label}>Shipping Address</Text>
-        <TextInput style={styles.input} placeholder="" />
+        <FormField label="Cardholder Name" />
+        <FormField label="Card Number" keyboardType="numeric" />
+        <FormField label="Shipping Address" />
       </View>
 
-      <TouchableOpacity
-        style={styles.button}
-        activeOpacity={0.9}
-        onPress={() => navigation.popToTop()}
-      >
-        <Text style={styles.buttonText}>Place Order</Text>
-      </TouchableOpacity>
+      <PrimaryButton label="Place Order" style={styles.button} onPress={() => navigation.popToTop()} />
     </View>
   );
 }

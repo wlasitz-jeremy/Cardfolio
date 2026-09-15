@@ -1,7 +1,9 @@
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { palette } from '../../theme/colors';
 import { fontFamilies } from '../../theme/typography';
 import InlineScreenHeader from '../../components/InlineScreenHeader/InlineScreenHeader';
+import FormField from '../../components/FormField/FormField';
+import PrimaryButton from '../../components/Button/PrimaryButton';
 
 export default function ContactUsScreen({ navigation }: any) {
   return (
@@ -9,19 +11,12 @@ export default function ContactUsScreen({ navigation }: any) {
       <InlineScreenHeader navigation={navigation} title="Contact Us" />
 
       <View style={styles.formCard}>
-        <Text style={styles.label}>Name</Text>
-        <TextInput style={styles.input} placeholder="" />
-
-        <Text style={styles.label}>Email</Text>
-        <TextInput style={styles.input} placeholder="" keyboardType="email-address" />
-
-        <Text style={styles.label}>Message</Text>
-        <TextInput style={[styles.input, styles.textArea]} placeholder="" multiline numberOfLines={5} />
+        <FormField label="Name" />
+        <FormField label="Email" keyboardType="email-address" />
+        <FormField label="Message" multiline numberOfLines={5} style={styles.textArea} />
       </View>
 
-      <TouchableOpacity style={styles.button} activeOpacity={0.9}>
-        <Text style={styles.buttonText}>Send</Text>
-      </TouchableOpacity>
+      <PrimaryButton label="Send" style={styles.button} />
     </View>
   );
 }

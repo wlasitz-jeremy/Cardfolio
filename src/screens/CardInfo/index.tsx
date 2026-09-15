@@ -1,7 +1,8 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { palette } from '../../theme/colors';
 import { fontFamilies } from '../../theme/typography';
 import InlineScreenHeader from '../../components/InlineScreenHeader/InlineScreenHeader';
+import PrimaryButton from '../../components/Button/PrimaryButton';
 
 export default function CardInfoScreen({ navigation }: any) {
   return (
@@ -30,13 +31,11 @@ export default function CardInfoScreen({ navigation }: any) {
         </Text>
       </View>
 
-      <TouchableOpacity
+      <PrimaryButton
+        label="Add to cart"
         style={styles.actionButton}
-        activeOpacity={0.9}
         onPress={() => navigation.getParent()?.navigate('StoreFlow', { screen: 'Cart' })}
-      >
-        <Text style={styles.actionButtonText}>Add to cart</Text>
-      </TouchableOpacity>
+      />
     </View>
   );
 }
