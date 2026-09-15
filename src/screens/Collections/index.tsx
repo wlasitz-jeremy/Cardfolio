@@ -1,17 +1,84 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
+
+const palette = {
+  background: '#f4f4f8',
+  darkText: '#1e293b',
+  secondaryText: '#424b57',
+  accent: '#4a475c',
+  white: '#ffffff',
+};
+
+const collections = [
+  { title: 'Legendary Pulls', count: '18 cards', accent: '#4a475c' },
+  { title: 'Starter Binder', count: '42 cards', accent: '#6f7284' },
+  { title: 'Vault of Rares', count: '9 cards', accent: '#2f3642' },
+  { title: 'Favorite Set', count: '31 cards', accent: '#5b5d76' },
+];
 
 export default function CollectionsScreen() {
   return (
-    <View style={styles.container}>
-      <Text>Collections Screen</Text>
-    </View>
+    <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
+      <Text style={styles.pageTitle}>Collections</Text>
+      {collections.map((item) => (
+        <View key={item.title} style={styles.card}>
+          <View style={[styles.badge, { backgroundColor: item.accent }]} />
+          <View style={styles.textWrap}>
+            <Text style={styles.title}>{item.title}</Text>
+            <Text style={styles.count}>{item.count}</Text>
+          </View>
+        </View>
+      ))}
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  screen: {
     flex: 1,
-    justifyContent: 'center',
+    backgroundColor: palette.background,
+  },
+  content: {
+    paddingHorizontal: 20,
+    paddingTop: 52,
+    paddingBottom: 30,
+  },
+  pageTitle: {
+    fontSize: 32,
+    fontWeight: '700',
+    color: palette.darkText,
+    marginBottom: 22,
+    letterSpacing: 0.2,
+  },
+  card: {
+    backgroundColor: palette.white,
+    borderRadius: 18,
+    padding: 18,
+    marginBottom: 16,
+    flexDirection: 'row',
     alignItems: 'center',
+    shadowColor: '#000',
+    shadowOpacity: 0.04,
+    shadowRadius: 10,
+    shadowOffset: { width: 0, height: 3 },
+  },
+  badge: {
+    width: 56,
+    height: 56,
+    borderRadius: 14,
+    marginRight: 14,
+  },
+  textWrap: {
+    flex: 1,
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: '700',
+    color: palette.darkText,
+    marginBottom: 4,
+  },
+  count: {
+    color: palette.secondaryText,
+    fontSize: 14,
+    fontWeight: '500',
   },
 });

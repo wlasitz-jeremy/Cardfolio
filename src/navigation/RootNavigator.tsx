@@ -1,13 +1,21 @@
 import { NavigationContainer } from '@react-navigation/native';
-import TabNavigator from './TabNavigator';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 import AuthNavigator from './AuthNavigator';
+import TabNavigator from './TabNavigator';
+
+const Stack = createNativeStackNavigator();
 
 export default function RootNavigator() {
-  const isLoggedIn = false; // replace with real auth later
-
   return (
     <NavigationContainer>
-      {isLoggedIn ? <TabNavigator /> : <AuthNavigator />}
+      <Stack.Navigator
+        initialRouteName="Auth"
+        screenOptions={{ headerShown: false }}
+      >
+        <Stack.Screen name="Auth" component={AuthNavigator} />
+        <Stack.Screen name="MainApp" component={TabNavigator} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
