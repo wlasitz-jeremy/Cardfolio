@@ -1,7 +1,12 @@
-import { BookOpen, Camera, House, Search } from 'lucide-react-native';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { SvgUri } from 'react-native-svg';
 
 import { palette } from '../../theme/colors';
+
+const homeIconAsset = 'https://www.figma.com/api/mcp/asset/cb8466f7-1d75-4550-93a2-f41b2855ddbf.svg';
+const scannerIconAsset = 'https://www.figma.com/api/mcp/asset/d2b932f4-ac7d-4f3b-b8ef-b51010c3df12.svg';
+const searchIconAsset = 'https://www.figma.com/api/mcp/asset/6a6f4590-85fa-469c-8fab-5f1525e47d43.svg';
+const collectionsIconAsset = 'https://www.figma.com/api/mcp/asset/65e9a564-e597-4d89-85ed-d8e47c2eb535.svg';
 
 type BottomTabBarProps = {
   navigation: any;
@@ -9,7 +14,6 @@ type BottomTabBarProps = {
 };
 
 export default function BottomTabBar({ navigation, activeTab }: BottomTabBarProps) {
-  const iconColor = palette.darkText;
   const isNestedFlow = navigation.getState?.().type !== 'tab';
   const navigateToTab = (route: string) => {
     if (isNestedFlow) {
@@ -34,7 +38,7 @@ export default function BottomTabBar({ navigation, activeTab }: BottomTabBarProp
         onPress={() => navigateToTab('Home')}
         style={styles.navButton}
       >
-        <House size={30} color={iconColor} strokeWidth={1.8} />
+        <SvgUri accessibilityElementsHidden uri={homeIconAsset} width={30} height={30} />
       </TouchableOpacity>
       <TouchableOpacity
         accessibilityLabel="Card Scanner"
@@ -48,7 +52,7 @@ export default function BottomTabBar({ navigation, activeTab }: BottomTabBarProp
         }}
         style={styles.navButton}
       >
-        <Camera size={30} color={iconColor} strokeWidth={1.8} />
+        <SvgUri accessibilityElementsHidden uri={scannerIconAsset} width={30} height={30} />
       </TouchableOpacity>
       <TouchableOpacity
         accessibilityLabel="Search"
@@ -56,7 +60,7 @@ export default function BottomTabBar({ navigation, activeTab }: BottomTabBarProp
         onPress={() => (isNestedFlow ? navigation.getParent?.()?.navigate('Search') : navigation.navigate('Search'))}
         style={styles.navButton}
       >
-        <Search size={31} color={iconColor} strokeWidth={1.8} />
+        <SvgUri accessibilityElementsHidden uri={searchIconAsset} width={30} height={30} />
       </TouchableOpacity>
       <TouchableOpacity
         accessibilityLabel="Collections"
@@ -65,7 +69,7 @@ export default function BottomTabBar({ navigation, activeTab }: BottomTabBarProp
         onPress={() => navigateToTab('Collections')}
         style={styles.navButton}
       >
-        <BookOpen size={30} color={iconColor} strokeWidth={1.8} />
+        <SvgUri accessibilityElementsHidden uri={collectionsIconAsset} width={30} height={30} />
       </TouchableOpacity>
     </View>
   );
@@ -74,19 +78,19 @@ export default function BottomTabBar({ navigation, activeTab }: BottomTabBarProp
 const styles = StyleSheet.create({
   bottomBar: {
     position: 'absolute',
-    left: 28,
-    right: 28,
-    bottom: 20,
-    height: 84,
+    left: 25,
+    right: 25,
+    bottom: 52,
+    height: 80,
     borderWidth: 1.5,
     borderColor: palette.darkText,
-    borderRadius: 16,
-    backgroundColor: '#e3e1f4',
+    borderRadius: 12,
+    backgroundColor: '#e2e1f4',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-around',
     shadowColor: palette.darkText,
-    shadowOpacity: 0.22,
+    shadowOpacity: 0.3,
     shadowRadius: 0,
     shadowOffset: { width: 0, height: 4 },
   },

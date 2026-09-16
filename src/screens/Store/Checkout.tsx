@@ -16,7 +16,7 @@ export default function CheckoutScreen({ navigation }: any) {
         <FormField label="Shipping Address" />
       </View>
 
-      <PrimaryButton label="Place Order" style={styles.placeOrderButton} onPress={() => navigation.popToTop()} />
+      <PrimaryButton label="Place Order" style={styles.placeOrderButton} onPress={() => navigation.navigate('Thanks')} />
     </View>
   );
 }

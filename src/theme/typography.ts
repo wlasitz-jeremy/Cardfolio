@@ -11,120 +11,124 @@ export const fontSizes = {
 } as const;
 
 export const fontFamilies = {
+  display: 'Oswald',
+  interface: 'Oswald',
+
+  // Compatibility aliases for existing screen styles.
   heading: 'Oswald',
   body: 'Oswald',
 } as const;
 
 export const typography = {
-  // Welcome Screen
-  display: {
-    fontFamily: fontFamilies.heading,
+  // Welcome and authentication artwork screens
+  welcomeDisplay: {
+    fontFamily: fontFamilies.display,
     fontSize: fontSizes.display,
     fontWeight: '700',
     lineHeight: 72,
   },
 
-  heroTitle: {
-    fontFamily: fontFamilies.heading,
+  welcomeTitle: {
+    fontFamily: fontFamilies.display,
     fontSize: fontSizes.hero,
     fontWeight: '700',
     lineHeight: 56,
   },
 
-  // Screen Titles
-  pageTitle: {
-    fontFamily: fontFamilies.heading,
+  // Primary titles from screen headers
+  screenTitle: {
+    fontFamily: fontFamilies.display,
     fontSize: fontSizes.xxxl,
     fontWeight: '700',
     lineHeight: 40,
   },
 
-  // Blog Cards, Store Cards, Collection Sections
+  // Section headings such as Popular Searches and Collection Progress
   sectionTitle: {
-    fontFamily: fontFamilies.heading,
+    fontFamily: fontFamilies.display,
     fontSize: fontSizes.xxl,
     fontWeight: '600',
     lineHeight: 32,
   },
 
-  // Collection Names, Product Names, Post Titles
+  // Card, product, article, and post titles
   cardTitle: {
-    fontFamily: fontFamilies.heading,
+    fontFamily: fontFamilies.display,
     fontSize: fontSizes.xl,
     fontWeight: '600',
     lineHeight: 28,
   },
 
-  // Buttons
-  button: {
-    fontFamily: fontFamilies.heading,
+  // Primary and secondary action labels
+  actionLabel: {
+    fontFamily: fontFamilies.display,
     fontSize: fontSizes.lg,
     fontWeight: '600',
     lineHeight: 24,
   },
 
-  buttonLarge: {
-    fontFamily: fontFamilies.heading,
+  actionLabelLarge: {
+    fontFamily: fontFamilies.display,
     fontSize: fontSizes.xl,
     fontWeight: '700',
     lineHeight: 28,
   },
 
-  // Forms
-  label: {
-    fontFamily: fontFamilies.body,
+  // Form labels and field values
+  formLabel: {
+    fontFamily: fontFamilies.interface,
     fontSize: fontSizes.md,
     fontWeight: '500',
     lineHeight: 24,
   },
 
-  input: {
-    fontFamily: fontFamilies.body,
+  formInput: {
+    fontFamily: fontFamilies.interface,
     fontSize: fontSizes.md,
     fontWeight: '400',
     lineHeight: 24,
   },
 
-  // Main Content
-  body: {
-    fontFamily: fontFamilies.body,
+  // Descriptive screen content
+  bodyText: {
+    fontFamily: fontFamilies.interface,
     fontSize: fontSizes.md,
     fontWeight: '400',
     lineHeight: 24,
   },
 
-  bodyLarge: {
-    fontFamily: fontFamilies.body,
+  bodyTextLarge: {
+    fontFamily: fontFamilies.interface,
     fontSize: fontSizes.lg,
     fontWeight: '400',
     lineHeight: 28,
   },
 
-  bodySmall: {
-    fontFamily: fontFamilies.body,
+  helperText: {
+    fontFamily: fontFamilies.interface,
     fontSize: fontSizes.sm,
     fontWeight: '400',
     lineHeight: 20,
   },
 
-  // Search Filters, Tabs, Menu Items
-  navLabel: {
-    fontFamily: fontFamilies.body,
+  // Search filters, tabs, and menu items
+  navigationLabel: {
+    fontFamily: fontFamilies.interface,
     fontSize: fontSizes.md,
     fontWeight: '500',
     lineHeight: 24,
   },
 
-  // Likes, Views, Comments, Counts
-  meta: {
-    fontFamily: fontFamilies.body,
+  // Counts, timestamps, tags, and supporting metadata
+  metadata: {
+    fontFamily: fontFamilies.interface,
     fontSize: fontSizes.xs,
     fontWeight: '400',
     lineHeight: 16,
   },
 
   caption: {
-    fontFamily: fontFamilies.body,
+    fontFamily: fontFamilies.interface,
     fontSize: fontSizes.xs,
     fontWeight: '500',
     lineHeight: 16,

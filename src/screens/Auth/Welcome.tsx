@@ -33,7 +33,7 @@ export default function WelcomeScreen({ navigation }: WelcomeScreenProps) {
           </View>
           <View style={[styles.cardShape, styles.cardFront]}>
             <View style={styles.frontLine} />
-            <Image style={styles.cardfolioLogo} source={require('../../assets/cardfolio-logo.png')}/>
+            <Image style={styles.cardfolioLogo} source={require('../../assets/cardfolio-logo.png')} />
             <View style={styles.frontLine} />
           </View>
         </View>
@@ -81,35 +81,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 28,
     paddingTop: 24,
     paddingBottom: 22,
-  },
-  topRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  logo: {
-    color: palette.darkText,
-    fontFamily: fontFamilies.heading,
-    fontSize: 26,
-    fontWeight: '700',
-    letterSpacing: 0.5,
-  },
-  logoMark: {
-    width: 36,
-    height: 36,
-    borderRadius: 12,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: palette.accent,
-    transform: [{ rotate: '8deg' }],
-  },
-  logoMarkInner: {
-    width: 14,
-    height: 14,
-    borderWidth: 2,
-    borderColor: palette.white,
-    borderRadius: 4,
-    transform: [{ rotate: '-8deg' }],
   },
   welcomeArtwork: {
     height: 260,
@@ -161,12 +132,6 @@ const styles = StyleSheet.create({
     opacity: 0.7,
     alignSelf: 'center',
     marginTop: 52,
-  },
-  frontGlyph: {
-    color: palette.white,
-    fontSize: 64,
-    lineHeight: 76,
-    fontWeight: '300',
   },
   frontLine: {
     width: '54%',
@@ -223,13 +188,6 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: '700',
     letterSpacing: 1,
-  },
-  primaryButtonArrow: {
-    color: palette.white,
-    fontSize: 24,
-    lineHeight: 24,
-    marginLeft: 12,
-    marginTop: -2,
   },
   loginButton: {
     minHeight: 50,

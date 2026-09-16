@@ -24,7 +24,7 @@ type CreateAccountScreenProps = NativeStackScreenProps<RootStackParamList, 'Crea
 
 export default function CreateAccountScreen({ navigation }: CreateAccountScreenProps) {
   const [rememberMe, setRememberMe] = useState(true);
-  const [termsAccepted, setTermsAccepted] = useState(false);
+  const [termsAccepted, setTermsAccepted] = useState(true);
 
   return (
     <SafeAreaView style={styles.createAccountSafeArea}>
@@ -44,7 +44,7 @@ export default function CreateAccountScreen({ navigation }: CreateAccountScreenP
             placeholderTextColor={palette.secondaryText}
           />
 
-          <Text style={styles.fieldLabel}>Email</Text>
+          <Text style={styles.fieldLabel}>Email Address</Text>
           <TextInput
             style={styles.accountInput}
             autoCapitalize="none"
@@ -64,42 +64,34 @@ export default function CreateAccountScreen({ navigation }: CreateAccountScreenP
             placeholderTextColor={palette.secondaryText}
           />
 
-          <Text style={styles.fieldLabel}>Confirm Password</Text>
-          <TextInput
-            style={styles.accountInput}
-            secureTextEntry
-            autoCapitalize="none"
-            autoCorrect={false}
-            placeholder=""
-            placeholderTextColor={palette.secondaryText}
-          />
-
-          <Text style={styles.dateOfBirthLabel}>Date of Birth</Text>
-          <View style={styles.dateOfBirthFields}>
-            <TextInput
-              accessibilityLabel="Birth day"
-              style={styles.dateOfBirthInput}
-              keyboardType="number-pad"
-              maxLength={2}
-              placeholder="Day"
-              placeholderTextColor={palette.secondaryText}
-            />
-            <TextInput
-              accessibilityLabel="Birth month"
-              style={styles.dateOfBirthInput}
-              keyboardType="number-pad"
-              maxLength={2}
-              placeholder="Month"
-              placeholderTextColor={palette.secondaryText}
-            />
-            <TextInput
-              accessibilityLabel="Birth year"
-              style={styles.dateOfBirthInput}
-              keyboardType="number-pad"
-              maxLength={4}
-              placeholder="Year"
-              placeholderTextColor={palette.secondaryText}
-            />
+          <View style={styles.ageRow}>
+            <Text style={styles.ageLabel}>Age</Text>
+            <View style={styles.dateOfBirthFields}>
+              <TextInput
+                accessibilityLabel="Age day"
+                style={styles.dateOfBirthInput}
+                keyboardType="number-pad"
+                maxLength={2}
+                placeholder="dd"
+                placeholderTextColor={palette.secondaryText}
+              />
+              <TextInput
+                accessibilityLabel="Age month"
+                style={styles.dateOfBirthInput}
+                keyboardType="number-pad"
+                maxLength={2}
+                placeholder="mm"
+                placeholderTextColor={palette.secondaryText}
+              />
+              <TextInput
+                accessibilityLabel="Age year"
+                style={styles.dateOfBirthInput}
+                keyboardType="number-pad"
+                maxLength={4}
+                placeholder="yyyy"
+                placeholderTextColor={palette.secondaryText}
+              />
+            </View>
           </View>
 
           <View style={styles.accountOptions}>
@@ -111,7 +103,7 @@ export default function CreateAccountScreen({ navigation }: CreateAccountScreenP
               onPress={() => setRememberMe((value) => !value)}
               style={({ pressed }) => [styles.accountOptionRow, pressed && styles.accountOptionPressed]}
             >
-              <View style={[styles.accountCheckbox, rememberMe && styles.checkedAccountCheckbox]}>
+              <View style={[styles.accountCheckbox, rememberMe ? styles.checkedCheckbox : styles.uncheckedCheckbox]}>
                 {rememberMe ? <Text style={styles.accountCheckboxMark}>✓</Text> : null}
               </View>
               <Text style={styles.accountOptionText}>Remember Me</Text>
@@ -125,12 +117,10 @@ export default function CreateAccountScreen({ navigation }: CreateAccountScreenP
               onPress={() => setTermsAccepted((value) => !value)}
               style={({ pressed }) => [styles.accountOptionRow, pressed && styles.accountOptionPressed]}
             >
-              <View style={[styles.accountCheckbox, termsAccepted && styles.checkedAccountCheckbox]}>
+              <View style={[styles.accountCheckbox, termsAccepted ? styles.checkedCheckbox : styles.uncheckedCheckbox]}>
                 {termsAccepted ? <Text style={styles.accountCheckboxMark}>✓</Text> : null}
               </View>
-              <Text style={styles.accountOptionText}>
-                I agree to the <Text style={styles.termsAction}>Terms and Conditions</Text>
-              </Text>
+              <Text style={styles.accountOptionText}>Terms &amp; Conditions</Text>
             </Pressable>
 
           </View>
@@ -209,26 +199,37 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: palette.darkText,
   },
-  dateOfBirthLabel: {
+  ageRow: {
     width: 300,
+    flexDirection: 'row',
+    alignItems: 'center',
     marginTop: 2,
-    marginBottom: 10,
+    marginBottom: 18,
+  },
+  ageLabel: {
+    width: 70,
+    color: palette.darkText,
+    fontSize: 24,
+    fontWeight: '700',
+    fontFamily: fontFamilies.heading,
+  },
+  dateOfBirthLabel: {
     color: palette.darkText,
     fontSize: 20,
     fontWeight: '700',
     fontFamily: fontFamilies.heading,
   },
   dateOfBirthFields: {
-    width: 300,
+    flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 8,
   },
   dateOfBirthInput: {
-    width: 92,
-    height: 54,
+    width: 72,
+    height: 38,
     borderWidth: 2,
-    borderColor: palette.inputStroke,
+    borderColor: palette.secondaryText,
+    borderRadius: 5,
     backgroundColor: palette.white,
     paddingHorizontal: 10,
     fontSize: 16,
@@ -238,8 +239,11 @@ const styles = StyleSheet.create({
   },
   accountOptions: {
     width: 300,
-    gap: 14,
-    marginTop: 4,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 0,
+    marginBottom: 4,
   },
   accountOptionRow: {
     flexDirection: 'row',
@@ -252,24 +256,28 @@ const styles = StyleSheet.create({
   accountCheckbox: {
     width: 20,
     height: 20,
-    marginRight: 8,
-    borderWidth: 1.5,
-    borderColor: palette.darkText,
+    marginRight: 4,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  checkedAccountCheckbox: {
+  uncheckedCheckbox: {
+    borderWidth: 1.5,
+    borderColor: palette.darkText,
+    borderRadius: 4,
+  },
+  checkedCheckbox: {
     backgroundColor: palette.accent,
+    borderWidth: 1.5,
     borderColor: palette.accent,
+    borderRadius: 4,
   },
   accountCheckboxMark: {
     color: palette.white,
-    fontSize: 15,
+    fontSize: 16,
     fontWeight: '700',
-    lineHeight: 18,
+    lineHeight: 19,
   },
   accountOptionText: {
-    flex: 1,
     color: palette.darkText,
     fontSize: 14,
     fontWeight: '700',
@@ -282,11 +290,12 @@ const styles = StyleSheet.create({
   createAccountSubmitButton: {
     width: 280,
     height: 60,
+    alignSelf: 'center',
     backgroundColor: palette.accent,
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 20,
+    marginTop: 8,
   },
   createAccountSubmitText: {
     color: palette.background,

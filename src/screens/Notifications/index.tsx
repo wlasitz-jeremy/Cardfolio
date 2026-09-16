@@ -1,87 +1,43 @@
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { SvgUri } from 'react-native-svg';
+
+import InlineScreenHeader from '../../components/InlineScreenHeader/InlineScreenHeader';
+import BottomTabBar from '../../components/BottomTabBar/BottomTabBar';
 import { palette } from '../../theme/colors';
 import { fontFamilies } from '../../theme/typography';
-import InlineScreenHeader from '../../components/InlineScreenHeader/InlineScreenHeader';
 
+const notificationIcon = 'https://www.figma.com/api/mcp/asset/6baa00e8-7a35-480d-8180-615c7ff14a9d.svg';
 const notifications = [
-  { text: 'New drop from your favorite set', time: '2h ago' },
-  { text: 'A trade request is waiting for you', time: 'Today' },
-  { text: 'Your collection was updated', time: 'Yesterday' },
+  'System Update',
+  'Price Alert',
+  'Card Acquired (Gandalf)',
+  'Chat from Cardfolio',
+  'Card Acquired (Bilbo Baggins)',
+  'Price Alert',
+  'Chat from TCG-User',
+  'System Update',
 ];
 
 export default function NotificationsScreen({ navigation }: any) {
   return (
     <View style={styles.notificationsScreen}>
-      <ScrollView contentContainerStyle={styles.notificationsContent}>
       <InlineScreenHeader navigation={navigation} title="Notifications" />
-
-      {notifications.map((notification) => (
-        <View key={notification.text} style={styles.notificationItem}>
-          <View style={styles.notificationIndicator} />
-          <View style={styles.notificationContent}>
-            <Text style={styles.notificationMessage}>{notification.text}</Text>
-            <Text style={styles.notificationTime}>{notification.time}</Text>
+      <ScrollView contentContainerStyle={styles.notificationsList}>
+        {notifications.map((notification) => (
+          <View key={notification} style={styles.notificationRow}>
+            <SvgUri accessibilityElementsHidden uri={notificationIcon} width={50} height={50} />
+            <Text style={styles.notificationText}>{notification}</Text>
           </View>
-        </View>
-      ))}
+        ))}
       </ScrollView>
+      <BottomTabBar navigation={navigation} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  notificationsScreen: {
-    flex: 1,
-    backgroundColor: palette.background,
-  },
-  notificationsContent: {
-    paddingHorizontal: 20,
-    paddingTop: 20,
-    paddingBottom: 30,
-  },
-  pageTitle: {
-    fontSize: 32,
-    fontWeight: '700',
-    color: palette.darkText,
-    marginBottom: 18,
-    letterSpacing: -0.5,
-  },
-  notificationItem: {
-    backgroundColor: palette.panel,
-    borderRadius: 16,
-    padding: 16,
-    marginBottom: 12,
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderWidth: 1,
-    borderColor: palette.border,
-    shadowColor: '#0f172a',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.05,
-    shadowRadius: 8,
-    elevation: 1,
-  },
-  notificationIndicator: {
-    width: 10,
-    height: 10,
-    borderRadius: 999,
-    backgroundColor: palette.accent,
-    marginRight: 12,
-  },
-  notificationContent: {
-    flex: 1,
-  },
-  notificationMessage: {
-    color: palette.darkText,
-    fontSize: 16,
-    fontWeight: '700',
-    marginBottom: 4,
-  },
-  notificationTime: {
-    color: palette.secondaryText,
-    fontSize: 12,
-    fontWeight: '600',
-    letterSpacing: 0.5,
-    textTransform: 'uppercase',
-  },
+  notificationsScreen: { flex: 1, backgroundColor: palette.background, paddingHorizontal: 20, paddingTop: 20 },
+  notificationsList: { paddingHorizontal: 15, paddingTop: 28, paddingBottom: 120, gap: 16 },
+  notificationRow: { minHeight: 50, flexDirection: 'row', alignItems: 'center' },
+  notificationText: { color: palette.darkText, fontFamily: fontFamilies.heading, fontSize: 18, marginLeft: 10 },
 });
