@@ -2,7 +2,7 @@ import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-nati
 import { palette } from '../../theme/colors';
 import { fontFamilies } from '../../theme/typography';
 import BottomTabBar from '../../components/BottomTabBar/BottomTabBar';
-import InlineScreenHeader from '../../components/InlineScreenHeader/InlineScreenHeader';
+import NavHeader from '../../components/NavHeader/NavHeader';
 
 const cardfolioCards = [
   { name: 'Eclipse King', set: 'Mythic Rare', value: '1.4k' },
@@ -13,8 +13,8 @@ const cardfolioCards = [
 export default function CardfolioScreen({ navigation }: any) {
   return (
     <View style={styles.cardfolioScreen}>
+      <NavHeader navigation={navigation} title="My Cardfolio" />
       <ScrollView contentContainerStyle={styles.cardfolioContent}>
-      <InlineScreenHeader navigation={navigation} title="My Cardfolio" />
       <View style={styles.collectionSummary}>
         <Text style={styles.summaryValue}>238</Text>
         <Text style={styles.summaryLabel}>Cards in collection</Text>
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   },
   cardfolioContent: {
     paddingHorizontal: 20,
-    paddingTop: 20,
+    paddingTop: 0,
     paddingBottom: 128,
   },
   pageTitle: {

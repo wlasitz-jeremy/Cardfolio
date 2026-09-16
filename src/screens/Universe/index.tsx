@@ -1,7 +1,7 @@
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { palette } from '../../theme/colors';
 import { fontFamilies } from '../../theme/typography';
-import InlineScreenHeader from '../../components/InlineScreenHeader/InlineScreenHeader';
+import NavHeader from '../../components/NavHeader/NavHeader';
 
 const universeEntries = [
   { name: 'Celestial Forge', tag: 'Mythic', tone: '#dfe7f8' },
@@ -12,9 +12,8 @@ const universeEntries = [
 export default function UniverseScreen({ navigation }: any) {
   return (
     <View style={styles.universeScreen}>
+      <NavHeader navigation={navigation} title="Universe" />
       <ScrollView contentContainerStyle={styles.universeContent}>
-      <InlineScreenHeader navigation={navigation} title="Universe" />
-
       {universeEntries.map((entry) => (
         <View key={entry.name} style={styles.universeEntry}>
           <View style={[styles.universeArtwork, { backgroundColor: entry.tone }]} />
@@ -38,7 +37,7 @@ const styles = StyleSheet.create({
   },
   universeContent: {
     paddingHorizontal: 20,
-    paddingTop: 20,
+    paddingTop: 0,
     paddingBottom: 128,
   },
   pageTitle: {

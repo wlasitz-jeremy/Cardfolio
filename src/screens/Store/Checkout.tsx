@@ -1,15 +1,16 @@
 import { StyleSheet, View } from 'react-native';
 import { palette } from '../../theme/colors';
 import { fontFamilies } from '../../theme/typography';
-import InlineScreenHeader from '../../components/InlineScreenHeader/InlineScreenHeader';
+import NavHeader from '../../components/NavHeader/NavHeader';
 import FormField from '../../components/FormField/FormField';
 import PrimaryButton from '../../components/Button/PrimaryButton';
 
 export default function CheckoutScreen({ navigation }: any) {
   return (
     <View style={styles.checkoutScreen}>
-      <InlineScreenHeader navigation={navigation} title="Checkout" />
+      <NavHeader navigation={navigation} title="Checkout" />
 
+      <View style={styles.checkoutBody}>
       <View style={styles.checkoutForm}>
         <FormField label="Cardholder Name" />
         <FormField label="Card Number" keyboardType="numeric" />
@@ -17,6 +18,7 @@ export default function CheckoutScreen({ navigation }: any) {
       </View>
 
       <PrimaryButton label="Place Order" style={styles.placeOrderButton} onPress={() => navigation.navigate('Thanks')} />
+      </View>
     </View>
   );
 }
@@ -25,6 +27,9 @@ const styles = StyleSheet.create({
   checkoutScreen: {
     flex: 1,
     backgroundColor: palette.background,
+  },
+  checkoutBody: {
+    flex: 1,
     paddingHorizontal: 20,
     paddingTop: 20,
   },

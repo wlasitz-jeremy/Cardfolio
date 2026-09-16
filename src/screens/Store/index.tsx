@@ -2,7 +2,7 @@ import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-nati
 import { palette } from '../../theme/colors';
 import { fontFamilies } from '../../theme/typography';
 import BottomTabBar from '../../components/BottomTabBar/BottomTabBar';
-import InlineScreenHeader from '../../components/InlineScreenHeader/InlineScreenHeader';
+import NavHeader from '../../components/NavHeader/NavHeader';
 
 const storeProducts = [
   { name: 'Premium Sleeves', price: '$18.00', tone: '#dfe7f8' },
@@ -13,9 +13,8 @@ const storeProducts = [
 export default function StoreScreen({ navigation }: any) {
   return (
     <View style={styles.storeScreen}>
+      <NavHeader navigation={navigation} title="Store" />
       <ScrollView contentContainerStyle={styles.storeContent}>
-        <InlineScreenHeader navigation={navigation} title="Store" />
-
         {storeProducts.map((product) => (
           <TouchableOpacity key={product.name} onPress={() => navigation.navigate('Cart')}>
             <View style={styles.productTile}>
@@ -43,7 +42,7 @@ const styles = StyleSheet.create({
   },
   storeContent: {
     paddingHorizontal: 20,
-    paddingTop: 20,
+    paddingTop: 0,
     paddingBottom: 128,
   },
   pageTitle: {

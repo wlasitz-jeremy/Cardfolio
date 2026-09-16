@@ -3,7 +3,7 @@ import { Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View 
 import { Search } from 'lucide-react-native';
 
 import BottomTabBar from '../../components/BottomTabBar/BottomTabBar';
-import HamburgerMenu from '../../components/HamburgerMenu/HamburgerMenu';
+import NavHeader from '../../components/NavHeader/NavHeader';
 import { palette } from '../../theme/colors';
 import { fontFamilies } from '../../theme/typography';
 
@@ -22,10 +22,7 @@ export default function ExploreScreen({ navigation }: any) {
 
   return (
     <View style={styles.exploreScreen}>
-      <View style={styles.exploreHeader}>
-        <HamburgerMenu navigation={navigation} inline />
-        <Text style={styles.exploreTitle}>Explore</Text>
-      </View>
+      <NavHeader navigation={navigation} title="Explore" />
       <View style={styles.exploreSearch}>
         <Search size={24} color={palette.darkText} />
         <TextInput value={query} onChangeText={setQuery} placeholder="Universal Search" placeholderTextColor={palette.secondaryText} style={styles.exploreSearchInput} />
@@ -44,9 +41,7 @@ export default function ExploreScreen({ navigation }: any) {
 }
 
 const styles = StyleSheet.create({
-  exploreScreen: { flex: 1, backgroundColor: palette.background, paddingTop: 38 },
-  exploreHeader: { height: 60, marginHorizontal: 25, flexDirection: 'row', alignItems: 'center', gap: 18 },
-  exploreTitle: { color: palette.darkText, fontFamily: fontFamilies.heading, fontSize: 32, fontWeight: '700' },
+  exploreScreen: { flex: 1, backgroundColor: palette.background },
   exploreSearch: { width: 260, height: 30, borderWidth: 2, borderColor: palette.darkText, borderRadius: 20, backgroundColor: palette.white, alignSelf: 'center', flexDirection: 'row', alignItems: 'center', paddingHorizontal: 10, marginTop: 20 },
   exploreSearchInput: { flex: 1, marginLeft: 6, color: palette.darkText, fontFamily: fontFamilies.body, fontSize: 12 },
   exploreGrid: { paddingHorizontal: 16, paddingTop: 28, paddingBottom: 120, flexDirection: 'row', flexWrap: 'wrap', gap: 20 },

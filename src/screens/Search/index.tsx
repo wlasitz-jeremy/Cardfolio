@@ -2,7 +2,7 @@ import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 
 import { palette } from '../../theme/colors';
 import { fontFamilies } from '../../theme/typography';
 import BottomTabBar from '../../components/BottomTabBar/BottomTabBar';
-import InlineScreenHeader from '../../components/InlineScreenHeader/InlineScreenHeader';
+import NavHeader from '../../components/NavHeader/NavHeader';
 
 const searchResults = [
   { title: 'Legendary foil pull', tag: 'Collectors' },
@@ -14,9 +14,8 @@ const searchResults = [
 export default function SearchScreen({ navigation }: any) {
   return (
     <View style={styles.searchScreen}>
+      <NavHeader navigation={navigation} title="Search" />
       <ScrollView contentContainerStyle={styles.searchContent}>
-        <InlineScreenHeader navigation={navigation} title="Search" />
-
         <View style={styles.searchInputContainer}>
           <TextInput
             placeholder="Search CardFolio"
@@ -54,7 +53,7 @@ const styles = StyleSheet.create({
   },
   searchContent: {
     paddingHorizontal: 20,
-    paddingTop: 20,
+    paddingTop: 0,
     paddingBottom: 128,
   },
   pageTitle: {

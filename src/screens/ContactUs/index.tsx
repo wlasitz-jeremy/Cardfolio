@@ -1,15 +1,16 @@
 import { StyleSheet, View } from 'react-native';
 import { palette } from '../../theme/colors';
 import { fontFamilies } from '../../theme/typography';
-import InlineScreenHeader from '../../components/InlineScreenHeader/InlineScreenHeader';
+import NavHeader from '../../components/NavHeader/NavHeader';
 import FormField from '../../components/FormField/FormField';
 import PrimaryButton from '../../components/Button/PrimaryButton';
 
 export default function ContactUsScreen({ navigation }: any) {
   return (
     <View style={styles.contactScreen}>
-      <InlineScreenHeader navigation={navigation} title="Contact Us" />
+      <NavHeader navigation={navigation} title="Contact Us" />
 
+      <View style={styles.contactBody}>
       <View style={styles.contactForm}>
         <FormField label="Name" />
         <FormField label="Email" keyboardType="email-address" />
@@ -17,6 +18,7 @@ export default function ContactUsScreen({ navigation }: any) {
       </View>
 
       <PrimaryButton label="Send" style={styles.sendButton} />
+      </View>
     </View>
   );
 }
@@ -25,6 +27,9 @@ const styles = StyleSheet.create({
   contactScreen: {
     flex: 1,
     backgroundColor: palette.background,
+  },
+  contactBody: {
+    flex: 1,
     paddingHorizontal: 20,
     paddingTop: 20,
   },

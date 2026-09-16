@@ -1,6 +1,6 @@
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 
-import InlineScreenHeader from '../../components/InlineScreenHeader/InlineScreenHeader';
+import NavHeader from '../../components/NavHeader/NavHeader';
 import BottomTabBar from '../../components/BottomTabBar/BottomTabBar';
 import { palette } from '../../theme/colors';
 import { fontFamilies } from '../../theme/typography';
@@ -17,7 +17,8 @@ const stores = [
 export default function LocationScreen({ navigation }: any) {
   return (
     <View style={styles.locationScreen}>
-      <InlineScreenHeader navigation={navigation} title="Location" />
+      <NavHeader navigation={navigation} title="Location" />
+      <View style={styles.locationBody}>
       <Image source={locationImageAsset} style={styles.locationImage} />
       <ScrollView contentContainerStyle={styles.storeList}>
         {stores.map(([name, description]) => (
@@ -27,13 +28,15 @@ export default function LocationScreen({ navigation }: any) {
           </View>
         ))}
       </ScrollView>
+      </View>
       <BottomTabBar navigation={navigation} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  locationScreen: { flex: 1, backgroundColor: palette.background, paddingHorizontal: 20, paddingTop: 20 },
+  locationScreen: { flex: 1, backgroundColor: palette.background },
+  locationBody: { flex: 1, paddingHorizontal: 20, paddingTop: 20 },
   locationImage: { width: 300, height: 200, alignSelf: 'center', marginTop: 32, borderRadius: 10 },
   storeList: { paddingHorizontal: 5, paddingTop: 26, paddingBottom: 120, gap: 22 },
   storeEntry: { minHeight: 180 },

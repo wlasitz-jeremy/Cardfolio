@@ -1,14 +1,15 @@
 import { StyleSheet, Text, View } from 'react-native';
 
 import BottomTabBar from '../../components/BottomTabBar/BottomTabBar';
-import InlineScreenHeader from '../../components/InlineScreenHeader/InlineScreenHeader';
+import NavHeader from '../../components/NavHeader/NavHeader';
 import { palette } from '../../theme/colors';
 import { fontFamilies } from '../../theme/typography';
 
 export default function ThanksScreen({ navigation }: any) {
   return (
     <View style={styles.thanksScreen}>
-      <InlineScreenHeader navigation={navigation} title="" />
+      <NavHeader navigation={navigation} title="" />
+      <View style={styles.thanksBody}>
       <Text style={styles.thanksTitle}>Thank-You Smeagol for Ordering with Cardfolio</Text>
       <View style={styles.orderSummary}>
         <Text>Items: .............................................................. $782.74</Text>
@@ -24,13 +25,15 @@ export default function ThanksScreen({ navigation }: any) {
         <Text>Order Confirmation Number:</Text>
         <Text>893hgf939fhwh29cbd23894fc</Text>
       </View>
+      </View>
       <BottomTabBar navigation={navigation} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  thanksScreen: { flex: 1, backgroundColor: palette.background, paddingHorizontal: 25, paddingTop: 20 },
+  thanksScreen: { flex: 1, backgroundColor: palette.background },
+  thanksBody: { flex: 1, paddingHorizontal: 25, paddingTop: 20 },
   thanksTitle: { color: palette.darkText, fontFamily: fontFamilies.heading, fontSize: 38, lineHeight: 46, textAlign: 'center', marginTop: 20, height: 138 },
   orderSummary: { borderTopWidth: 5, borderBottomWidth: 5, borderColor: '#a7a7a7', paddingVertical: 20, gap: 8, marginTop: 10 },
   deliveryDetails: { borderBottomWidth: 5, borderColor: '#a7a7a7', paddingVertical: 26 },

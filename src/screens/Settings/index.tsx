@@ -2,7 +2,7 @@ import { Image, StyleSheet, Switch, Text, TouchableOpacity, View } from 'react-n
 import { SymbolView } from 'expo-symbols';
 
 import BottomTabBar from '../../components/BottomTabBar/BottomTabBar';
-import InlineScreenHeader from '../../components/InlineScreenHeader/InlineScreenHeader';
+import NavHeader from '../../components/NavHeader/NavHeader';
 import { useTheme } from '../../context/ThemeContext';
 import { palette } from '../../theme/colors';
 import { fontFamilies } from '../../theme/typography';
@@ -20,7 +20,8 @@ export default function SettingsScreen({ navigation }: any) {
 
   return (
     <View style={styles.settingsScreen}>
-      <InlineScreenHeader navigation={navigation} title="Settings" />
+      <NavHeader navigation={navigation} title="Settings" />
+      <View style={styles.settingsBody}>
       <Image source={profileImageAsset} style={styles.settingsAvatar} />
       <View style={styles.settingsList}>
         {settingsItems.map((item) => (
@@ -37,13 +38,15 @@ export default function SettingsScreen({ navigation }: any) {
       <TouchableOpacity style={styles.editSettingsButton}>
         <Text style={styles.editSettingsText}>Edit settings</Text>
       </TouchableOpacity>
+      </View>
       <BottomTabBar navigation={navigation} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  settingsScreen: { flex: 1, backgroundColor: palette.background, paddingHorizontal: 20, paddingTop: 20 },
+  settingsScreen: { flex: 1, backgroundColor: palette.background },
+  settingsBody: { flex: 1, paddingHorizontal: 20, paddingTop: 20 },
   settingsAvatar: { width: 100, height: 100, borderRadius: 10, alignSelf: 'center', marginTop: 32, marginBottom: 20 },
   settingsList: { marginHorizontal: 15, gap: 16 },
   settingsRow: { minHeight: 50, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },

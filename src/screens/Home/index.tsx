@@ -1,8 +1,8 @@
-import { Image, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { SymbolView } from 'expo-symbols';
 
 import BottomTabBar from '../../components/BottomTabBar/BottomTabBar';
-import HamburgerMenu from '../../components/HamburgerMenu/HamburgerMenu';
+import NavHeader from '../../components/NavHeader/NavHeader';
 import { colors, palette } from '../../theme/colors';
 import { fontFamilies } from '../../theme/typography';
 
@@ -34,15 +34,8 @@ export default function HomeScreen({ navigation }: any) {
   const goToRoot = (screen: string) => navigation.getParent()?.navigate(screen);
 
   return (
-    <SafeAreaView style={styles.homeSafeArea}>
-      <View style={styles.homeScreen}>
-        <View style={styles.welcomeHeader}>
-          <View style={styles.menuSlot}><HamburgerMenu navigation={navigation} inline /></View>
-          <Text style={styles.welcomeTitle}>Welcome</Text>
-          <TouchableOpacity accessibilityLabel="Open location" onPress={() => goToRoot('Location')} style={styles.locationButton}>
-            <SymbolView accessibilityElementsHidden name={{ ios: 'mappin.and.ellipse', android: 'location_on', web: 'location_on' }} tintColor={palette.darkText} size={60} />
-          </TouchableOpacity>
-        </View>
+    <View style={styles.homeScreen}>
+      <NavHeader navigation={navigation} title="Welcome" />
 
         <Text style={styles.welcomeGreeting}>Smeagol Reagol Rol kien Tolkien</Text>
 
@@ -78,20 +71,14 @@ export default function HomeScreen({ navigation }: any) {
             </View>
           ))}
         </ScrollView>
-      </View>
       <BottomTabBar navigation={navigation} activeTab="Home" />
-    </SafeAreaView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  homeSafeArea: { flex: 1, backgroundColor: palette.background },
   homeScreen: { flex: 1, backgroundColor: palette.background },
   homeContent: { paddingHorizontal: 20, paddingTop: 0, paddingBottom: 112, gap: 7 },
-  welcomeHeader: { marginHorizontal: 20, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', minHeight: 60, marginTop: 18 },
-  menuSlot: { width: 60, height: 60 },
-  welcomeTitle: { color: palette.darkText, fontFamily: fontFamilies.heading, fontSize: 46, fontWeight: '700', lineHeight: 54, includeFontPadding: false },
-  locationButton: { width: 60, height: 60, alignItems: 'center', justifyContent: 'center' },
   welcomeGreeting: { color: palette.secondaryText, fontFamily: fontFamilies.heading, fontSize: 16, fontWeight: '700', marginTop: 8, marginBottom: 16, marginHorizontal: 20, textAlign: 'center' },
   quickSearch: { flexDirection: 'row', height: 30, marginBottom: 7, marginHorizontal: 45 },
   searchInputContainer: { flex: 1, borderWidth: 2, borderColor: palette.darkText, borderRadius: 20, flexDirection: 'row', alignItems: 'center', paddingLeft: 13, backgroundColor: palette.white },

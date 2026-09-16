@@ -2,7 +2,7 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { palette } from '../../theme/colors';
 import { fontFamilies } from '../../theme/typography';
 import BottomTabBar from '../../components/BottomTabBar/BottomTabBar';
-import InlineScreenHeader from '../../components/InlineScreenHeader/InlineScreenHeader';
+import NavHeader from '../../components/NavHeader/NavHeader';
 
 const blogArticles = [
   { title: 'How to grade your pull', snippet: 'Learn what collectors look for in condition and rarity.' },
@@ -13,8 +13,8 @@ const blogArticles = [
 export default function BlogScreen({ navigation }: any) {
   return (
     <View style={styles.blogScreen}>
+      <NavHeader navigation={navigation} title="Blog" />
       <ScrollView contentContainerStyle={styles.blogContent}>
-      <InlineScreenHeader navigation={navigation} title="Blog" />
       {blogArticles.map((article) => (
         <View key={article.title} style={styles.blogArticleCard}>
           <Text style={styles.articleCategory}>Insights</Text>
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   },
   blogContent: {
     paddingHorizontal: 20,
-    paddingTop: 20,
+    paddingTop: 0,
     paddingBottom: 128,
   },
   pageTitle: {

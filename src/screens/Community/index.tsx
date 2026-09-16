@@ -2,7 +2,7 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { palette } from '../../theme/colors';
 import { fontFamilies } from '../../theme/typography';
 import BottomTabBar from '../../components/BottomTabBar/BottomTabBar';
-import InlineScreenHeader from '../../components/InlineScreenHeader/InlineScreenHeader';
+import NavHeader from '../../components/NavHeader/NavHeader';
 
 const communityPosts = [
   { user: 'Ari', title: 'Trade night wins', body: 'Managed to complete a full foil set this weekend.' },
@@ -13,8 +13,8 @@ const communityPosts = [
 export default function CommunityScreen({ navigation }: any) {
   return (
     <View style={styles.communityScreen}>
+      <NavHeader navigation={navigation} title="Community" />
       <ScrollView contentContainerStyle={styles.communityContent}>
-      <InlineScreenHeader navigation={navigation} title="Community" />
       {communityPosts.map((post) => (
         <View key={post.title} style={styles.communityPostCard}>
           <Text style={styles.postAuthor}>{post.user}</Text>
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   },
   communityContent: {
     paddingHorizontal: 20,
-    paddingTop: 20,
+    paddingTop: 0,
     paddingBottom: 128,
   },
   pageTitle: {

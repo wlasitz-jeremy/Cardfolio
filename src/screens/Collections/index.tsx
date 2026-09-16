@@ -4,7 +4,7 @@ import { Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View 
 import { palette } from '../../theme/colors';
 import { fontFamilies } from '../../theme/typography';
 import BottomTabBar from '../../components/BottomTabBar/BottomTabBar';
-import HamburgerMenu from '../../components/HamburgerMenu/HamburgerMenu';
+import NavHeader from '../../components/NavHeader/NavHeader';
 
 const collectionEntries = [
   { title: 'Legendary Pulls', count: '18 cards', accent: '#4a475c' },
@@ -113,10 +113,8 @@ export default function CollectionsScreen({ navigation }: any) {
 
   return (
     <View style={styles.collectionsScreen}>
-      <View style={styles.collectionsHeader}>
-        <View style={styles.collectionsNavigation}>
-          <HamburgerMenu navigation={navigation} inline />
-          <View style={styles.collectionTabs}>
+      <NavHeader navigation={navigation}>
+        <View style={styles.collectionTabs}>
           {(['Collections', 'Decks', 'Explore'] as Section[]).map((section) => (
             <TouchableOpacity
               key={section}
@@ -130,9 +128,10 @@ export default function CollectionsScreen({ navigation }: any) {
               </Text>
             </TouchableOpacity>
           ))}
-          </View>
         </View>
+      </NavHeader>
 
+      <View style={styles.collectionsHeader}>
         <View style={styles.collectionSearch}>
           <SearchIcon size={22} color={palette.darkText} strokeWidth={2} />
           <TextInput
@@ -144,8 +143,7 @@ export default function CollectionsScreen({ navigation }: any) {
             style={styles.collectionSearchInput}
           />
         </View>
-
-        </View>
+      </View>
 
       <ScrollView contentContainerStyle={styles.collectionsContent}>
         <View style={styles.collectionGrid}>
@@ -177,13 +175,8 @@ const styles = StyleSheet.create({
     backgroundColor: palette.background,
   },
   collectionsHeader: {
-    paddingHorizontal: 20,
-    paddingTop: 72,
-  },
-  collectionsNavigation: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 24,
+    paddingHorizontal: 25,
+    paddingTop: 4,
   },
   collectionsContent: {
     paddingHorizontal: 20,
@@ -205,7 +198,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-around',
-    marginLeft: 10,
   },
   collectionTab: {
     height: 42,

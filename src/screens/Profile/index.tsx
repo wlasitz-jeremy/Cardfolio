@@ -2,7 +2,7 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SymbolView } from 'expo-symbols';
 
 import BottomTabBar from '../../components/BottomTabBar/BottomTabBar';
-import InlineScreenHeader from '../../components/InlineScreenHeader/InlineScreenHeader';
+import NavHeader from '../../components/NavHeader/NavHeader';
 import { palette } from '../../theme/colors';
 import { fontFamilies } from '../../theme/typography';
 
@@ -20,7 +20,8 @@ const profileDetails = [
 export default function ProfileScreen({ navigation }: any) {
   return (
     <View style={styles.profileScreen}>
-      <InlineScreenHeader navigation={navigation} title="Smeagol's Profile" />
+      <NavHeader navigation={navigation} title="Smeagol's Profile" />
+      <View style={styles.profileBody}>
       <Image source={profileImageAsset} style={styles.profileImage} />
       <View style={styles.profileDetails}>
         {profileDetails.map((detail) => (
@@ -33,13 +34,15 @@ export default function ProfileScreen({ navigation }: any) {
       <TouchableOpacity style={styles.editProfileButton} accessibilityRole="button">
         <Text style={styles.editProfileText}>Edit profile</Text>
       </TouchableOpacity>
+      </View>
       <BottomTabBar navigation={navigation} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  profileScreen: { flex: 1, backgroundColor: palette.background, paddingHorizontal: 20, paddingTop: 20 },
+  profileScreen: { flex: 1, backgroundColor: palette.background },
+  profileBody: { flex: 1, paddingHorizontal: 20, paddingTop: 20 },
   profileImage: { width: 100, height: 100, borderRadius: 10, alignSelf: 'center', marginTop: 32, marginBottom: 28 },
   profileDetails: { marginHorizontal: 20, gap: 18 },
   profileDetailRow: { minHeight: 50, flexDirection: 'row', alignItems: 'center' },
