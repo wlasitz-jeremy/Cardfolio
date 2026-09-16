@@ -1,12 +1,7 @@
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
-import { SvgUri } from 'react-native-svg';
+import { SymbolView } from 'expo-symbols';
 
 import { palette } from '../../theme/colors';
-
-const homeIconAsset = 'https://www.figma.com/api/mcp/asset/cb8466f7-1d75-4550-93a2-f41b2855ddbf.svg';
-const scannerIconAsset = 'https://www.figma.com/api/mcp/asset/d2b932f4-ac7d-4f3b-b8ef-b51010c3df12.svg';
-const searchIconAsset = 'https://www.figma.com/api/mcp/asset/6a6f4590-85fa-469c-8fab-5f1525e47d43.svg';
-const collectionsIconAsset = 'https://www.figma.com/api/mcp/asset/65e9a564-e597-4d89-85ed-d8e47c2eb535.svg';
 
 type BottomTabBarProps = {
   navigation: any;
@@ -38,7 +33,7 @@ export default function BottomTabBar({ navigation, activeTab }: BottomTabBarProp
         onPress={() => navigateToTab('Home')}
         style={styles.navButton}
       >
-        <SvgUri accessibilityElementsHidden uri={homeIconAsset} width={30} height={30} />
+        <SymbolView accessibilityElementsHidden name={{ ios: 'house.fill', android: 'home', web: 'home' }} tintColor={activeTab === 'Home' ? '#ffffff' : palette.darkText} size={30} />
       </TouchableOpacity>
       <TouchableOpacity
         accessibilityLabel="Card Scanner"
@@ -52,7 +47,7 @@ export default function BottomTabBar({ navigation, activeTab }: BottomTabBarProp
         }}
         style={styles.navButton}
       >
-        <SvgUri accessibilityElementsHidden uri={scannerIconAsset} width={30} height={30} />
+        <SymbolView accessibilityElementsHidden name={{ ios: 'viewfinder', android: 'qr_code_scanner', web: 'qr_code_scanner' }} tintColor={palette.darkText} size={30} />
       </TouchableOpacity>
       <TouchableOpacity
         accessibilityLabel="Search"
@@ -60,7 +55,7 @@ export default function BottomTabBar({ navigation, activeTab }: BottomTabBarProp
         onPress={() => (isNestedFlow ? navigation.getParent?.()?.navigate('Search') : navigation.navigate('Search'))}
         style={styles.navButton}
       >
-        <SvgUri accessibilityElementsHidden uri={searchIconAsset} width={30} height={30} />
+        <SymbolView accessibilityElementsHidden name={{ ios: 'magnifyingglass', android: 'search', web: 'search' }} tintColor={palette.darkText} size={30} />
       </TouchableOpacity>
       <TouchableOpacity
         accessibilityLabel="Collections"
@@ -69,7 +64,7 @@ export default function BottomTabBar({ navigation, activeTab }: BottomTabBarProp
         onPress={() => navigateToTab('Collections')}
         style={styles.navButton}
       >
-        <SvgUri accessibilityElementsHidden uri={collectionsIconAsset} width={30} height={30} />
+        <SymbolView accessibilityElementsHidden name={{ ios: 'books.vertical.fill', android: 'collections_bookmark', web: 'collections_bookmark' }} tintColor={activeTab === 'Collections' ? '#ffffff' : palette.darkText} size={30} />
       </TouchableOpacity>
     </View>
   );

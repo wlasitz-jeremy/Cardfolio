@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { SymbolView } from 'expo-symbols';
 import {
   Bell,
   BookOpen,
@@ -11,7 +12,6 @@ import {
   UserRound,
   X,
 } from 'lucide-react-native';
-import { SvgUri } from 'react-native-svg';
 import {
   Modal,
   Pressable,
@@ -87,11 +87,11 @@ export default function HamburgerMenu({ navigation, inline = false }: HamburgerM
         onPress={() => setVisible(true)}
         style={[styles.trigger, inline && styles.inlineTrigger]}
       >
-        <SvgUri
+        <SymbolView
           accessibilityLabel="Menu"
-          uri="https://www.figma.com/api/mcp/asset/7fb0d750-a384-4e67-b90e-58c48eae3ac0.svg"
-          width={40}
-          height={40}
+          name={{ ios: 'line.3.horizontal', android: 'menu', web: 'menu' }}
+          tintColor={palette.darkText}
+          size={40}
         />
       </TouchableOpacity>
 

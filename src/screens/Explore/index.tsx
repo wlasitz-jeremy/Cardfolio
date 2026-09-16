@@ -8,12 +8,12 @@ import { palette } from '../../theme/colors';
 import { fontFamilies } from '../../theme/typography';
 
 const exploreImages = [
-  'https://www.figma.com/api/mcp/asset/9706f42e-2bf1-4726-936b-5879aec7adc9.png',
-  'https://www.figma.com/api/mcp/asset/2c0782c8-cd19-4c78-9c94-ef55e5440166.png',
-  'https://www.figma.com/api/mcp/asset/d7cfca5d-5455-4f58-9e42-59b0323190ca.png',
-  'https://www.figma.com/api/mcp/asset/2e4f6cea-0a51-418d-a0f8-a83474d2140a.png',
-  'https://www.figma.com/api/mcp/asset/3f983cf5-693a-4fbb-9b74-09aaebd954fc.png',
-  'https://www.figma.com/api/mcp/asset/0440265e-b915-465f-8aba-d61d2d9dcd81.png',
+  require('../../assets/Screenshot 2026-07-24 080651.png'),
+  require('../../assets/Screenshot 2026-07-24 080707.png'),
+  require('../../assets/Screenshot 2026-07-24 080729.png'),
+  require('../../assets/Screenshot 2026-07-24 080746.png'),
+  require('../../assets/Screenshot 2026-07-24 080810.png'),
+  require('../../assets/Screenshot 2026-07-24 081314.png'),
 ];
 
 export default function ExploreScreen({ navigation }: any) {
@@ -33,7 +33,7 @@ export default function ExploreScreen({ navigation }: any) {
       <ScrollView contentContainerStyle={styles.exploreGrid}>
         {visibleImages.map((image, index) => (
           <TouchableOpacity key={image} style={styles.exploreTile} onPress={() => navigation.getParent?.()?.navigate('CardInfoFlow')}>
-            <Image source={{ uri: image }} style={styles.exploreImage} />
+            <Image source={image} style={styles.exploreImage} />
             <Text style={styles.exploreCaption}>Featured card {index + 1}</Text>
           </TouchableOpacity>
         ))}

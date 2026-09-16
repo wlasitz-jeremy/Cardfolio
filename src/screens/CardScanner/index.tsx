@@ -1,38 +1,35 @@
 import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
-import { SvgUri } from 'react-native-svg';
+import { SymbolView } from 'expo-symbols';
 
 import BottomTabBar from '../../components/BottomTabBar/BottomTabBar';
 import HamburgerMenu from '../../components/HamburgerMenu/HamburgerMenu';
 import { palette } from '../../theme/colors';
 
-const cardfolioLogoAsset = 'https://www.figma.com/api/mcp/asset/05b6ea3a-5fa8-46b2-bdc9-3d115e7629c8.png';
-const scannerAsset = 'https://www.figma.com/api/mcp/asset/b7e934f3-c5ef-4269-8709-32781c6bf053.png';
-const markerPinAsset = 'https://www.figma.com/api/mcp/asset/04fba0de-307e-4a3f-b094-161cf1c68d4e.svg';
-const scanControlAsset = 'https://www.figma.com/api/mcp/asset/ba5a6e7b-b38d-4bde-b144-56457320ee16.svg';
-
+const cardfolioLogoAsset = require('../../assets/Screenshot 2026-07-24 081326.png');
+const scannerAsset = require('../../assets/Screenshot 2026-07-24 081337.png');
 export default function CardScannerScreen({ navigation }: any) {
   return (
     <View style={styles.scannerScreen}>
       <View style={styles.scannerHeader}>
         <HamburgerMenu navigation={navigation} inline />
-        <Image source={{ uri: cardfolioLogoAsset }} style={styles.cardfolioLogo} />
+        <Image source={cardfolioLogoAsset} style={styles.cardfolioLogo} />
         <TouchableOpacity
           accessibilityLabel="Open location"
           onPress={() => navigation.getParent?.()?.navigate('Location')}
           style={styles.locationButton}
         >
-          <SvgUri accessibilityElementsHidden uri={markerPinAsset} width={60} height={60} />
+          <SymbolView accessibilityElementsHidden name={{ ios: 'mappin.and.ellipse', android: 'location_on', web: 'location_on' }} tintColor={palette.darkText} size={60} />
         </TouchableOpacity>
       </View>
 
       <View style={styles.scannerViewport}>
-        <Image source={{ uri: scannerAsset }} style={styles.scannerImage} resizeMode="cover" />
+        <Image source={scannerAsset} style={styles.scannerImage} resizeMode="cover" />
         <TouchableOpacity
           accessibilityRole="button"
           accessibilityLabel="Start scanning"
           style={styles.scanControl}
         >
-          <SvgUri accessibilityElementsHidden uri={scanControlAsset} width={63} height={63} />
+          <SymbolView accessibilityElementsHidden name={{ ios: 'viewfinder', android: 'center_focus_strong', web: 'center_focus_strong' }} tintColor={palette.darkText} size={63} />
         </TouchableOpacity>
       </View>
 

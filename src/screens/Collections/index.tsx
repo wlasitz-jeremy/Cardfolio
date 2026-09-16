@@ -93,14 +93,14 @@ const exploreEntries = [
 type Section = 'Collections' | 'Decks' | 'Explore';
 
 const collectionTileImages = [
-  'https://www.figma.com/api/mcp/asset/177e0632-4f96-49b1-ae7a-42d5ae000ae6.png',
-  'https://www.figma.com/api/mcp/asset/fcdd77e4-8107-4903-ae2b-9943630067e3.png',
-  'https://www.figma.com/api/mcp/asset/7c7fb43b-d0b8-47f0-9a64-51b55b0008f6.png',
-  'https://www.figma.com/api/mcp/asset/fed1c426-9fc7-4094-b54f-a57eb85d94fe.png',
-  'https://www.figma.com/api/mcp/asset/646ccf6f-3193-45c7-9ac6-4881a5b6062b.png',
-  'https://www.figma.com/api/mcp/asset/9d0d46de-c1d7-4e6d-81b5-f67ba81828bf.png',
-  'https://www.figma.com/api/mcp/asset/da1a3f49-fca2-490b-bf9a-399a88ed7434.png',
-  'https://www.figma.com/api/mcp/asset/214e6499-f250-49b9-befd-87d7ec962097.png',
+  require('../../assets/Screenshot 2026-07-23 222259.png'),
+  require('../../assets/Screenshot 2026-07-23 222659.png'),
+  require('../../assets/Screenshot 2026-07-24 080424.png'),
+  require('../../assets/Screenshot 2026-07-24 080446.png'),
+  require('../../assets/Screenshot 2026-07-24 080510.png'),
+  require('../../assets/Screenshot 2026-07-24 080523.png'),
+  require('../../assets/Screenshot 2026-07-24 080545.png'),
+  require('../../assets/Screenshot 2026-07-24 080600.png'),
 ];
 
 export default function CollectionsScreen({ navigation }: any) {
@@ -156,7 +156,7 @@ export default function CollectionsScreen({ navigation }: any) {
               style={styles.collectionTileTouch}
             >
               <View style={styles.collectionTile}>
-                <Image source={{ uri: collectionTileImages[index % collectionTileImages.length] }} style={styles.collectionTileImage} />
+                <Image source={collectionTileImages[index % collectionTileImages.length]} style={styles.collectionTileImage} />
                 <View style={styles.collectionTileCaption}>
                   <Text style={styles.collectionTileTitle} numberOfLines={1}>{entry.title}</Text>
                   <Text style={styles.collectionTileCount} numberOfLines={1}>{entry.count}</Text>

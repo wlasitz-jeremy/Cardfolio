@@ -1,12 +1,11 @@
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
-import { SvgUri } from 'react-native-svg';
+import { SymbolView } from 'expo-symbols';
 
 import InlineScreenHeader from '../../components/InlineScreenHeader/InlineScreenHeader';
 import BottomTabBar from '../../components/BottomTabBar/BottomTabBar';
 import { palette } from '../../theme/colors';
 import { fontFamilies } from '../../theme/typography';
 
-const notificationIcon = 'https://www.figma.com/api/mcp/asset/6baa00e8-7a35-480d-8180-615c7ff14a9d.svg';
 const notifications = [
   'System Update',
   'Price Alert',
@@ -25,7 +24,7 @@ export default function NotificationsScreen({ navigation }: any) {
       <ScrollView contentContainerStyle={styles.notificationsList}>
         {notifications.map((notification) => (
           <View key={notification} style={styles.notificationRow}>
-            <SvgUri accessibilityElementsHidden uri={notificationIcon} width={50} height={50} />
+            <SymbolView accessibilityElementsHidden name={{ ios: 'bell.fill', android: 'notifications', web: 'notifications' }} tintColor={palette.accent} size={50} />
             <Text style={styles.notificationText}>{notification}</Text>
           </View>
         ))}

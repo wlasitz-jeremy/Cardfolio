@@ -5,7 +5,7 @@ import BottomTabBar from '../../components/BottomTabBar/BottomTabBar';
 import { palette } from '../../theme/colors';
 import { fontFamilies } from '../../theme/typography';
 
-const locationImageAsset = 'https://www.figma.com/api/mcp/asset/149b53d4-73da-49c0-913a-f499db6b2164.png';
+const locationImageAsset = require('../../assets/Screenshot 2026-07-24 081348.png');
 const stores = [
   ['Arcane Nexus Games', 'Arcane Nexus Games is a popular destination for trading card enthusiasts looking for rare singles, booster packs, and competitive events. Location: 1457 Crystal Avenue, Eldermere, WA'],
   ["Dragon's Hoard Collectibles", 'Known for its extensive inventory of trading cards and collectibles, Dragon\'s Hoard Collectibles specializes in sealed products, graded cards, and limited-edition releases. Location: 88 Ember Street, Ironhold, TX'],
@@ -18,7 +18,7 @@ export default function LocationScreen({ navigation }: any) {
   return (
     <View style={styles.locationScreen}>
       <InlineScreenHeader navigation={navigation} title="Location" />
-      <Image source={{ uri: locationImageAsset }} style={styles.locationImage} />
+      <Image source={locationImageAsset} style={styles.locationImage} />
       <ScrollView contentContainerStyle={styles.storeList}>
         {stores.map(([name, description]) => (
           <View key={name} style={styles.storeEntry}>

@@ -1,35 +1,31 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { SvgUri } from 'react-native-svg';
+import { SymbolView } from 'expo-symbols';
 
 import BottomTabBar from '../../components/BottomTabBar/BottomTabBar';
 import InlineScreenHeader from '../../components/InlineScreenHeader/InlineScreenHeader';
 import { palette } from '../../theme/colors';
 import { fontFamilies } from '../../theme/typography';
 
-const profileImageAsset = 'https://www.figma.com/api/mcp/asset/149b53d4-73da-49c0-913a-f499db6b2164.png';
-const userIconAsset = 'https://www.figma.com/api/mcp/asset/d11f2265-ef76-444a-b3c8-18f07aeefdf6.svg';
-const phoneIconAsset = 'https://www.figma.com/api/mcp/asset/677d7fdc-ab51-4c84-80a2-65a97ec435ab.svg';
-const mailIconAsset = 'https://www.figma.com/api/mcp/asset/7351b5f9-f0b8-4094-997d-7caeaa390d21.svg';
-
+const profileImageAsset = require('../../assets/Screenshot 2026-07-24 081400.png');
 const profileDetails = [
-  { label: 'MyPrecious', icon: userIconAsset },
-  { label: '435-913-6149', icon: phoneIconAsset },
-  { label: 'tcginventorysystem@cardfolio.ca', icon: mailIconAsset },
-  { label: 'FilthyBaggins', icon: userIconAsset },
-  { label: 'Two-factor Authentication', icon: userIconAsset },
-  { label: 'Light-Mode', icon: userIconAsset },
-  { label: 'Dark-Mode', icon: userIconAsset },
-];
+  { label: 'MyPrecious', icon: { ios: 'person.circle', android: 'person', web: 'person' } },
+  { label: '435-913-6149', icon: { ios: 'phone.fill', android: 'phone', web: 'phone' } },
+  { label: 'tcginventorysystem@cardfolio.ca', icon: { ios: 'envelope.fill', android: 'mail', web: 'mail' } },
+  { label: 'FilthyBaggins', icon: { ios: 'person.circle', android: 'person', web: 'person' } },
+  { label: 'Two-factor Authentication', icon: { ios: 'lock.shield', android: 'security', web: 'security' } },
+  { label: 'Light-Mode', icon: { ios: 'sun.max.fill', android: 'light_mode', web: 'light_mode' } },
+  { label: 'Dark-Mode', icon: { ios: 'moon.fill', android: 'dark_mode', web: 'dark_mode' } },
+] as const;
 
 export default function ProfileScreen({ navigation }: any) {
   return (
     <View style={styles.profileScreen}>
       <InlineScreenHeader navigation={navigation} title="Smeagol's Profile" />
-      <Image source={{ uri: profileImageAsset }} style={styles.profileImage} />
+      <Image source={profileImageAsset} style={styles.profileImage} />
       <View style={styles.profileDetails}>
         {profileDetails.map((detail) => (
           <View key={detail.label} style={styles.profileDetailRow}>
-            <SvgUri accessibilityElementsHidden uri={detail.icon} width={50} height={50} />
+            <SymbolView accessibilityElementsHidden name={detail.icon} tintColor={palette.accent} size={50} />
             <Text style={styles.profileDetailText}>{detail.label}</Text>
           </View>
         ))}

@@ -1,5 +1,5 @@
 import { Image, StyleSheet, Switch, Text, TouchableOpacity, View } from 'react-native';
-import { SvgUri } from 'react-native-svg';
+import { SymbolView } from 'expo-symbols';
 
 import BottomTabBar from '../../components/BottomTabBar/BottomTabBar';
 import InlineScreenHeader from '../../components/InlineScreenHeader/InlineScreenHeader';
@@ -7,30 +7,25 @@ import { useTheme } from '../../context/ThemeContext';
 import { palette } from '../../theme/colors';
 import { fontFamilies } from '../../theme/typography';
 
-const profileImageAsset = 'https://www.figma.com/api/mcp/asset/149b53d4-73da-49c0-913a-f499db6b2164.png';
-const userIconAsset = 'https://www.figma.com/api/mcp/asset/d11f2265-ef76-444a-b3c8-18f07aeefdf6.svg';
-const mailIconAsset = 'https://www.figma.com/api/mcp/asset/7351b5f9-f0b8-4094-997d-7caeaa390d21.svg';
-const logoutIconAsset = 'https://www.figma.com/api/mcp/asset/677d7fdc-ab51-4c84-80a2-65a97ec435ab.svg';
-const trashIconAsset = 'https://www.figma.com/api/mcp/asset/7351b5f9-f0b8-4094-997d-7caeaa390d21.svg';
-
+const profileImageAsset = require('../../assets/Screenshot 2026-07-24 081622.png');
 export default function SettingsScreen({ navigation }: any) {
   const { isDark, toggleMode } = useTheme();
   const settingsItems = [
-    { label: 'My Account Preferences', icon: userIconAsset },
-    { label: 'Notifications', icon: mailIconAsset, action: () => navigation.navigate('Notifications') },
-    { label: 'Logout', icon: logoutIconAsset },
-    { label: 'Community Chat', icon: mailIconAsset },
-    { label: 'Delete Account', icon: trashIconAsset },
-  ];
+    { label: 'My Account Preferences', icon: { ios: 'person.circle', android: 'person', web: 'person' }, action: undefined },
+    { label: 'Notifications', icon: { ios: 'bell.fill', android: 'notifications', web: 'notifications' }, action: () => navigation.navigate('Notifications') },
+    { label: 'Logout', icon: { ios: 'rectangle.portrait.and.arrow.right', android: 'logout', web: 'logout' }, action: undefined },
+    { label: 'Community Chat', icon: { ios: 'bubble.left.and.bubble.right.fill', android: 'forum', web: 'forum' }, action: undefined },
+    { label: 'Delete Account', icon: { ios: 'trash.fill', android: 'delete', web: 'delete' }, action: undefined },
+  ] as const;
 
   return (
     <View style={styles.settingsScreen}>
       <InlineScreenHeader navigation={navigation} title="Settings" />
-      <Image source={{ uri: profileImageAsset }} style={styles.settingsAvatar} />
+      <Image source={profileImageAsset} style={styles.settingsAvatar} />
       <View style={styles.settingsList}>
         {settingsItems.map((item) => (
           <TouchableOpacity key={item.label} style={styles.settingsRow} onPress={item.action}>
-            <SvgUri accessibilityElementsHidden uri={item.icon} width={50} height={50} />
+            <SymbolView accessibilityElementsHidden name={item.icon} tintColor={palette.accent} size={50} />
             <Text style={styles.settingsLabel}>{item.label}</Text>
           </TouchableOpacity>
         ))}
