@@ -1,15 +1,13 @@
-import { Image, StyleSheet, Switch, Text, TouchableOpacity, View } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SymbolView } from 'expo-symbols';
 
 import BottomTabBar from '../../components/BottomTabBar/BottomTabBar';
 import NavHeader from '../../components/NavHeader/NavHeader';
-import { useTheme } from '../../context/ThemeContext';
 import { palette } from '../../theme/colors';
 import { fontFamilies } from '../../theme/typography';
 
 const profileImageAsset = require('../../assets/Screenshot 2026-07-24 081622.png');
 export default function SettingsScreen({ navigation }: any) {
-  const { isDark, toggleMode } = useTheme();
   const settingsItems = [
     { label: 'My Account Preferences', icon: { ios: 'person.circle', android: 'person', web: 'person' }, action: undefined },
     { label: 'Notifications', icon: { ios: 'bell.fill', android: 'notifications', web: 'notifications' }, action: () => navigation.navigate('Notifications') },
@@ -30,10 +28,6 @@ export default function SettingsScreen({ navigation }: any) {
             <Text style={styles.settingsLabel}>{item.label}</Text>
           </TouchableOpacity>
         ))}
-        <View style={styles.settingsRow}>
-          <Text style={styles.settingsLabel}>Dark-Mode</Text>
-          <Switch value={isDark} onValueChange={toggleMode} trackColor={{ false: palette.border, true: palette.accent }} thumbColor={palette.white} />
-        </View>
       </View>
       <TouchableOpacity style={styles.editSettingsButton}>
         <Text style={styles.editSettingsText}>Edit settings</Text>

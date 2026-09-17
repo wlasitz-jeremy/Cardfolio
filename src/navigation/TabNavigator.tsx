@@ -1,4 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import type { ComponentType } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import HomeScreen from '../screens/Home';
@@ -7,15 +8,29 @@ import CardfolioScreen from '../screens/Cardfolio';
 import CommunityScreen from '../screens/Community';
 import BlogScreen from '../screens/Blog';
 
-const Tab = createBottomTabNavigator();
-
-const tabIcons: Record<string, string> = {
-  Home: 'H',
-  Collections: 'C',
-  Cardfolio: 'F',
-  Community: 'U',
-  Blog: 'B',
+type TabParamList = {
+  Home: undefined;
+  Collections: undefined;
+  Cardfolio: undefined;
+  Community: undefined;
+  Blog: undefined;
 };
+
+type TabDefinition = {
+  name: keyof TabParamList;
+  component: ComponentType;
+  icon: string;
+};
+
+const tabs: TabDefinition[] = [
+  { name: 'Home', component: HomeScreen, icon: 'H' },
+  { name: 'Collections', component: CollectionsScreen, icon: 'C' },
+  { name: 'Cardfolio', component: CardfolioScreen, icon: 'F' },
+  { name: 'Community', component: CommunityScreen, icon: 'U' },
+  { name: 'Blog', component: BlogScreen, icon: 'B' },
+];
+
+const Tab = createBottomTabNavigator<TabParamList>();
 
 export default function TabNavigator() {
   return (
@@ -39,17 +54,15 @@ export default function TabNavigator() {
                 { color: focused ? '#ffffff' : color },
               ]}
             >
-              {tabIcons[route.name] ?? '•'}
+              {tabs.find((tab) => tab.name === route.name)?.icon ?? '•'}
             </Text>
           </View>
         ),
       })}
     >
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Collections" component={CollectionsScreen} />
-      <Tab.Screen name="Cardfolio" component={CardfolioScreen} />
-      <Tab.Screen name="Community" component={CommunityScreen} />
-      <Tab.Screen name="Blog" component={BlogScreen} />
+      {tabs.map(({ name, component }) => (
+        <Tab.Screen key={name} name={name} component={component} />
+      ))}
     </Tab.Navigator>
   );
 }
