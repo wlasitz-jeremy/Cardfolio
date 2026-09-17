@@ -13,7 +13,7 @@ const cardfolioCards = [
 export default function CardfolioScreen({ navigation }: any) {
   return (
     <View style={styles.cardfolioScreen}>
-      <NavHeader navigation={navigation} title="My Cardfolio" />
+      <NavHeader navigation={navigation} title="My Cardfolio" centerTitle />
       <ScrollView contentContainerStyle={styles.cardfolioContent}>
       <View style={styles.collectionSummary}>
         <Text style={styles.summaryValue}>238</Text>

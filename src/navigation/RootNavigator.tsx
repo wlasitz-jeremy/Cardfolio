@@ -13,7 +13,6 @@ import SettingsScreen from '../screens/Settings';
 import ContactUsScreen from '../screens/ContactUs';
 import UniverseScreen from '../screens/Universe';
 import CardScannerScreen from '../screens/CardScanner';
-import ExploreScreen from '../screens/Explore';
 import ProfileScreen from '../screens/Profile';
 import TabNavigator from './TabNavigator';
 
@@ -37,7 +36,6 @@ export default function RootNavigator() {
         <Stack.Screen name="ContactUs" component={ContactUsScreen} />
         <Stack.Screen name="Universe" component={UniverseScreen} />
         <Stack.Screen name="CardScanner" component={CardScannerScreen} />
-        <Stack.Screen name="Explore" component={ExploreScreen} />
         <Stack.Screen name="Profile" component={ProfileScreen} />
         <Stack.Screen name="CardInfoFlow" component={CardInfoNavigator} />
         <Stack.Screen name="StoreFlow" component={StoreNavigator} />

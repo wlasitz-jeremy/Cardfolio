@@ -13,7 +13,7 @@ const communityPosts = [
 export default function CommunityScreen({ navigation }: any) {
   return (
     <View style={styles.communityScreen}>
-      <NavHeader navigation={navigation} title="Community" />
+      <NavHeader navigation={navigation} title="Community" centerTitle />
       <ScrollView contentContainerStyle={styles.communityContent}>
       {communityPosts.map((post) => (
         <View key={post.title} style={styles.communityPostCard}>

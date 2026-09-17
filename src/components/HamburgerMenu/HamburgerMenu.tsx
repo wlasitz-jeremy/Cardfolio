@@ -74,7 +74,6 @@ export default function HamburgerMenu({ navigation, inline = false }: HamburgerM
     { label: 'Store', icon: ShoppingBag, action: () => goToRoot('StoreFlow') },
     { label: 'Notifications', icon: Bell, action: () => goToRoot('Notifications') },
     { label: 'Location', icon: MapPin, action: () => goToRoot('Location') },
-    { label: 'Explore', icon: Compass, action: () => goToRoot('Explore') },
     { label: 'Profile', icon: UserRound, action: () => goToRoot('Profile') },
     { label: 'Settings', icon: Settings, action: () => goToRoot('Settings') },
   ];

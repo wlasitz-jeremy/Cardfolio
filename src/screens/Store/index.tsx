@@ -13,7 +13,7 @@ const storeProducts = [
 export default function StoreScreen({ navigation }: any) {
   return (
     <View style={styles.storeScreen}>
-      <NavHeader navigation={navigation} title="Store" />
+        <NavHeader navigation={navigation} title="Store" centerTitle />
       <ScrollView contentContainerStyle={styles.storeContent}>
         {storeProducts.map((product) => (
           <TouchableOpacity key={product.name} onPress={() => navigation.navigate('Cart')}>

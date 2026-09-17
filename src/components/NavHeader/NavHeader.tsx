@@ -6,24 +6,25 @@ import HamburgerMenu from '../HamburgerMenu/HamburgerMenu';
 import { palette } from '../../theme/colors';
 import { fontFamilies } from '../../theme/typography';
 
-const cardfolioLogoAsset = require('../../assets/Screenshot 2026-07-24 081326.png');
+const cardfolioLogoAsset = require('../../assets/cardfolio-logo.png');
 
 type NavHeaderProps = {
   navigation: any;
   title?: string;
+  centerTitle?: boolean;
   children?: ReactNode;
 };
 
-export default function NavHeader({ navigation, title, children }: NavHeaderProps) {
+export default function NavHeader({ navigation, title, centerTitle, children }: NavHeaderProps) {
   return (
     <View style={styles.navHeader}>
       <HamburgerMenu navigation={navigation} inline />
       {children ? (
         <View style={styles.middleSlot}>{children}</View>
       ) : title ? (
-        <Text style={styles.title}>{title}</Text>
+        <Text style={[styles.title, centerTitle && styles.titleCentered]}>{title}</Text>
       ) : (
-        <Image source={cardfolioLogoAsset} style={styles.cardfolioLogo} />
+        <Image source={cardfolioLogoAsset} style={styles.cardfolioLogo} resizeMode="contain" />
       )}
       <TouchableOpacity
         accessibilityLabel="Open location"
@@ -58,6 +59,10 @@ const styles = StyleSheet.create({
     fontSize: 32,
     fontWeight: '700',
     lineHeight: 38,
+  },
+  titleCentered: {
+    marginLeft: 0,
+    textAlign: 'center',
   },
   cardfolioLogo: {
     width: 60,

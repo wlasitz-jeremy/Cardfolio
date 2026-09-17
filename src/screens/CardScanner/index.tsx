@@ -6,6 +6,7 @@ import NavHeader from '../../components/NavHeader/NavHeader';
 import { palette } from '../../theme/colors';
 
 const scannerAsset = require('../../assets/Screenshot 2026-07-24 081337.png');
+
 export default function CardScannerScreen({ navigation }: any) {
   return (
     <View style={styles.scannerScreen}>
@@ -26,6 +27,7 @@ export default function CardScannerScreen({ navigation }: any) {
     </View>
   );
 }
+
 
 const styles = StyleSheet.create({
   scannerScreen: {
@@ -52,3 +54,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+

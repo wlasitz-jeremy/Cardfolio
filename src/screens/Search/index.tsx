@@ -14,7 +14,7 @@ const searchResults = [
 export default function SearchScreen({ navigation }: any) {
   return (
     <View style={styles.searchScreen}>
-      <NavHeader navigation={navigation} title="Search" />
+        <NavHeader navigation={navigation} title="Search" centerTitle />
       <ScrollView contentContainerStyle={styles.searchContent}>
         <View style={styles.searchInputContainer}>
           <TextInput

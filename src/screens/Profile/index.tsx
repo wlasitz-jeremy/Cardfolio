@@ -20,7 +20,7 @@ const profileDetails = [
 export default function ProfileScreen({ navigation }: any) {
   return (
     <View style={styles.profileScreen}>
-      <NavHeader navigation={navigation} title="Smeagol's Profile" />
+      <NavHeader navigation={navigation} title="Smeagol's Profile" centerTitle />
       <View style={styles.profileBody}>
       <Image source={profileImageAsset} style={styles.profileImage} />
       <View style={styles.profileDetails}>

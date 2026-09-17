@@ -8,7 +8,7 @@ import { fontFamilies } from '../../theme/typography';
 export default function ThanksScreen({ navigation }: any) {
   return (
     <View style={styles.thanksScreen}>
-      <NavHeader navigation={navigation} title="" />
+      <NavHeader navigation={navigation} title="" centerTitle />
       <View style={styles.thanksBody}>
       <Text style={styles.thanksTitle}>Thank-You Smeagol for Ordering with Cardfolio</Text>
       <View style={styles.orderSummary}>

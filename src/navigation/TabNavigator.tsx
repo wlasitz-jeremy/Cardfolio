@@ -2,7 +2,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StyleSheet, Text, View } from 'react-native';
 
 import HomeScreen from '../screens/Home';
-import CollectionsScreen from '../screens/Collections';
+import CollectionsScreen from '../screens/CollectionsDecksExplore';
 import CardfolioScreen from '../screens/Cardfolio';
 import CommunityScreen from '../screens/Community';
 import BlogScreen from '../screens/Blog';

@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { Search } from 'lucide-react-native';
 
 import BottomTabBar from '../../components/BottomTabBar/BottomTabBar';
 import NavHeader from '../../components/NavHeader/NavHeader';
+import ExploreCard from '../../components/ExploreCard/ExploreCard';
 import { palette } from '../../theme/colors';
 import { fontFamilies } from '../../theme/typography';
 
@@ -29,10 +30,12 @@ export default function ExploreScreen({ navigation }: any) {
       </View>
       <ScrollView contentContainerStyle={styles.exploreGrid}>
         {visibleImages.map((image, index) => (
-          <TouchableOpacity key={image} style={styles.exploreTile} onPress={() => navigation.getParent?.()?.navigate('CardInfoFlow')}>
-            <Image source={image} style={styles.exploreImage} />
-            <Text style={styles.exploreCaption}>Featured card {index + 1}</Text>
-          </TouchableOpacity>
+          <ExploreCard
+            key={image}
+            image={image}
+            caption={`Featured card ${index + 1}`}
+            onPress={() => navigation.getParent?.()?.navigate('CardInfoFlow')}
+          />
         ))}
       </ScrollView>
       <BottomTabBar navigation={navigation} />
@@ -45,7 +48,4 @@ const styles = StyleSheet.create({
   exploreSearch: { width: 260, height: 30, borderWidth: 2, borderColor: palette.darkText, borderRadius: 20, backgroundColor: palette.white, alignSelf: 'center', flexDirection: 'row', alignItems: 'center', paddingHorizontal: 10, marginTop: 20 },
   exploreSearchInput: { flex: 1, marginLeft: 6, color: palette.darkText, fontFamily: fontFamilies.body, fontSize: 12 },
   exploreGrid: { paddingHorizontal: 16, paddingTop: 28, paddingBottom: 120, flexDirection: 'row', flexWrap: 'wrap', gap: 20 },
-  exploreTile: { width: 169, height: 245, backgroundColor: palette.white, borderRadius: 10, overflow: 'hidden' },
-  exploreImage: { width: 169, height: 215, resizeMode: 'cover' },
-  exploreCaption: { color: palette.darkText, fontFamily: fontFamilies.body, fontSize: 12, padding: 8 },
 });

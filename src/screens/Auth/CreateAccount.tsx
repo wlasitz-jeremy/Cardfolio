@@ -25,6 +25,9 @@ type CreateAccountScreenProps = NativeStackScreenProps<RootStackParamList, 'Crea
 export default function CreateAccountScreen({ navigation }: CreateAccountScreenProps) {
   const [rememberMe, setRememberMe] = useState(true);
   const [termsAccepted, setTermsAccepted] = useState(true);
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const passwordsMismatched = confirmPassword.length > 0 && password !== confirmPassword;
 
   return (
     <SafeAreaView style={styles.createAccountSafeArea}>
@@ -62,7 +65,22 @@ export default function CreateAccountScreen({ navigation }: CreateAccountScreenP
             autoCorrect={false}
             placeholder=""
             placeholderTextColor={palette.secondaryText}
+            value={password}
+            onChangeText={setPassword}
           />
+
+          <Text style={styles.fieldLabel}>Confirm Password</Text>
+          <TextInput
+            style={[styles.accountInput, passwordsMismatched && styles.accountInputError]}
+            secureTextEntry
+            autoCapitalize="none"
+            autoCorrect={false}
+            placeholder=""
+            placeholderTextColor={palette.secondaryText}
+            value={confirmPassword}
+            onChangeText={setConfirmPassword}
+          />
+          {passwordsMismatched ? <Text style={styles.fieldError}>Passwords do not match</Text> : null}
 
           <View style={styles.ageRow}>
             <Text style={styles.ageLabel}>Age</Text>
@@ -126,8 +144,9 @@ export default function CreateAccountScreen({ navigation }: CreateAccountScreenP
           </View>
 
           <TouchableOpacity
-            style={styles.createAccountSubmitButton}
+            style={[styles.createAccountSubmitButton, (passwordsMismatched || !password || !confirmPassword) && styles.createAccountSubmitButtonDisabled]}
             activeOpacity={0.9}
+            disabled={passwordsMismatched || !password || !confirmPassword}
             onPress={() => navigation.replace('MainApp')}
           >
             <Text style={styles.createAccountSubmitText}>CREATE ACCOUNT</Text>
@@ -198,6 +217,18 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     fontSize: 18,
     color: palette.darkText,
+  },
+  accountInputError: {
+    borderColor: '#c0392b',
+    marginBottom: 4,
+  },
+  fieldError: {
+    width: 300,
+    color: '#c0392b',
+    fontSize: 13,
+    fontWeight: '600',
+    marginBottom: 12,
+    fontFamily: fontFamilies.body,
   },
   ageRow: {
     width: 300,
@@ -296,6 +327,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 8,
+  },
+  createAccountSubmitButtonDisabled: {
+    opacity: 0.5,
   },
   createAccountSubmitText: {
     color: palette.background,

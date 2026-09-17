@@ -8,7 +8,7 @@ import PrimaryButton from '../../components/Button/PrimaryButton';
 export default function ContactUsScreen({ navigation }: any) {
   return (
     <View style={styles.contactScreen}>
-      <NavHeader navigation={navigation} title="Contact Us" />
+      <NavHeader navigation={navigation} title="Contact Us" centerTitle />
 
       <View style={styles.contactBody}>
       <View style={styles.contactForm}>

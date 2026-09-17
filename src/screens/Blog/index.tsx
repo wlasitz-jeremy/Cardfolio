@@ -13,7 +13,7 @@ const blogArticles = [
 export default function BlogScreen({ navigation }: any) {
   return (
     <View style={styles.blogScreen}>
-      <NavHeader navigation={navigation} title="Blog" />
+      <NavHeader navigation={navigation} title="Blog" centerTitle />
       <ScrollView contentContainerStyle={styles.blogContent}>
       {blogArticles.map((article) => (
         <View key={article.title} style={styles.blogArticleCard}>

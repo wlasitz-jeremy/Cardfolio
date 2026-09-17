@@ -6,7 +6,7 @@ import NavHeader from '../../components/NavHeader/NavHeader';
 export default function CartScreen({ navigation }: any) {
   return (
     <View style={styles.cartScreen}>
-      <NavHeader navigation={navigation} title="Your Cart" />
+      <NavHeader navigation={navigation} title="Your Cart" centerTitle />
 
       <View style={styles.cartBody}>
       <View style={styles.cartItem}>

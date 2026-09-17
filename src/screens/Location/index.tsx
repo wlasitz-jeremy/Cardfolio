@@ -17,7 +17,7 @@ const stores = [
 export default function LocationScreen({ navigation }: any) {
   return (
     <View style={styles.locationScreen}>
-      <NavHeader navigation={navigation} title="Location" />
+      <NavHeader navigation={navigation} title="Location" centerTitle />
       <View style={styles.locationBody}>
       <Image source={locationImageAsset} style={styles.locationImage} />
       <ScrollView contentContainerStyle={styles.storeList}>

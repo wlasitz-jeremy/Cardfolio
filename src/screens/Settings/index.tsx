@@ -20,7 +20,7 @@ export default function SettingsScreen({ navigation }: any) {
 
   return (
     <View style={styles.settingsScreen}>
-      <NavHeader navigation={navigation} title="Settings" />
+      <NavHeader navigation={navigation} title="Settings" centerTitle />
       <View style={styles.settingsBody}>
       <Image source={profileImageAsset} style={styles.settingsAvatar} />
       <View style={styles.settingsList}>

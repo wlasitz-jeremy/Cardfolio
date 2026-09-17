@@ -20,7 +20,7 @@ const notifications = [
 export default function NotificationsScreen({ navigation }: any) {
   return (
     <View style={styles.notificationsScreen}>
-      <NavHeader navigation={navigation} title="Notifications" />
+      <NavHeader navigation={navigation} title="Notifications" centerTitle />
       <View style={styles.notificationsBody}>
       <ScrollView contentContainerStyle={styles.notificationsList}>
         {notifications.map((notification) => (

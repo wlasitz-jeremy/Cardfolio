@@ -12,7 +12,7 @@ const universeEntries = [
 export default function UniverseScreen({ navigation }: any) {
   return (
     <View style={styles.universeScreen}>
-      <NavHeader navigation={navigation} title="Universe" />
+      <NavHeader navigation={navigation} title="Universe" centerTitle />
       <ScrollView contentContainerStyle={styles.universeContent}>
       {universeEntries.map((entry) => (
         <View key={entry.name} style={styles.universeEntry}>

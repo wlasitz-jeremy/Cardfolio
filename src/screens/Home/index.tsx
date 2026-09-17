@@ -35,7 +35,7 @@ export default function HomeScreen({ navigation }: any) {
 
   return (
     <View style={styles.homeScreen}>
-      <NavHeader navigation={navigation} title="Welcome" />
+      <NavHeader navigation={navigation} title="Welcome" centerTitle />
 
         <Text style={styles.welcomeGreeting}>Smeagol Reagol Rol kien Tolkien</Text>
 

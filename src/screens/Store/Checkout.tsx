@@ -8,7 +8,7 @@ import PrimaryButton from '../../components/Button/PrimaryButton';
 export default function CheckoutScreen({ navigation }: any) {
   return (
     <View style={styles.checkoutScreen}>
-      <NavHeader navigation={navigation} title="Checkout" />
+      <NavHeader navigation={navigation} title="Checkout" centerTitle />
 
       <View style={styles.checkoutBody}>
       <View style={styles.checkoutForm}>

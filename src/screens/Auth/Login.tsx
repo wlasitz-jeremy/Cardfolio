@@ -17,6 +17,7 @@ type RootStackParamList = {
   MainApp: undefined;
   Login: undefined;
   CreateAccount: undefined;
+  ForgotPassword: undefined;
 };
 
 type LoginScreenProps = NativeStackScreenProps<RootStackParamList, 'Login'>;
@@ -64,7 +65,7 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
             <Text style={styles.rememberMeLabel}>Remember Me</Text>
           </Pressable>
 
-          <Text style={styles.forgotPassword}>Forgot Password?</Text>
+          <Text style={styles.forgotPassword} onPress={() => navigation.navigate('ForgotPassword')}>Forgot Password?</Text>
         </View>
 
         <TouchableOpacity
