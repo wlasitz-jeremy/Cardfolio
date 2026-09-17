@@ -5,7 +5,7 @@ import BottomTabBar from '../../components/BottomTabBar/BottomTabBar';
 import NavHeader from '../../components/NavHeader/NavHeader';
 import { palette } from '../../theme/colors';
 
-const scannerAsset = require('../../assets/Screenshot 2026-07-24 081337.png');
+const scannerAsset = require('../../assets/cardfolio-logo.png');
 
 export default function CardScannerScreen({ navigation }: any) {
   return (
@@ -17,9 +17,7 @@ export default function CardScannerScreen({ navigation }: any) {
         <TouchableOpacity
           accessibilityRole="button"
           accessibilityLabel="Start scanning"
-          style={styles.scanControl}
-        >
-          <SymbolView accessibilityElementsHidden name={{ ios: 'viewfinder', android: 'center_focus_strong', web: 'center_focus_strong' }} tintColor={palette.darkText} size={63} />
+          style={styles.scanControl}>
         </TouchableOpacity>
       </View>
 
@@ -38,10 +36,13 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 520,
     position: 'relative',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   scannerImage: {
-    width: '100%',
-    height: '100%',
+    width: '90%',
+    height: '90%',
+    borderRadius: 30,
   },
   scanControl: {
     position: 'absolute',
